@@ -82,7 +82,7 @@
       <hr>
 
       <footer>
-        <p>&copy; František Zatloukal 2014</p>
+        <p>&copy; František Zatloukal, Radek Vojkůvka 2014</p>
       </footer>
     </div> <!-- /container -->
 
