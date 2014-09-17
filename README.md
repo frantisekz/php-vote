@@ -10,6 +10,7 @@ These features will be available before the deadline:
 * Multiple voting rooms
 * 3 levels of accounts - Admin, Moderator, User
 * Comments
+* Automatic vote start and end
 * Registration with: Login
 
 Additional features:
@@ -26,6 +27,4 @@ These features may or may not be available before the deadline:
 Requirements:
 -------
 * Web server with php support
-* MySQL(i) - there may be a fallback file-backend support
-
 * Modern Web Browser
