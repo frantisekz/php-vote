@@ -1,98 +1,54 @@
 <!DOCTYPE html>
-<html lang="cs">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" lang="cs" />
+<meta name="author" content="" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+<style type="text/css">
+  </style>	
+<body>
+	<header>
+<div class="hlavicka">	
+	<h1><a href="uvod.php">Hlasovací<strong>systém</strong></a></h1>
 
-    <title>php-vote</title>
+<fieldset class="prihlasovani" style="">
+<form method=\"post\">
+ <input class="okno" type="text" name="jmeno" size="20" placeholder=Jméno>
+   <input class="okno" type="password" name="heslo" size="20" placeholder=Heslo>  
+<input class="tlacitko" type="submit"value="Přihlásit" />
+		</form>	
+	</fieldset>
+<div class="odkaz">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Zobrazit navigaci</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">php-vote</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Heslo" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Přihlásit se</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; František Zatloukal, Radek Vojkůvka, Michael Kužela, Vojtěch Górecki 2014</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<a style="border-bottom: 7px solid whitesmoke;color:whitesmoke" class="odkazy" href="uvod.php">Domů</a>
+<a style="border-bottom: 0" class="odkazy" href="navod.php">Návod</a>
+<a style="border-bottom: 0" class="odkazy" href="vysledky.php">Výsledky</a>
+<a style="border-bottom: 0" class="odkazy" href="info.php">Info</a>
+	</div>
+</div>
+	<div class="clear"></div>
+	</header>
+<div class="body">
+	<h2>Vítejte!</h2>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh risus, viverra vel rhoncus ut, posuere sed arcu. 
+Etiam quis mattis mi. Ut sodales dui ac aliquet egestas. 
+</p>
+<div class="vstoupit-div">
+<input class="kod" type="password" name="kod-hlasovani" size="20" placeholder="Kód k hlasování">
+	<div class="mezera"></div>
+<form method="POST" action="hlasovani.php">
+    <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
+</form>
+<!--<script>
+window.open("hlasovani.php", "_blank", "width=400,height=500")
+</script>-->
+	</div>
+	</div>
+<footer>
+<div class="konec">
+	<b>Gymnázium Karviná 2014</b>
+	</div>
+	</footer>
+	</body>
 </html>
