@@ -13,9 +13,9 @@
 
 <fieldset class="prihlasovani" style="">
 <form method="post">
- <input class="okno" type="text" name="jmeno" size="20" placeholder=Jméno>
-   <input class="okno" type="password" name="heslo" size="20" placeholder=Heslo>  
-<input class="tlacitko" type="submit"value="Přihlásit" />
+ <input class="okno" type="text" name="jmeno" size="20" placeholder="Jméno">
+   <input class="okno" type="password" name="heslo" size="20" placeholder="Heslo">  
+<input class="tlacitko" type="submit"value="Přihlásit se" />
 		</form>	
 	</fieldset>
 <div class="odkaz">
