@@ -2,7 +2,7 @@
 $actual = "info";
 include('header.php');
 ?>
-Info
+Autoøi: František Zatloukal, Radek Vojkùvka, Michael Kužela, Vojtìch Górecki
 <?php
 include('footer.php');
 ?>
