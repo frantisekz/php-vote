@@ -1,6 +1,21 @@
 <?php
 $actual = "index";
 include('header.php');
+
+if (isset($_POST["username_login"]))
+{
+  $username = "data/" . $_POST["username_login"] . ".txt";
+  $user = fopen($user_data, "r");
+  $user_data = explode("#", $user);
+  if (password_verify($_POST["password_login"], $user_data[0]))
+  {
+    // OK
+  }
+  else
+  {
+    // Wrong password
+  }
+}
 ?>
 <h2>Vítejte!</h2>
 <p>
