@@ -1,15 +1,15 @@
 * {
-margin: 0;
+	margin: 0;
 }
 
 body {
 	min-height: 100%;
-height: auto;
-height: 100%;
-margin: 0 auto -4em;
+	height: auto;
+	height: 100%;
+	margin: 0 auto -4em;
 	background-color: whitesmoke;
 	color: black;
-	font-family:sans-serif;
+	font-family: sans-serif;
 	font-size: 17px;
 }
 
@@ -18,54 +18,61 @@ a {
 	text-decoration: none;
 }
 
-.prihlasovani{
-	border:0;
-	float:right;
-padding-top:32px;
+.prihlasovani {
+	border: 0;
+	float: right;
+	padding-top: 32px;
 }
-.okno{
-	border-radius:4px;
-	border:0.5px solid gray;
-	height:30px;
+
+.okno {
+	border-radius: 4px;
+	border: 0.5px solid gray;
+	height: 30px;
 	box-shadow: -1px -1px -2px #000
 }
-.tlacitko{
+
+.tlacitko {
 	background: linear-gradient(#6dc06d,#449d44);
-	border-radius:4px;
-	border:0.5px solid green;
-	color:white;height:30px;
-	width:80px;
+	border-radius: 4px;
+	border: 0.5px solid green;
+	color: white;
+	height: 30px;
+	width: 80px;
 	box-shadow: -1px -1px -2px #000;
 }
-.tlacitko:hover{
-	background:#449d44;
+
+.tlacitko:hover {
+	background: #449d44;
 }
 
 header {
 	padding: 0 0 0;
-width:100%;
-    background: linear-gradient(#565656, #222222);
-text-align: left;
-height:auto;
-max-height: 150px;
+	width: 100%;
+	background: linear-gradient(#565656, #222222);
+	text-align: left;
+	height: auto;
+	max-height: 150px;
 }
+
 header h1 {
 	margin: 0;
 	float: left;
 }
+
 header h1 a, header h1 a:hover {
-    color: #999;
-    font-size: 1.4em;
-    padding: 8px 5px;
-    letter-spacing: -4px;
-    border-bottom: none;
-    display: block;
+	color: #999;
+	font-size: 1.4em;
+	padding: 8px 5px;
+	letter-spacing: -4px;
+	border-bottom: none;
+	display: block;
 }
 
 header h1 a strong {
 	font-weight: normal;
 	color: #2A5BBB;
 }
+
 .clear {
 	clear: both;
 }
@@ -73,78 +80,102 @@ header h1 a strong {
 h1 {
 	color: #000;
 	font-size: 2.4em;
-
 }
-footer{
-	height: 1.4em;
-	position:fixed;
-   left:0px;
-   bottom:0px;
-   width:100%;
-	font-size:14px;
-	color:gray;
-	text-align:center;
-	text-decoration:none;
 
-    background: #262626;
+footer {
+	height: 1.4em;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	font-size: 14px;
+	color: gray;
+	text-align: center;
+	text-decoration: none;
+	background: #262626;
+}
+
+.body {
+	color: #262626;
+	background-color: #dfdfdf;
+	font-size: 34px;
+	font-family: sans-serif;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 0.1px;
+	padding-bottom: 1px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 80px;
+	letter-spacing: 5px;
+	font-family: "Times new roman";
+}
+
+.vstoupit {
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+	border: 0.5px solid green;
+	color: white;
+	height: 90px;
+	width: 400px;
+	box-shadow: -1px -1px -2px #000;
+	font-size: 40px;
+	font-family: "Times new roman";
+}
+
+.vstoupit:hover {
+	background: #225cc0;
+}
+
+.vstoupit-div {
+	text-align: center;
+}
+
+.kod {
+	text-align: center;
+	border-radius: 4px;
+	font-size: 25px;
+	height: 40px;
+}
+
+.mezera {
+	height: 9px;
+}
+
+.odkaz1 {
+	border-bottom: none;
+	text-shadow: 0.5px 0.5px 1px gray;
+	font-size: 25px;
+	color: #dddddd;
+	padding: 10px 1px 10px;
+}
+
+ul {
+	padding-top: 30px;
+	text-align: center;
+}
+
+li {
+	display: inline;
 }
 
 .odkazy{
-	border-bottom:none;
-	text-shadow:0.5px 0.5px 1px gray;
-	font-size:25px;
-	color:#999;
-	padding: 0 50px 13px;
+	margin-left: 40px;
+	padding: 17px 9px 9px 7px;
 }
-.odkaz{
-border-bottom:none;
-text-align:center;
-padding-top: 35px;
-}		
+
 .odkazy:hover{
-	color:whitesmoke;
-	border-bottom: 7px solid whitesmoke;color:whitesmoke;
-}
-
-.body{color:#262626;
-	background-color:#dfdfdf;
-	font-size:34px;
-font-family:sans-serif;
-padding-left:100px;
-padding-right:100px;
-padding-top:0.1px;
-padding-bottom:1px;	
-}
-h2{text-align:center;
-	font-size: 80px;
-	letter-spacing:5px;
-	font-family:"Times new roman";
-}
-
-.vstoupit{
 	background: linear-gradient(#4e84e0,#225cc0);
-	border-radius:6px;
-	border:0.5px solid green;
-	color:white;
-	height:90px;
-	width:400px;
-	box-shadow: -1px -1px -2px #000;
-	font-size:40px;
-	font-family:"Times new roman";
-	
-}
-.vstoupit:hover{
-	background:#225cc0;
-}
-.vstoupit-div{
-	text-align:center;
-}
-.kod{
-text-align:center;
-border-radius: 4px;
-font-size:25px;
-height:40px;
+	border-radius: 6px;
 }
 
-.mezera{height:9px;
+#aktivni{margin-left: 40px;
+	padding: 17px 9px 9px 7px;
+background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;}
+
+#aktivni:hover{
+background:#225cc0;
 }
