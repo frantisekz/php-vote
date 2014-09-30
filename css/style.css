@@ -1,4 +1,5 @@
 * {
+	font-family:"times new roman";
 	margin: 0;
 }
 
@@ -32,6 +33,7 @@ a {
 }
 
 .tlacitko {
+	font-size:15px;
 	background: linear-gradient(#6dc06d,#449d44);
 	border-radius: 4px;
 	border: 0.5px solid green;
@@ -73,6 +75,42 @@ header h1 a strong {
 	color: #2A5BBB;
 }
 
+.odkaz1 {
+	border-bottom: none;
+	text-shadow: 0.5px 0.5px 1px gray;
+	font-size: 25px;
+	color: #dddddd;
+	padding: 10px 1px 10px;
+}
+
+ul {
+	padding-top: 30px;
+	text-align: center;
+}
+
+li {
+	display: inline;
+}
+
+.odkazy{
+	margin-left: 40px;
+	padding: 17px 9px 9px 7px;
+}
+
+.odkazy:hover{
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+}
+
+#aktivni{margin-left: 40px;
+	padding: 17px 9px 9px 7px;
+background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;}
+
+#aktivni:hover{
+background:#225cc0;
+}
+
 .clear {
 	clear: both;
 }
@@ -82,18 +120,6 @@ h1 {
 	font-size: 2.4em;
 }
 
-footer {
-	height: 1.4em;
-	position: fixed;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	font-size: 14px;
-	color: gray;
-	text-align: center;
-	text-decoration: none;
-	background: #262626;
-}
 
 .body {
 	color: #262626;
@@ -107,6 +133,7 @@ footer {
 }
 
 h2 {
+	text-shadow: 0.5px 0.5px 1px gray;
 	text-align: center;
 	font-size: 80px;
 	letter-spacing: 5px;
@@ -144,38 +171,81 @@ h2 {
 	height: 9px;
 }
 
-.odkaz1 {
-	border-bottom: none;
-	text-shadow: 0.5px 0.5px 1px gray;
-	font-size: 25px;
-	color: #dddddd;
-	padding: 10px 1px 10px;
-}
-
-ul {
-	padding-top: 30px;
+footer {
+	height: 1.4em;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	font-size: 14px;
+	color: gray;
 	text-align: center;
+	text-decoration: none;
+	background: #262626;
 }
 
-li {
-	display: inline;
+/* Poll */ 
+h4{
+margin-right:50px;
+padding-top:30px;
+color:whitesmoke;
+text-align:right;
+font-size:25px;
+
+}
+#Poll{
+	height:250px;
+	text-align:center;
+	margin: 50px auto;
+	width: 400px;
+	padding: 8px 15px 15px 15px;
+	border: 1px solid black;
+	}
+
+legend {
+		padding: 4px 6px 4px 6px;
+		border: 1px solid black;
+		font-size: 1.0em;
+		color: black;
+		font-style: italic;
+	text-align:center;
+	}
+
+#Poll_1, #Poll_2, #Poll_3, #Poll_4, #Poll_5{
+	color:white;
+	border-radius:8px;
+opacity:0.5;
+box-shadow: -1px -1px 2px black;
+}
+#Poll_1{
+	background:red;	
+}
+#Poll_1:hover{
+	border:1px solid darkred;
+	box-shadow: 0 0 0 black;
+}
+#Poll_2{
+	background:blue;
 }
 
-.odkazy{
-	margin-left: 40px;
-	padding: 17px 9px 9px 7px;
+#Poll_2:hover{
+	border:1px solid darkblue;
+	box-shadow: 0 0 0 black;
+}
+#Poll_3{
+	background:green;
 }
 
-.odkazy:hover{
-	background: linear-gradient(#4e84e0,#225cc0);
-	border-radius: 6px;
+#Poll_3:hover{
+	border:1px solid darkgreen;
+	box-shadow: 0 0 0 black;
 }
 
-#aktivni{margin-left: 40px;
-	padding: 17px 9px 9px 7px;
-background: linear-gradient(#4e84e0,#225cc0);
-	border-radius: 6px;}
+#Poll_4{
+	background:brown;
+}
 
-#aktivni:hover{
-background:#225cc0;
+#Poll_4:hover{
+	border:1px solid #520000;
+	box-shadow: 0 0 0 black;
 }
