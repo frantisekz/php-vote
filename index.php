@@ -1,5 +1,10 @@
 <body>
 <?php
+// Work around missing function in old php
+if (phpversion() < 5.5)
+{
+  require_once ('passwordLib.php');
+}
 $actual = "index";
 include('header.php');
 
@@ -11,11 +16,22 @@ if (isset($_POST["username_login"]))
   if (password_verify($_POST["password_login"], $user_data[0]))
   {
     // OK
+    $_SESSION["username_login"] = $_POST["username_login"];
+    setcookie($_SESSION["username_login"], $_SESSION["username_login"], time()+3600, $pms_domain);
+    header("Location:index.php");
   }
   else
   {
     // Wrong password
   }
+}
+
+if (isset($_POST["username_logout"]))
+{
+  setcookie($_SESSION["username_login"], "", time()-3600);
+  unset($_SESSION["username_login"]);
+  unset($_POST["username_logout"]);
+  header("Location:index.php");
 }
 ?>
 

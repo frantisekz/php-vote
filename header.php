@@ -9,11 +9,26 @@
 	<h1><a href="index.php">Hlasovací<strong>systém</strong></a></h1>
 
 <fieldset class="prihlasovani" style="">
+<?php
+
+if (isset($_SESSION["username_login"]))
+{
+
+	?>
+<input class="tlacitko" name="username_logout" type="submit"value="Odhlásit se" />
+<?php
+}
+else
+{
+	?>
 <form method="post">
  <input class="okno" type="text" name="jmeno" size="20" placeholder="Jméno">
    <input class="okno" type="password" name="heslo" size="20" placeholder="Heslo">  
 <input class="tlacitko" type="submit"value="Přihlásit se" />
 		</form>	
+		<?php
+}
+		?>
 	</fieldset>
 <ul>
 
