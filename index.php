@@ -54,6 +54,8 @@ window.open("hlasovani.php", "_blank", "width=400,height=500")
 	</div>	
 	<div class="mezera"></div>
         </div>
+	<div style="height: 30px;"></div>
+<img src="img/logo_GK.png" id="logo">
 <?php
 include('footer.php');
 ?>

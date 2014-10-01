@@ -4,10 +4,6 @@
 }
 
 body {
-	min-height: 100%;
-	height: auto;
-	height: 100%;
-	margin: 0 auto -4em;
 	background-color: whitesmoke;
 	color: black;
 	font-family: sans-serif;
@@ -126,11 +122,10 @@ h1 {
 	background-color: #dfdfdf;
 	font-size: 34px;
 	font-family: sans-serif;
-	padding-left: 100px;
+	padding-left:100px;
 	padding-right: 100px;
-	padding-top: 0.1px;
 	padding-bottom: 1px;
-	width: 1920px;
+	width: 1720px;
 	text-align:center;
 	margin: 0 auto;
 }
@@ -172,6 +167,16 @@ h2 {
 
 .mezera {
 	height: 9px;
+}
+
+#logo{
+
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+opacity:0.20;
+height:450px;
+width:450px;
 }
 
 footer {
@@ -217,38 +222,39 @@ legend {
 #Poll_1, #Poll_2, #Poll_3, #Poll_4, #Poll_5{
 	color:white;
 	border-radius:8px;
-opacity:0.5;
-box-shadow: -1px -1px 2px black;
+opacity:0.8;
+border:1px solid gray;
 }
+
 #Poll_1{
-	background:red;	
+	background:#ff1a1a;	
 }
 #Poll_1:hover{
+	opacity:0.7;
 	border:1px solid darkred;
-	box-shadow: 0 0 0 black;
 }
 #Poll_2{
 	background:blue;
 }
 
 #Poll_2:hover{
+	opacity:0.7;
 	border:1px solid darkblue;
-	box-shadow: 0 0 0 black;
 }
 #Poll_3{
 	background:green;
 }
 
 #Poll_3:hover{
+	opacity:0.7;
 	border:1px solid darkgreen;
-	box-shadow: 0 0 0 black;
 }
 
 #Poll_4{
-	background:brown;
+	background:#089c9c;
 }
 
 #Poll_4:hover{
+	opacity:0.7;
 	border:1px solid #520000;
-	box-shadow: 0 0 0 black;
 }
