@@ -130,6 +130,9 @@ h1 {
 	padding-right: 100px;
 	padding-top: 0.1px;
 	padding-bottom: 1px;
+	width: 1920px;
+	text-align:center;
+	margin: 0 auto;
 }
 
 h2 {
