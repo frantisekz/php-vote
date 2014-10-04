@@ -31,18 +31,16 @@ else
 		?>
 	</fieldset>
 <ul>
-
    <li <?php if ($actual == "index"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy">
-	   	<img src="img/index.png" style="height:20px;width:20px" href="index.php">
+	   	<img src="img/index.png" style="height:17px;width:17px" href="index.php">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
-
    <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy">
-		   	<img src="img/navod.png" style="height:20px;width:20px">
+		   	<img src="img/navod.png" style="height:17px;width:17px">
 	<a class="odkaz1" href="navod.php">Návod</a>
 	</li>   
 	<li <?php if ($actual == "vysledky"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy">
-		   	<img src="img/vysledky.png" style="height:20px;width:20px" href="vysledky.php">
+		   	<img src="img/vysledky.png" style="height:17px;width:17px" href="vysledky.php">
 	<a class="odkaz1" href="vysledky.php">Výsledky</a>
    </li>
 </ul>

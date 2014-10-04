@@ -41,12 +41,12 @@ if (isset($_POST["username_logout"]))
 
 include('header.php');
 ?>
-
+<div class="clear">
 <div class="body">
 <h2>Vítejte!</h2>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh risus, viverra vel rhoncus ut, posuere sed arcu. 
-Etiam quis mattis mi. Ut sodales dui ac aliquet egestas. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac convallis ipsum. Integer non imperdiet tellus. 
+Sed ut felis a augue iaculis volutpat nec non purus. Pellentesque quis erat libero. Nullam a orci et tortor placerat varius. Aenean consectetur diam urna, ut scelerisque magna interdum vel. 
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">

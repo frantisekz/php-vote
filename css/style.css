@@ -10,6 +10,8 @@ body {
 	font-size: 17px;
 }
 
+/* Hlavicka */ 
+
 a {
 	color: #2A5BBB;
 	text-decoration: none;
@@ -18,10 +20,11 @@ a {
 .prihlasovani {
 	border: 0;
 	float: right;
-	padding-top: 32px;
+	padding-top: 20px;
 }
 
-.okno {
+.okno {margin-right:5px;
+	width:150px;
 	border-radius: 4px;
 	border: 0.5px solid gray;
 	height: 30px;
@@ -44,23 +47,24 @@ a {
 }
 
 header {
-	padding: 0 0 0;
 	width: 100%;
 	background: linear-gradient(#565656, #222222);
 	text-align: left;
-	height: auto;
-	max-height: 150px;
+	height: 60px;
+
+	min-width:1240px;
 }
 
 header h1 {
+	padding-right:90px;
 	margin: 0;
 	float: left;
 }
 
 header h1 a, header h1 a:hover {
 	color: #999;
-	font-size: 1.4em;
-	padding: 8px 5px;
+	font-size: 1.2em;
+padding-left:10px;
 	letter-spacing: -4px;
 	border-bottom: none;
 	display: block;
@@ -74,13 +78,14 @@ header h1 a strong {
 .odkaz1 {
 	border-bottom: none;
 	text-shadow: 0.5px 0.5px 1px gray;
-	font-size: 25px;
+	font-size: 22px;
 	color: #dddddd;
-	padding: 10px 1px 10px;
+
 }
 
+
 ul {
-	padding-top: 30px;
+	padding-top: 20px;
 	text-align: center;
 }
 
@@ -90,7 +95,7 @@ li {
 
 .odkazy{
 	margin-left: 40px;
-	padding: 17px 9px 9px 7px;
+	padding: 12px 9px 9px 7px;
 }
 
 .odkazy:hover{
@@ -98,8 +103,8 @@ li {
 	border-radius: 6px;
 }
 
-#aktivni{margin-left: 40px;
-	padding: 17px 9px 9px 7px;
+#aktivni{
+	padding: 12px 9px 9px 7px;
 background: linear-gradient(#4e84e0,#225cc0);
 	border-radius: 6px;}
 
@@ -116,24 +121,27 @@ h1 {
 	font-size: 2.4em;
 }
 
+/* Body */ 
 
 .body {
 	color: #262626;
 	background-color: #dfdfdf;
-	font-size: 34px;
+	font-size: 30px;
 	font-family: sans-serif;
 	padding-left:100px;
 	padding-right: 100px;
 	padding-bottom: 1px;
-	width: 1280px;
+	width:auto;
+	max-width: 1720px;
 	text-align:center;
 	margin: 0 auto;
+	min-width:1040px;
 }
 
 h2 {
 	text-shadow: 0.5px 0.5px 1px gray;
-	text-align: center;
-	font-size: 80px;
+text-align:center;
+	font-size: 75px;
 	letter-spacing: 5px;
 	font-family: "Times new roman";
 }
@@ -143,8 +151,8 @@ h2 {
 	border-radius: 6px;
 	border: 0.5px solid green;
 	color: white;
-	height: 90px;
-	width: 400px;
+	height: 80px;
+	width: 370px;
 	box-shadow: -1px -1px -2px #000;
 	font-size: 40px;
 	font-family: "Times new roman";
@@ -162,7 +170,7 @@ h2 {
 	text-align: center;
 	border-radius: 4px;
 	font-size: 25px;
-	height: 40px;
+	height: 35px;
 }
 
 .mezera {
@@ -189,7 +197,7 @@ footer {
 	color: gray;
 	text-align: center;
 	text-decoration: none;
-	background: #262626;
+	background: linear-gradient(#3e3e3e, #222222);
 }
 
 /* Poll */ 
