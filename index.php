@@ -13,20 +13,16 @@ if (isset($_POST["username_login"]))
   $username = "users/" . $_POST["username_login"] . ".txt";
   $user = fopen($username, "r");
   $i = 1;
-  while($row = fgets($user)) 
-  {
-    if ($i == 1)
-    $user_password = $row;
-    $i++;
-  }
+  $user_data = fgets($user);
+  $user_password = explode("+++", $user_data);
   fclose($user);
-  if (password_verify($_POST["password_login"], $user_password))
+  $post_password = $_POST['password_login'];
+  if (password_verify($post_password, $user_password[0]))
   {
     // OK
     echo "<script>alert(\"Login OK!\");</script>";
     $_SESSION["username_login"] = $_POST["username_login"];
     setcookie($_SESSION["username_login"], $_SESSION["username_login"], time()+3600, $pms_domain);
-    header("Location:index.php");
   }
   else
   {
