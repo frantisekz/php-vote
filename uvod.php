@@ -1,6 +1,3 @@
-<?php
-$actual = "index";
-?>
 <div class="clear">
 <div class="body">
 <h2>Vítejte!</h2>

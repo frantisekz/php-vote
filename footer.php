@@ -1,4 +1,4 @@
 <footer>
 	<b>Gymnázium Karviná 2014 |</b>
-	<a href="info.php" style="text-decoration:none"><b> Info</b></a>
+	<a href="index.php?stranka=info" style="text-decoration:none"><b> Info</b></a>
 </footer>
