@@ -1,11 +1,17 @@
 <?php
 function register($username, $password, $email)
 {
-	$password = password_hash($password, PASSWORD_DEFAULT);
+	// We specify BCRYPT directly to avoid potentional 
+	// incompatibilities in the future
+	$password = password_hash($password, PASSWORD_BCRYPT);
 	$write = $password . "#" . $email . "#1";
-	$file_name = "users/" . $username . ".txt";
+	// Will be called from inside admin folder, so ../
+	$file_name = "../users/" . $username . ".txt";
 	$file = fopen($file_name, "w");
-	fwrite($file, $write);
+	if (fwrite($file, $write))
+		return true;
+	else
+		return false;
 	fclose($file);
 	return true;
 }
