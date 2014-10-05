@@ -1,7 +1,7 @@
 <?php
 function register($username, $password, $email)
 {
-	// We specify BCRYPT directly to avoid potentional 
+	// We specify BCRYPT directly to avoid potential 
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
 	$write = $password . "#" . $email . "#1";
