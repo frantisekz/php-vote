@@ -1,3 +1,4 @@
+<body>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" lang="cs" />
 <meta name="author" content="" />
@@ -15,7 +16,10 @@ if (isset($_SESSION["username_login"]))
 {
 
 	?>
-<input class="tlacitko" name="username_logout" type="submit"value="Odhlásit se" />
+<a href="./admin"><button class="tlacitko">Správa</button></a>
+<form method="post">
+<input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
+</form>
 <?php
 }
 else
@@ -37,11 +41,11 @@ else
 	</li>
    <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy">
 		   	<img src="img/navod.png" style="height:17px;width:17px">
-	<a class="odkaz1" href="navod.php">Návod</a>
+	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
 	</li>   
 	<li <?php if ($actual == "vysledky"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy">
 		   	<img src="img/vysledky.png" style="height:17px;width:17px" href="vysledky.php">
-	<a class="odkaz1" href="vysledky.php">Výsledky</a>
+	<a class="odkaz1" href="index.php?stranka=vysledky">Výsledky</a>
    </li>
 </ul>
 	<div class="clear"></div>

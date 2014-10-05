@@ -13,8 +13,7 @@ Sed ut felis a augue iaculis volutpat nec non purus. Pellentesque quis erat libe
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
 </form>
 
-<input class="vstoupit" type="submit" value="Vytvořit hlasování" name="JPW">
-
+<a href="./admin"><button class="vstoupit">Správa</button></a>
 <!--<script>
 window.open("hlasovani.php", "_blank", "width=400,height=500")
 </script>-->
