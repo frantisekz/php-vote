@@ -17,8 +17,7 @@ if (isset($_POST["username_login"]))
 
 if (isset($_POST["username_logout"]))
 {
-  unset($_SESSION["username_login"]);
-  unset($_POST["username_logout"]);
+  logout();
 }
 
 if (isset($_GET["stranka"]))
