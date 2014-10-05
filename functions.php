@@ -13,7 +13,7 @@ function register($username, $password, $email)
 function login($username, $password)
 {
 	$user_file = "users/" . $username . ".txt";
-	$user = fopen($username_file, "r");
+	$user = fopen($user_file, "r");
 	$user_data = fgets($user);
 	$user_password = explode("+++", $user_data);
 	fclose($user);
@@ -21,6 +21,7 @@ function login($username, $password)
   	{
     	// OK
     	$_SESSION["username_login"] = $username;
+    	$_SESSION["user_level"] = $user_password[2];
     	return true;
   	}
  	else
@@ -28,5 +29,12 @@ function login($username, $password)
     	// Wrong password
     	return false;
   	}
+}
+
+function logout()
+{
+	unset($_SESSION["username_login"]);
+	unset($_SESSION["user_level"]);
+	unset($_POST["username_logout"]);
 }
 ?>
