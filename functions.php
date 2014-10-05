@@ -12,15 +12,15 @@ function register($username, $password, $email)
 
 function login($username, $password)
 {
-	$username = "users/" . $_POST["username_login"] . ".txt";
-	$user = fopen($username, "r");
+	$user_file = "users/" . $username . ".txt";
+	$user = fopen($username_file, "r");
 	$user_data = fgets($user);
 	$user_password = explode("+++", $user_data);
 	fclose($user);
-	if (password_verify($_POST['password_login'], $user_password[0]))
+	if (password_verify($password, $user_password[0]))
   	{
     	// OK
-    	$_SESSION["username_login"] = $_POST["username_login"];
+    	$_SESSION["username_login"] = $username;
     	return true;
   	}
  	else
