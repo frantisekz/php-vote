@@ -1,9 +1,21 @@
 * {
+-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
 	font-family:"times new roman";
 	margin: 0;
 }
 
 body {
+    	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
 	background-color: whitesmoke;
 	color: black;
 	font-family: sans-serif;
@@ -32,6 +44,7 @@ a {
 }
 
 .tlacitko {
+    cursor:pointer;
 	font-size:15px;
 	background: linear-gradient(#6dc06d,#449d44);
 	border-radius: 4px;
@@ -147,6 +160,7 @@ text-align:center;
 }
 
 .vstoupit {
+    cursor:pointer;
 	background: linear-gradient(#4e84e0,#225cc0);
 	border-radius: 6px;
 	border: 0.5px solid green;
@@ -203,17 +217,17 @@ footer {
 /* Poll */ 
 h4{
 margin-right:50px;
-padding-top:30px;
+padding-top:20px;
 color:whitesmoke;
 text-align:right;
 font-size:25px;
 
 }
 #Poll{
-	height:250px;
+	height:320px;
 	text-align:center;
 	margin: 50px auto;
-	width: 400px;
+	width: 1015px;
 	padding: 8px 15px 15px 15px;
 	border: 1px solid black;
 	}
@@ -227,42 +241,49 @@ legend {
 	text-align:center;
 	}
 
-#Poll_1, #Poll_2, #Poll_3, #Poll_4, #Poll_5{
+#Poll_1, #Poll_2, #Poll_3, #Poll_4{
+	cursor:pointer;
+	font-size:20px;
+	height:100px;
+	width:500px;
 	color:white;
-	border-radius:8px;
-opacity:0.8;
-border:1px solid gray;
+box-shadow: 1px 1px 2px #000;
+border:1px solid #6a9cf2;
 }
 
 #Poll_1{
-	background:#ff1a1a;	
+margin-right:10px;
+margin-bottom:10px;
+float:left;
+background: linear-gradient(#4374d5,#5883da);
 }
-#Poll_1:hover{
+#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover{
 	opacity:0.7;
-	border:1px solid darkred;
+	border:1px solid black;
 }
 #Poll_2{
-	background:blue;
+margin-bottom:10px;
+float:left;
+background: linear-gradient(#4374d5,#5883da);
 }
 
-#Poll_2:hover{
-	opacity:0.7;
-	border:1px solid darkblue;
-}
 #Poll_3{
-	background:green;
-}
-
-#Poll_3:hover{
-	opacity:0.7;
-	border:1px solid darkgreen;
+margin-bottom:10px;
+float:right;
+background: linear-gradient(#5883da,#4374d5);
 }
 
 #Poll_4{
-	background:#089c9c;
+margin-bottom:10px;
+margin-right:10px;
+float:right;
+background: linear-gradient(#5883da,#4374d5);
 }
 
-#Poll_4:hover{
-	opacity:0.7;
-	border:1px solid #520000;
+#diskuze{
+	width:auto;
+	max-width: 1720px;
+	text-align:center;
+	margin: 0 auto;
+	min-width:1040px;
 }
