@@ -12,7 +12,7 @@ if (phpversion() < 5.5)
 if (isset($_POST["username_login"]))
 {
   
-	login($_POST["username_login"], $_POST["password_login"]);
+	login($_POST["username_login"], $_POST["password_login"], 0);
 }
 
 if (isset($_POST["username_logout"]))
