@@ -16,9 +16,16 @@ function register($username, $password, $email, $level)
 	return true;
 }
 
-function login($username, $password)
+function login($username, $password, $in_admin)
 {
-	$user_file = "users/" . $username . ".txt";
+  if ($in_admin == 1)
+  {
+    $user_file = "../users/" . $username . ".txt";
+  }
+  else
+  {
+	 $user_file = "users/" . $username . ".txt";
+	}
 	$user = fopen($user_file, "r");
 	$user_data = fgets($user);
 	$user_password = explode("+++", $user_data);
