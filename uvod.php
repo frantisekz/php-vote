@@ -1,3 +1,4 @@
+
 <div class="clear">
 <div class="body">
 <h2>Vítejte!</h2>
@@ -13,10 +14,6 @@ Sed ut felis a augue iaculis volutpat nec non purus. Pellentesque quis erat libe
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
 </form>
 
-<a href="./admin"><button class="vstoupit">Správa</button></a>
-<!--<script>
-window.open("hlasovani.php", "_blank", "width=400,height=500")
-</script>-->
 	</div>	
 	<div class="mezera"></div>
         </div>

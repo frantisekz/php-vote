@@ -1,3 +1,4 @@
+<html>
 <?php
 session_start();
 
@@ -55,7 +56,7 @@ if (!isset($_SESSION["username_login"]))
 <body>
 <div class="left_menu">
 <form method="post">
-<input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
+<input style="margin-top:30px;" class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
 </form>
 
 <br/>
@@ -76,11 +77,11 @@ switch ($_GET['sub']){
 		break;
 	default:
 		include('uvod.php');
-
 }
 
 ?>
 </div>
-<div class="bottom_panel"></div>
+<!--<div class="bottom_panel"></div>-->
 </div>
 </body>
+</html>

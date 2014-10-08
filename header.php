@@ -1,4 +1,5 @@
 <body>
+	<title>php-vote</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" lang="cs" />
 <meta name="author" content="" />
@@ -16,10 +17,13 @@ if (isset($_SESSION["username_login"]))
 {
 
 	?>
-<a href="./admin"><button class="tlacitko">Správa</button></a>
-<form method="post">
-<input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
+<form action="./admin" class="logged" style="margin-left:150px">
+<button class="tlacitko">Správa</button>
 </form>
+<form method="post" class="logged">
+<input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
+	</form>
+
 <?php
 }
 else
