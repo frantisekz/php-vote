@@ -1,10 +1,10 @@
 <?php
-function register($username, $password, $email)
+function register($username, $password, $email, $level)
 {
 	// We specify BCRYPT directly to avoid potential 
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
-	$write = $password . "#" . $email . "#1";
+	$write = $password . "+++" . $email . "+++" . $level;
 	// Will be called from inside admin folder, so ../
 	$file_name = "../users/" . $username . ".txt";
 	$file = fopen($file_name, "w");
@@ -37,10 +37,18 @@ function login($username, $password)
   	}
 }
 
-function logout()
+function logout($in_admin)
 {
 	unset($_SESSION["username_login"]);
 	unset($_SESSION["user_level"]);
 	unset($_POST["username_logout"]);
+	if ($in_admin == 1)
+	{
+		header("Location: ../index.php");
+	}
+	else
+	{
+		header("Location: index.php");
+	}
 }
 ?>
