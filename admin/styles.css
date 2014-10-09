@@ -4,8 +4,6 @@ html{height:100%;
 	text-align:center;
 }
 
-.bottom_panel{bottom:0px;height:5px}
-
 div.loginbox{
 height: 100px;
 width: 300px;
@@ -74,8 +72,8 @@ cursor: pointer;
 	height: 60px;
 	width: 270px;
 	box-shadow: -1px -1px -2px #000;
-	font-size: 40px;
-	font-family: "Times new roman";
+	font-size: 34px;
+font-family:"verdana";
 }
 
 .registrovat:hover{
