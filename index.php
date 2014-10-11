@@ -13,7 +13,7 @@ $user = new user($_SESSION["user_username"], 0);
 
 if (isset($_POST["username_login"]))
 {
-	$user = new user($_SESSION["user_username"], $_SESSION["user_password"], $_SESSION["user_email"], $_SESSION["user_level"], 0);
+	$user = new user($_SESSION["user_username"], 0);
 	$user->login($_POST["username_login"], $_POST["password_login"]);
 }
 
