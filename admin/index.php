@@ -1,8 +1,16 @@
 <?php
 session_start();
-include('../functions.php');
 
-if (!isset($_SESSION["username_login"]))
+// Work around missing functions in old php
+if (phpversion() < 5.5)
+{
+	require_once ('passwordLib.php');
+}
+
+include('../functions.php');
+$user = new user($_SESSION["user_username"], 1);
+
+if (!isset($_SESSION["user_username"]))
 {
 	die("Neautorizovaný přístup!!!");
 }
@@ -14,7 +22,7 @@ if (!isset($_GET['sub']))
 
 if (isset($_POST['username_logout']))
 {
-	logout(1);
+	$user->logout(1);
 }
 ?>
 
@@ -43,7 +51,7 @@ if (isset($_POST['username_logout']))
 <hr>
 <h3<?php if ($_GET['sub'] == "uvod") echo " id=\"active\" "?>><a href="index.php">Úvod</a></h3>
 <h3<?php if ($_GET['sub'] == "hlasovani") echo " id=\"active\" "?>><a href="index.php?sub=hlasovani">Hlasování</a></h3>
-<h3<?php if ($_SESSION['user_level'] == 3) {if ($_GET['sub'] == "nastaveni") echo " id=\"active\" "?>><a href="index.php?sub=nastaveni">Nastavení</a><?php } ?></h3>
+<h3<?php if ($user->get_level($user->get_cur_username()) == 3) {if ($_GET['sub'] == "nastaveni") echo " id=\"active\" "?>><a href="index.php?sub=nastaveni">Nastavení</a><?php } ?></h3>
 </div>
 
 <div class="admin">
