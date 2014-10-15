@@ -12,6 +12,17 @@ if (isset($_POST['username_login']))
 {
   login($_POST['username_login'],$_POST['password_login'],1);
 }
+if (!isset($_SESSION["username_login"]))
+{
+ 	?>
+<form method="post">
+ <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno">
+   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">  
+<input class="tlacitko" type="submit"value="Přihlásit se" />
+		</form>	
+		<?php
+		die("Neautorizovaný přístup!");
+}
 
 if (!isset($_GET['sub']))
 {
@@ -39,19 +50,6 @@ if (isset($_POST['username_logout']))
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </head>
-<?php
-if (!isset($_SESSION["username_login"]))
-{
- 	?>
-<form method="post">
- <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno">
-   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">  
-<input class="tlacitko" type="submit"value="Přihlásit se" />
-		</form>	
-		<?php
-		die("Neautorizovaný přístup!");
-}
-?>
 <body>
 <div class="left_menu">
 <form method="post">
