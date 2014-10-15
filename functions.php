@@ -1,4 +1,5 @@
 <?php
+
 function register($username, $password, $email, $level)
 {
 	// We specify BCRYPT directly to avoid potential 
@@ -9,25 +10,89 @@ function register($username, $password, $email, $level)
 	$file_name = "../users/" . $username . ".txt";
 	$file = fopen($file_name, "w");
 	if (fwrite($file, $write))
+	{
 		return true;
+	}
 	else
+	{
 		return false;
+	}
 	fclose($file);
-	return true;
+}
+
+class user
+{
+	public $username;
+	private $password;
+	public $email;
+	public $level;
+	public $in_admin;
+	private $user_data;
+
+function __construct($username, $in_admin)
+{
+	$this->username = $username;
+	$this->in_admin = $in_admin;
+}
+
+function logged_in()
+{
+	if (isset($this->username))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+private function load_file($username)
+{
+	if ($this->in_admin == 1)
+	{
+		$filename = "../users/" . $username . ".txt";
+	}
+	else
+	{
+		$filename = "users/" . $username . ".txt";
+	}
+	$user_file = fopen($filename, "r");
+	$user_data = explode("+++", fgets($user_file));
+	fclose($user_file);
+	$this->user_data = $user_data;
+}
+
+function get_cur_username()
+{
+	return $this->username;
+}
+
+private function get_password($username)
+{
+	$this->load_file($username);
+	return $user_data[0];
+}
+
+function get_email($username)
+{
+	$this->load_file($username);
+	return $user_data[1];
+}
+
+function get_level($username)
+{
+	$this->load_file($username);
+	return $this->user_data[2];
 }
 
 function login($username, $password)
 {
-	$user_file = "users/" . $username . ".txt";
-	$user = fopen($user_file, "r");
-	$user_data = fgets($user);
-	$user_password = explode("+++", $user_data);
-	fclose($user);
-	if (password_verify($password, $user_password[0]))
+	$this->load_file($username);
+	if (password_verify($password, $this->user_data[0]))
   	{
     	// OK
-    	$_SESSION["username_login"] = $username;
-    	$_SESSION["user_level"] = $user_password[2];
+    	$_SESSION["user_username"] = $username;
     	return true;
   	}
  	else
@@ -39,9 +104,9 @@ function login($username, $password)
 
 function logout($in_admin)
 {
-	unset($_SESSION["username_login"]);
-	unset($_SESSION["user_level"]);
+	unset($_SESSION["user_username"]);
 	unset($_POST["username_logout"]);
+
 	if ($in_admin == 1)
 	{
 		header("Location: ../index.php");
@@ -50,5 +115,6 @@ function logout($in_admin)
 	{
 		header("Location: index.php");
 	}
+}
 }
 ?>
