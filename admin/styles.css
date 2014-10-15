@@ -1,14 +1,20 @@
+html{height:100%;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
 div.loginbox{
 height: 100px;
 width: 300px;
 background-color: rgb(231, 231, 231);
+margin:auto;
 border-radius: 15px;
-margin: auto;
 text-align: center;	
 }
 
 div.admin{
-height: 800px;
+height: 100%;
 width: 960px;
 overflow-y: hidden;
 background-color: rgb(231, 231, 231);
@@ -24,8 +30,13 @@ height: 300px;
 div.left_menu{
 background-color: black;
 width: 150px;
-height: 800px;
+height: 100%;
+min-height:600px;
 float: left;
+}
+
+h1{
+text-align:center;
 }
 
 h3 a{
@@ -42,4 +53,85 @@ color: black;
 
 #active a:hover{
 color: black;
+}
+
+.level{
+width:310px;
+text-align: center;
+	border-radius: 4px;
+	font-size: 25px;
+	height: 35px;
+}
+
+.registrovat{
+cursor: pointer;
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+	border: 0.5px solid green;
+	color: white;
+	height: 60px;
+	width: 270px;
+	box-shadow: -1px -1px -2px #000;
+	font-size: 34px;
+font-family:"verdana";
+}
+
+.registrovat:hover{
+	background:#225cc0;
+}
+
+#list {
+	font-size:18px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th {
+	border: 1px solid black;
+	background: linear-gradient(#6dc06d,#449d44);
+}
+
+.long {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.short {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+tr:nth-child(even) {
+	background: #dedede
+}
+
+tr:nth-child(odd) {
+	background: #FFF
+}
+
+.icons {
+	height: 22px;
+	width: 22px;
+}
+
+td {
+	border: 1px solid black;
+}
+
+#new_poll{
+    cursor: pointer;
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+	border: 0.5px solid green;
+	color: white;
+	height: 40px;
+	width: 205px;
+	box-shadow: -1px -1px -2px #000;
+	font-size: 20px;
+}
+#new_poll:hover {
+	background: #225cc0;
 }

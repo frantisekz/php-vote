@@ -6,26 +6,12 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">
-<form method="POST" action="hlasovani.php">
-	<input class="kod" type="password" name="kod-hlasovani" size="20" placeholder="Kód k hlasování">
+<input class="kod" type="password" name="kod-hlasovani" size="20" placeholder="Kód k hlasování">
 	<div class="mezera"></div>
+<form method="POST" action="hlasovani.php">
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
 </form>
-<?php
 
-if (isset($_SESSION["user_username"]))
-{
-	?>
-<a href="./admin"><button class="vstoupit">Správa</button></a>
-
-<?php
-
-}
-
-?>
-<!--<script>
-window.open("hlasovani.php", "_blank", "width=400,height=500")
-</script>-->
 	</div>	
 	<div class="mezera"></div>
         </div>
