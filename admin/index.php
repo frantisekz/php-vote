@@ -1,27 +1,10 @@
 <?php
 session_start();
-
-if (phpversion() < 5.5)
-{
-	require_once ('../passwordLib.php');
-}
-
 include('../functions.php');
 
-if (isset($_POST['username_login']))
-{
-  login($_POST['username_login'],$_POST['password_login'],1);
-}
 if (!isset($_SESSION["username_login"]))
 {
- 	?>
-<form method="post">
- <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno">
-   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">  
-<input class="tlacitko" type="submit"value="Přihlásit se" />
-		</form>	
-		<?php
-		die("Neautorizovaný přístup!");
+	die("Neautorizovaný přístup!!!");
 }
 
 if (!isset($_GET['sub']))
