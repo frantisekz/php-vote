@@ -8,6 +8,7 @@ if (phpversion() < 5.5)
 
 include('../functions.php');
 $user = new user($_SESSION["user_username"], 1);
+$voting = new voting();
 
 if (!isset($_SESSION["user_username"]))
 {
@@ -22,6 +23,12 @@ if (!isset($_GET['sub']))
 if (isset($_POST['username_logout']))
 {
 	$user->logout(1);
+}
+
+if (isset($_POST["voting_name"]))
+{
+	$possibilities = array($_POST["possibility_1"], $_POST["possibility_2"], $_POST["possibility_3"], $_POST["possibility_4"]);
+	$voting->create_voting($possibilities, $_POST["voting_name"]);
 }
 ?>
 

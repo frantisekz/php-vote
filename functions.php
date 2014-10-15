@@ -5,7 +5,7 @@ function register($username, $password, $email, $level)
 	// We specify BCRYPT directly to avoid potential 
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
-	$write = $password . "+++" . $email . "+++" . $level;
+	$write = $password . "+++" . $email . "+++" . $level . "+++" . time();
 	// Will be called from inside admin folder, so ../
 	$file_name = "../users/" . $username . ".txt";
 	$file = fopen($file_name, "w");
@@ -18,6 +18,45 @@ function register($username, $password, $email, $level)
 		return false;
 	}
 	fclose($file);
+}
+
+class voting
+
+{
+	public $username;
+	public $possibilities;
+
+	function view_votings()
+	{
+		// All votings
+	}
+
+	function view_voting($code)
+	{
+		// Single voting
+	}
+
+	function create_voting($possibilities)
+	{
+		$username = user::get_cur_username();
+		$dirname = "../voting/" . date("y") . rand(1000, 9999);
+		while (file_exists($dirname))
+		{
+			$dirname = "../voting/" . date("y") . rand(1000, 9999);
+		}
+		mkdir($dirname);
+		foreach ($possibilities as $possibility)
+		{
+			$to_touch = $dirname . "/" . $possibility;
+			touch($to_touch);
+			chmod($to_touch, 0777);
+		}
+	}
+
+	function delete_voting()
+	{
+		// Stub
+	}
 }
 
 class user
