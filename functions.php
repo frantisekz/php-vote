@@ -5,7 +5,7 @@ function register($username, $password, $email, $level)
 	// We specify BCRYPT directly to avoid potential 
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
-	$write = $password . "+++" . $email . "+++" . $level;
+	$write = $password . "+++" . $email . "+++" . $level . "+++" . time();
 	// Will be called from inside admin folder, so ../
 	$file_name = "../users/" . $username . ".txt";
 	$file = fopen($file_name, "w");
