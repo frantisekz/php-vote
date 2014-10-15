@@ -1,10 +1,10 @@
+<link rel="icon" type="img/ico" href="img/favicon.ico">
 <body>
 <title>Hlasovací systém</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" lang="cs" />
 <meta name="author" content="" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="icon" type="img/ico" href="img/favicon.ico">
 <style type="text/css">
   </style>
 	<header>
