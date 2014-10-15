@@ -6,13 +6,15 @@
 <style type="text/css">
   </style>	
 	<header>
-	
+	<?php if ($user->logged_in())
+	echo "<h4>" . $user->get_cur_username() . "</h4>";
+	?>
 	<h1><a href="index.php">Hlasovací<strong>systém</strong></a></h1>
 
 <fieldset class="prihlasovani" style="">
 <?php
 
-if (isset($_SESSION["username_login"]))
+if (isset($_SESSION["user_username"]))
 {
 
 	?>

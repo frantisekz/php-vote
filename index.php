@@ -1,7 +1,6 @@
 <?php
 error_reporting(3);
 session_start();
-include('functions.php');
 
 // Work around missing functions in old php
 if (phpversion() < 5.5)
@@ -9,15 +8,18 @@ if (phpversion() < 5.5)
 	require_once ('passwordLib.php');
 }
 
+include('functions.php');
+$user = new user($_SESSION["user_username"], 0);
+
 if (isset($_POST["username_login"]))
 {
-  
-	login($_POST["username_login"], $_POST["password_login"], 0);
+	$user = new user($_SESSION["user_username"], 0);
+	$user->login($_POST["username_login"], $_POST["password_login"]);
 }
 
 if (isset($_POST["username_logout"]))
 {
-	logout();
+	$user->logout(0);
 }
 
 if (isset($_GET["stranka"]))
