@@ -26,12 +26,17 @@ class voting
 	public $username;
 	public $possibilities;
 
-	function view_votings()
-	{
-		// All votings
-	}
-
-	function view_voting($code)
+function view_votings()
+{
+ $a=scandir("../voting/");
+  foreach($a as $b)
+  {
+  if(($b<>".")and($b<>".."))
+    echo $b.", ";
+  }
+}
+  
+  	function view_voting($code)
 	{
 		// Single voting
 	}
