@@ -1,3 +1,4 @@
+
 <h1>Správa hlasování</h1>
 
 <table id="list">
@@ -29,6 +30,7 @@
 <div style="height:10px;">
 	
 	</div>
+  Výpis existujících hlasování: <?php $voting->view_votings(); ?>
     <input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">	
 
 
@@ -40,5 +42,5 @@
 	<input class="kod" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
 	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
 	<div class="mezera"></div>
-    <input class="vstoupit" type="submit" value="Vytvořit účet" name="JPW">
+    <input class="vstoupit" type="submit" value="Vytvořit hlasování" name="JPW">
 </form>
