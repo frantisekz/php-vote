@@ -28,40 +28,45 @@ class voting
 
 function view_votings()
 {
- $a=scandir("../voting/");
-  foreach($a as $b)
-  {
-  if(($b<>".")and($b<>".."))
-    echo $b.", ";
-  }
+	$votings = array_diff(scandir("../voting/"), array('..', '.'));
+	return $votings;
 }
   
-  	function view_voting($code)
-	{
-		// Single voting
-	}
+function view_voting($code)
+{
+	// Single voting
+}
 
-	function create_voting($possibilities)
+function get_more($id)
+{
+	// Stub	
+}
+
+function create_voting($possibilities)
+{
+	$username = user::get_cur_username();
+	$dirname = "../voting/" . date("y") . rand(1000, 9999);
+	while (file_exists($dirname))
 	{
-		$username = user::get_cur_username();
 		$dirname = "../voting/" . date("y") . rand(1000, 9999);
-		while (file_exists($dirname))
-		{
-			$dirname = "../voting/" . date("y") . rand(1000, 9999);
-		}
-		mkdir($dirname);
-		foreach ($possibilities as $possibility)
-		{
-			$to_touch = $dirname . "/" . $possibility;
-			touch($to_touch);
-			chmod($to_touch, 0777);
-		}
 	}
-
-	function delete_voting()
+	mkdir($dirname);
+	// TODO
+	// Write username
+	// Write creation time
+	// Write name for each possibility
+	foreach ($possibilities as $possibility)
 	{
-		// Stub
+		$to_touch = $dirname . "/" . $possibility;
+		touch($to_touch);
+		chmod($to_touch, 0777);
 	}
+}
+
+function delete_voting()
+{
+	// Stub
+}
 }
 
 class user
