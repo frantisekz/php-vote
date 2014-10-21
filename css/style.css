@@ -74,6 +74,7 @@ a {
 	display: inline-block;
 }
 
+
 header {
 	width: 100%;
 	background: linear-gradient(#565656, #222222);
@@ -83,8 +84,7 @@ header {
 }
 
 header h1 {
-	padding-right: 90px;
-	margin: 0;
+margin: 0;
 	float: left;
 }
 
@@ -110,8 +110,10 @@ header h1 a strong {
 
 }
 
-
 ul {
+padding-right:70px;
+width:400px;
+margin:0 auto;
 	padding-top: 20px;
 	text-align: center;
 }
@@ -164,6 +166,13 @@ h1 {
 	text-align: center;
 	margin: 0 auto;
 	min-width: 1040px;
+}
+
+h5{
+	text-shadow: 0.5px 0.5px 1px gray;
+	text-align: center;
+	font-size: 40px;
+	letter-spacing: 2px;
 }
 
 h2 {
@@ -238,7 +247,6 @@ h4 {
 }
 
 #Poll {
-	height: 320px;
 	text-align: center;
 	margin: 50px auto;
 	width: 1015px;

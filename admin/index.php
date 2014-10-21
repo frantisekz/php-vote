@@ -1,10 +1,11 @@
+<html>
 <?php
 session_start();
 
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
-	require_once ('passwordLib.php');
+	require_once ('../passwordLib.php');
 }
 
 include('../functions.php');
@@ -77,6 +78,7 @@ switch ($_GET['sub']){
 
 ?>
 </div>
-<div class="bottom_panel"></div>
+<!--<div class="bottom_panel"></div>-->
 </div>
 </body>
+</html>
