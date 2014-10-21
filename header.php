@@ -45,11 +45,11 @@ else
 	   	<img src="img/index.png" style="height:17px;width:17px" href="index.php">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
-   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'navod.php';">
+   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=navod';">
 		   	<img src="img/navod.png" style="height:17px;width:17px">
 	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
 	</li>   
-	<li <?php if ($actual == "vysledky"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'vysledky.php';">
+	<li <?php if ($actual == "vysledky"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=vysledky';">
 		   	<img src="img/vysledky.png" style="height:17px;width:17px" href="vysledky.php">
 	<a class="odkaz1" href="index.php?stranka=vysledky">Výsledky</a>
    </li>
