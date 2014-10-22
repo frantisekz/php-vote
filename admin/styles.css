@@ -1,7 +1,10 @@
-html{height:100%;
+html{
+	min-height:600px;
+	height:100%;
 	margin:0;
 	padding:0;
 	text-align:center;
+	min-width:1250px;
 }
 
 div.loginbox{
@@ -31,7 +34,6 @@ div.left_menu{
 background-color: black;
 width: 150px;
 height: 100%;
-min-height:600px;
 float: left;
 }
 
@@ -63,16 +65,18 @@ text-align: center;
 	height: 35px;
 }
 
+.tlacitko{margin-top:38px;}
+
 .registrovat{
 cursor: pointer;
 	background: linear-gradient(#4e84e0,#225cc0);
 	border-radius: 6px;
 	border: 0.5px solid green;
 	color: white;
-	height: 60px;
-	width: 270px;
+	height: 50px;
+	width: 220px;
 	box-shadow: -1px -1px -2px #000;
-	font-size: 34px;
+	font-size: 27px;
 font-family:"verdana";
 }
 

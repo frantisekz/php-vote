@@ -1,3 +1,4 @@
+<html>
 <?php
 session_start();
 
@@ -82,6 +83,7 @@ switch ($_GET['sub']){
 
 ?>
 </div>
-<div class="bottom_panel"></div>
+<!--<div class="bottom_panel"></div>-->
 </div>
 </body>
+</html>
