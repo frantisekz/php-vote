@@ -4,9 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" lang="cs" />
 <meta name="author" content="" />
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-<style type="text/css">
-  </style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery.textfill.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+
 	<header>
 	<?php if ($user->logged_in())
 	echo "<h4>" . $user->get_cur_username() . "</h4>";
@@ -49,10 +51,6 @@ else
 		   	<img src="img/navod.png" style="height:17px;width:17px">
 	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
 	</li>   
-	<li <?php if ($actual == "vysledky"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=vysledky';">
-		   	<img src="img/vysledky.png" style="height:17px;width:17px" href="vysledky.php">
-	<a class="odkaz1" href="index.php?stranka=vysledky">Výsledky</a>
-   </li>
 </ul>
 	<div class="clear"></div>
 	</header>

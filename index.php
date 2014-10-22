@@ -9,12 +9,22 @@ if (phpversion() < 5.5)
 }
 
 include('functions.php');
-$user = new user($_SESSION["user_username"], 0);
 
 if (isset($_POST["username_login"]))
 {
 	$user = new user($_SESSION["user_username"], 0);
 	$user->login($_POST["username_login"], $_POST["password_login"]);
+	$voting = new voting($_SESSION["user_username"]);
+}
+elseif (isset($_SESSION["user_username"]))
+{
+	$user = new user($_SESSION["user_username"], 0);
+	$voting = new voting($_SESSION["user_username"]);
+}
+else
+{
+	$user = new user("guest", 0);
+	$voting = new voting("guest");
 }
 
 if (isset($_POST["username_logout"]))
@@ -22,7 +32,11 @@ if (isset($_POST["username_logout"]))
 	$user->logout(0);
 }
 
-if (isset($_GET["stranka"]))
+if (isset($_POST["voting_code"]))
+{
+	header("Location: index.php?stranka=hlasovani");
+}
+elseif (isset($_GET["stranka"]))
 {
 	$actual = $_GET["stranka"];
 }

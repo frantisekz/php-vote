@@ -119,7 +119,7 @@ function __construct($username, $in_admin)
 
 function logged_in()
 {
-	if (isset($this->username))
+	if ((isset($this->username)) AND ($this->username != "guest"))
 	{
 		return true;
 	}
