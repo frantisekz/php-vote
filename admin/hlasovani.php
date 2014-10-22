@@ -18,11 +18,11 @@ foreach ($voting->view_votings() as $b)
 		echo "
 		<tr>
 		<td>" . $more[0] . "</td>
-		<td>" . $more[1] . "</td>
+		<td>" . $today = date("d.m.Y H:i:s", $more[2]) . "</td>
 		<td>" . $b . "</td>
-		<td><a href=\"index.php?edit=" . $b . "\"><img src=\"../img/edit.png\" class=\"icons\"></a></td>
-		<td><a href=\"index.php?result=" . $b . "\"><img src=\"../img/result.png\" class=\"icons\"></a></td>
-		<td><a href=\"index.php?remove=" . $b . "\"><img src=\"../img/erase.png\" class=\"icons\"></a></td>
+		<td><a href=\"index.php?sub=hlasovani&voting_edit=" . $b . "\"><img src=\"../img/edit.png\" class=\"icons\"></a></td>
+		<td><a href=\"index.php?sub=hlasovani&voting_result=" . $b . "\"><img src=\"../img/result.png\" class=\"icons\"></a></td>
+		<td><a href=\"index.php?sub=hlasovani&voting_remove=" . $b . "\"><img src=\"../img/erase.png\" class=\"icons\"></a></td>
 	</tr>";
 	} 
 ?>

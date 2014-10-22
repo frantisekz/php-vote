@@ -21,14 +21,28 @@ function register($username, $password, $email, $level)
 }
 
 class voting
-
 {
 	public $username;
 	public $possibilities;
 
+function __construct($username)
+{
+	$this->username = $username;
+}
+
 function view_votings()
 {
-	$votings = array_diff(scandir("../voting/"), array('..', '.'));
+	if ($this->username == "admin")
+	{
+		$votings = array_diff(scandir("../voting/"), array('..', '.'));
+	}
+	else
+	{
+		$votings = array_diff(scandir("../voting/"), array('..', '.'));
+		// TODO
+		// Check $username for each voting and 
+		// show only votings to their owners
+	}
 	return $votings;
 }
   
@@ -39,33 +53,52 @@ function view_voting($code)
 
 function get_more($id)
 {
-	// Stub	
+	$filename = "../voting/" . $id . "/info.txt";
+	$file = fopen($filename, "r");
+	$file_data = explode("+++", fgets($file));
+	fclose($file);
+	return $file_data;
 }
 
-function create_voting($possibilities)
+function create_voting($name, $possibilities)
 {
-	$username = user::get_cur_username();
 	$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	while (file_exists($dirname))
 	{
 		$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	}
 	mkdir($dirname);
-	// TODO
-	// Write username
-	// Write creation time
-	// Write name for each possibility
+	$file_name = "../voting/" . $dirname . "/info.txt";
+	$file = fopen($file_name, "w+");
+	$write = $name . "+++" . $this->username . "+++" . time();
+	fwrite($file, $write);
+	fclose($file);
+	$i = 0;
 	foreach ($possibilities as $possibility)
 	{
-		$to_touch = $dirname . "/" . $possibility;
-		touch($to_touch);
-		chmod($to_touch, 0777);
+		$i++;
+		$to_touch = $dirname . "/" . $i;
+		$file_pos = fopen($to_touch, "w+");
+		fwrite($file_pos, $possibility);
+		fclose($file_pos);
 	}
 }
 
-function delete_voting()
+function delete_voting($id)
 {
-	// Stub
+	$dir = "../voting/" . $id;
+	foreach(glob($dir . '/*') as $file) 
+	{
+		if(is_dir($file))
+		{
+			rmdir($file);
+		}
+		else
+		{
+			unlink($file);
+		}
+	}
+	rmdir($dir);
 }
 }
 

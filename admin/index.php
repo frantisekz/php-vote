@@ -4,12 +4,12 @@ session_start();
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
-	require_once ('passwordLib.php');
+	require_once ('../passwordLib.php');
 }
 
 include('../functions.php');
 $user = new user($_SESSION["user_username"], 1);
-$voting = new voting();
+$voting = new voting($_SESSION["user_username"]);
 
 if (!isset($_SESSION["user_username"]))
 {
@@ -29,7 +29,12 @@ if (isset($_POST['username_logout']))
 if (isset($_POST["voting_name"]))
 {
 	$possibilities = array($_POST["possibility_1"], $_POST["possibility_2"], $_POST["possibility_3"], $_POST["possibility_4"]);
-	$voting->create_voting($possibilities, $_POST["voting_name"]);
+	$voting->create_voting($_POST["voting_name"], $possibilities);
+}
+
+if (isset($_GET["voting_remove"]))
+{
+	$voting->delete_voting($_GET["voting_remove"]);
 }
 ?>
 
