@@ -31,11 +31,6 @@ if (isset($_POST["username_logout"]))
 {
 	$user->logout(0);
 }
-
-if (isset($_POST["voting_code"]))
-{
-	header("Location: index.php?stranka=hlasovani");
-}
 elseif (isset($_GET["stranka"]))
 {
 	$actual = $_GET["stranka"];

@@ -46,14 +46,41 @@ function view_votings()
 	return $votings;
 }
   
+function voting_exists($code)
+{
+	$dirname = "voting/" . $code;
+	if(file_exists($dirname))
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
 function view_voting($code)
 {
 	// Single voting
+	$dirname = "voting/" . $code;
+	$more = $this->get_more($code);
+	// Voting name = $more[0]
+	// TODO
+	// Overkill here, write function which 
+	// would return only data that we need
+	return $more[0];
+
 }
 
 function get_more($id)
 {
-	$filename = "../voting/" . $id . "/info.txt";
+	if ($user->in_admin == 1)
+	{
+		$filename = "../voting/" . $id . "/info.txt";
+	}
+	else
+	{
+		$filename = "voting/" . $id . "/info.txt";
+	}
 	$file = fopen($filename, "r");
 	$file_data = explode("+++", fgets($file));
 	fclose($file);
@@ -73,10 +100,8 @@ function create_voting($name, $possibilities)
 	$write = $name . "+++" . $this->username . "+++" . time();
 	fwrite($file, $write);
 	fclose($file);
-	$i = 0;
 	foreach ($possibilities as $possibility)
 	{
-		$i++;
 		$to_touch = $dirname . "/" . $i;
 		$file_pos = fopen($to_touch, "w+");
 		fwrite($file_pos, $possibility);

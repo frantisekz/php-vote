@@ -1,22 +1,27 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" lang="cs" />
-<meta name="author" content="" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/jquery.textfill.min.js"></script>
-<script type="text/javascript" src="scripts.js"></script>
+<?php
+if (isset($_POST["voting_code"]))
+{
+	if ($voting->voting_exists($_POST["voting_code"]) == 1)
+	{
+		// OK
+	}
+	else
+	{
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=kod">';
+		// Header won't work here, 
+		die(); // And this is ugly, AJAX should be better in this case
+	}
+}
+else
+{
+	// Somebody tried to load file directly, die in pain!
+	die();
+}
 
-<header>
+$header = $voting->view_voting($_POST["voting_code"]);
+echo "<h2>" . $header . "</h2>"
+?>
 
-	<h1><a href="index.php">Hlasovací<strong>systém</strong></a></h1>
-	<h4>Uživatel 1234<h4>
-
-
-	<div class="clear"></div>
-	</header>
-
-<body>
-<div class="body">
 <h2>Zeměpis - 1</h2>
 <fieldset id="Poll">
 	<legend>Kolik zemí je v EU?</legend>	
