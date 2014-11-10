@@ -24,21 +24,23 @@ class voting
 {
 	public $username;
 	public $possibilities;
+	public $in_admin;
 
-function __construct($username)
+function __construct($username, $in_admin)
 {
 	$this->username = $username;
+	$this->in_admin = $in_admin;
 }
 
 function view_votings()
 {
 	if ($this->username == "admin")
 	{
-		$votings = array_diff(scandir("../voting/"), array('..', '.'));
+		$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
 	}
 	else
 	{
-		$votings = array_diff(scandir("../voting/"), array('..', '.'));
+		$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
 		// TODO
 		// Check $username for each voting and 
 		// show only votings to their owners
@@ -73,7 +75,7 @@ function view_voting($code)
 
 function get_more($id)
 {
-	if ($user->in_admin == 1)
+	if ($this->in_admin == 1)
 	{
 		$filename = "../voting/" . $id . "/info.txt";
 	}
@@ -133,7 +135,7 @@ class user
 	private $password;
 	public $email;
 	public $level;
-	public $in_admin;
+	public static $in_admin;
 	private $user_data;
 
 function __construct($username, $in_admin)

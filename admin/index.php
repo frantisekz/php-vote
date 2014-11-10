@@ -10,7 +10,7 @@ if (phpversion() < 5.5)
 
 include('../functions.php');
 $user = new user($_SESSION["user_username"], 1);
-$voting = new voting($_SESSION["user_username"]);
+$voting = new voting($_SESSION["user_username"], 1);
 
 if (!isset($_SESSION["user_username"]))
 {

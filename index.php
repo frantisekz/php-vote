@@ -14,17 +14,17 @@ if (isset($_POST["username_login"]))
 {
 	$user = new user($_SESSION["user_username"], 0);
 	$user->login($_POST["username_login"], $_POST["password_login"]);
-	$voting = new voting($_SESSION["user_username"]);
+	$voting = new voting($_SESSION["user_username"], 0);
 }
 elseif (isset($_SESSION["user_username"]))
 {
 	$user = new user($_SESSION["user_username"], 0);
-	$voting = new voting($_SESSION["user_username"]);
+	$voting = new voting($_SESSION["user_username"], 0);
 }
 else
 {
 	$user = new user("guest", 0);
-	$voting = new voting("guest");
+	$voting = new voting("guest", 0);
 }
 
 if (isset($_POST["username_logout"]))
