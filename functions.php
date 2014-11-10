@@ -73,6 +73,20 @@ function view_voting($code)
 
 }
 
+function get_possibilities($id)
+{
+	if ($this->in_admin == 1)
+	{
+		$dir = "../voting/" . $id . "/";
+	}
+	else
+	{
+		$dir = "voting/" . $id . "/";
+	}
+	$votings = array_diff(scandir($dir), array('..', '.', 'info.txt'));
+	return $votings;
+}
+
 function get_more($id)
 {
 	if ($this->in_admin == 1)

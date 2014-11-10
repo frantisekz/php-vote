@@ -18,39 +18,20 @@ else
 	die();
 }
 
+// Check if somebody voted
+if(isset($_GET["vote"]))
+{
+	$voting->write_vote($_POST["voting_user"], $_POST["voting_code"], $_GET["vote"]);
+}
+
 $header = $voting->view_voting($_POST["voting_code"]);
-echo "<h2>" . $header . "</h2>"
-?>
-
-<h2>Zeměpis - 1</h2>
-<fieldset id="Poll">
-	<legend>Kolik zemí je v EU?</legend>	
-	<form action="<?php echo $editFormAction; ?>" id="form1" name="form1" method="POST">
-
-<div value="1" id="Poll_1">
+echo "<h2>" . $header . "</h2>";
+foreach ($voting->get_possibilities($_POST["voting_code"]) as $pos)
+{
+	echo "
+	<a href=\"index.php?stranka=hlasovani&vote=" . $pos . "\"><div value=\"" . $pos . "\" id=\"Poll_1\">
 <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in ipsum sed massa varius volutpat. Nam gravida, velit at iaculis vestibulum, diam lectus scelerisque mauris.</span>
-</div>
-		
-<div value="2" id="Poll_2" >
-	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim.</span>
-</div>
-<div class="mezera"></div>
-			
-<div value="3" id="Poll_3" >
-	<span>		3</span>
-</div>
-
-<div value="4" id="Poll_4" >
-	<span>		4</span>
-</div>		
-		
-	</form>
-	</fieldset>
-	</div>
-<div id="diskuze">
-Diskuze k Zeměpis - 1
-		</div>
-<?php
-include('footer.php');
+</div></a>
+	";
+}
 ?>
-</body>
