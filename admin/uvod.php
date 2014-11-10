@@ -1,30 +1,46 @@
 <h1>Vítejte v administraci systému php-vote!</h1>
 <a href="../"><strong>Přejít na web</strong></a>
 
-<?php
+<h1>Správa hlasování</h1>
 
-if (isset($_POST["username_register"]))
-{
-	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
-}
+<table id="list">
+<tr>
+	<th class="long">Jméno</th>
+	<th class="long">Datum vytvoření</th>
+	<th class="long">Identifikační kód</th>
+	<th class="short">Editace</th>
+	<th class="short">Výsledky</th>
+	<th class="short">Odstranit</th>
+</tr>
+
+<?php 
+foreach ($voting->view_votings() as $b)
+	{
+		$more = $voting->get_more($b);
+		echo "
+		<tr>
+		<td>" . $more[0] . "</td>
+		<td>" . $today = date("d.m.Y H:i:s", $more[2]) . "</td>
+		<td>" . $b . "</td>
+		<td><a href=\"index.php?voting_edit=" . $b . "\"><img src=\"../img/edit.png\" class=\"icons\"></a></td>
+		<td><a href=\"index.php?voting_result=" . $b . "\"><img src=\"../img/result.png\" class=\"icons\"></a></td>
+		<td><a href=\"index.php?voting_remove=" . $b . "\"><img src=\"../img/erase.png\" class=\"icons\"></a></td>
+	</tr>";
+	} 
 ?>
+</table>
+<div style="height:10px;">
+	
+</div>
 
-<hr/>
-<h2>Vytvořit uživatele</h2>
-
+<h2>Vytvořit hlasování</h2>
 <form method="POST">
-	<input class="kod" type="textfield" name="username_register" size="20" placeholder="Uživatelské jméno">
-	<br/><br/>
-	<input class="kod" type="password" name="username_password" size="20" placeholder="Heslo uživatele">
-	<br/><br/>
-	<input class="kod" type="textfield" name="username_mail" size="20" placeholder="E-mail uživatele">
-	<br/><br/>
-	<select class="level" name="username_level" size="1"> 
-		<option value="1" selected>1 - user</option>
-<option value="2">2 - moderator</option>
-<option value="3">3 - admin</option>
-</select>
+	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
 	<div class="mezera"></div>
-    <input class="registrovat" type="submit" value="Vytvořit účet" name="JPW">
+	<input class="kod" type="textfield" name="possibility_1" size="20" placeholder="Možnost 1">
+	<input class="kod" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
+	<input class="kod" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
+	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
+	<div class="mezera"></div>
+	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
 </form>
-<hr/>
