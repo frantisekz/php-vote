@@ -60,6 +60,7 @@ function voting_exists($code)
 		return 0;
 	}
 }
+
 function view_voting($code)
 {
 	// Single voting
@@ -141,6 +142,15 @@ function delete_voting($id)
 	}
 	rmdir($dir);
 }
+
+function write_vote($user, $code, $possibility)
+{
+	$file_name = "../voting/" . $code . "/" . $possibility . ".txt";
+	$file = fopen($file_name, "w+");
+	$write = $user . "/n";
+	fwrite($file, $write);
+	fclose($file);
+}
 }
 
 class user
@@ -149,7 +159,7 @@ class user
 	private $password;
 	public $email;
 	public $level;
-	public static $in_admin;
+	public $in_admin;
 	private $user_data;
 
 function __construct($username, $in_admin)
@@ -207,6 +217,12 @@ function get_level($username)
 {
 	$this->load_file($username);
 	return $this->user_data[2];
+}
+
+function delete_user($username)
+{
+  $write = "../users" . $username . ".txt";
+  unlink($write);
 }
 
 function login($username, $password)
