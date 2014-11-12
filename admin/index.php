@@ -1,7 +1,9 @@
+<?php
+error_reporting(0);
+session_start();
+?>
 <html>
 <?php
-session_start();
-
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
