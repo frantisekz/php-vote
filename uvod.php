@@ -2,13 +2,13 @@
 <div class="body">
 <h2>Vítejte!</h2>
 <p>
-Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Váš vyučující:
+Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Váš vyučující a číslo Vašeho PC:
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">
 <form method="POST" action="index.php?stranka=hlasovani">
-<input class="kod" type="password" name="voting_code" size="20" placeholder="Kód k hlasování">
-<input class="kod" type="password" name="voting_user" size="20" placeholder="Číslo PC">
+<input class="kod"  name="voting_code" size="20" placeholder="Kód k hlasování">
+<input class="kod"  name="voting_user" size="20" placeholder="Číslo PC">
 <div class="mezera"></div>
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
 </form>

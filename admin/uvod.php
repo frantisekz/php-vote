@@ -2,7 +2,7 @@
 <a href="../"><strong>Přejít na web</strong></a>
 
 <h1>Správa hlasování</h1>
-
+<div style="max-height: 300px; overflow: auto;">
 <table id="list">
 <tr>
 	<th class="long">Jméno</th>
@@ -29,6 +29,7 @@ foreach ($voting->view_votings() as $b)
 	} 
 ?>
 </table>
+</div>
 <div style="height:10px;">
 	
 </div>

@@ -311,3 +311,9 @@ legend {
 	margin: 0 auto;
 	min-width: 1040px;
 }
+/* Kod */
+h8{
+text-align:center;
+font-size:100px;
+text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
+}
