@@ -7,7 +7,7 @@ $actual = "info";
 <h5>Autoři: František Zatloukal, Kouzelník, Michael Kužela, Vojtěch Górecki</h5>
 <div style="height: 50px;"></div>
 <p>
-Tyto stránky byly vypracovány v rámci maturitní práce z IVT.
+Tyto stránky byly vypracovány v rámci maturitní práce z IVT v roce 2014/2015.
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">

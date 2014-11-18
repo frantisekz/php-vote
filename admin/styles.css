@@ -121,7 +121,7 @@ tr:nth-child(odd) {
 	width: 22px;
 }
 
-td {
+td {overflow:auto;
 	border: 1px solid black;
 }
 
