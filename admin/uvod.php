@@ -2,7 +2,7 @@
 <a href="../"><strong>Přejít na web</strong></a>
 
 <h1>Správa hlasování</h1>
-<div style="max-height: 300px; overflow: auto;">
+
 <table id="list">
 <tr>
 	<th class="long">Jméno</th>
@@ -29,7 +29,6 @@ foreach ($voting->view_votings() as $b)
 	} 
 ?>
 </table>
-</div>
 <div style="height:10px;">
 	
 </div>
@@ -37,6 +36,7 @@ foreach ($voting->view_votings() as $b)
 <h2>Vytvořit hlasování</h2>
 <form method="POST">
 	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
+	<input class="kod" type="textfield" name="voting_end" size="20" placeholder="Konec hlasování">
 	<div class="mezera"></div>
 	<input class="kod" type="textfield" name="possibility_1" size="20" placeholder="Možnost 1">
 	<input class="kod" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
