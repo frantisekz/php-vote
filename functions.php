@@ -104,7 +104,7 @@ function get_more($id)
 	return $file_data;
 }
 
-function create_voting($name, $possibilities)
+function create_voting($name, $end, $possibilities)
 {
 	$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	while (file_exists($dirname))
@@ -114,7 +114,7 @@ function create_voting($name, $possibilities)
 	mkdir($dirname);
 	$file_name = "../voting/" . $dirname . "/info.txt";
 	$file = fopen($file_name, "w+");
-	$write = $name . "+++" . $this->username . "+++" . time();
+	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end;
 	fwrite($file, $write);
 	fclose($file);
 	foreach ($possibilities as $possibility)

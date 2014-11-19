@@ -32,7 +32,7 @@ if (isset($_POST['username_logout']))
 if (isset($_POST["voting_name"]))
 {
 	$possibilities = array($_POST["possibility_1"], $_POST["possibility_2"], $_POST["possibility_3"], $_POST["possibility_4"]);
-	$voting->create_voting($_POST["voting_name"], $possibilities);
+	$voting->create_voting($_POST["voting_name"], $_POST["voting_end"], $possibilities);
 }
 
 if (isset($_GET["voting_remove"]))
