@@ -8,7 +8,7 @@ class registerTest extends PHPUnit_Framework_TestCase {
         include("functions.php");
         if (phpversion() < 5.5)
         {
-            require_once ('../passwordLib.php');
+            require_once ("passwordLib.php");
         }
         $this->user = new user("test", 1);
     }
