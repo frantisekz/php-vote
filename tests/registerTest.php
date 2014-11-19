@@ -5,13 +5,15 @@ class registerTest extends PHPUnit_Framework_TestCase {
 
     protected function setUp()
     {
-        include("../functions.php");
+        include("functions.php");
         $this->user = new user("test", 1);
     }
 
     public function testRegister()
     {
         $this->assertTrue(register("test", "test", "test", 3));
+        // CLeanup
+        unlink("users/test.txt");
     }
 }
 ?>

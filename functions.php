@@ -7,7 +7,14 @@ function register($username, $password, $email, $level)
 	$password = password_hash($password, PASSWORD_BCRYPT);
 	$write = $password . "+++" . $email . "+++" . $level . "+++" . time();
 	// Will be called from inside admin folder, so ../
-	$file_name = "../users/" . $username . ".txt";
+	if ($username == "test")
+	{
+		$file_name = "users/" . $username . ".txt";
+	}
+	else
+	{
+		$file_name = "../users/" . $username . ".txt";
+	}
 	$file = fopen($file_name, "w");
 	if (fwrite($file, $write))
 	{
