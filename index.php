@@ -13,7 +13,14 @@ include('functions.php');
 if (isset($_POST["username_login"]))
 {
 	$user = new user($_SESSION["user_username"], 0);
-	$user->login($_POST["username_login"], $_POST["password_login"]);
+	if($user->login($_POST["username_login"], $_POST["password_login"]))
+{}
+else
+{
+?>
+echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://www.youtube.com/watch?v=oavMtUWDBTM">';
+<?php
+}
 	$voting = new voting($_SESSION["user_username"], 0);
 }
 elseif (isset($_SESSION["user_username"]))
