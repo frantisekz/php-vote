@@ -18,7 +18,9 @@ if (isset($_POST["username_login"]))
 else
 {
 ?>
-echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://www.youtube.com/watch?v=oavMtUWDBTM">';
+<script>
+alert("Chybné heslo!");
+</script>
 <?php
 }
 	$voting = new voting($_SESSION["user_username"], 0);

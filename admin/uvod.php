@@ -43,26 +43,17 @@ foreach ($voting->view_votings() as $b)
 	<input class="kod" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
 	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
 	<script type="text/javascript"> 
-  var counter=1;
+  var counter=5;
   function pridejInput() { 
-    document.getElementById('odpovedi').innerHTML += "<input type='text' name='blabla"+counter+"' /><br>";
+    document.getElementById('odpovedi').innerHTML += "<input class=\"kod\" type=\"textfield\" name=\"possibility_"+counter+" size=\"20\" placeholder=\"Možnost "+counter+"\">";
     document.getElementById('pocet').value=counter++;
   } 
 </script> 
-<?
-if(isset($_POST['poslal'])){
-  echo $_POST['pocet']."<br>";
-  for($i=1; $i<=$_POST['pocet']; $i++){
-    echo "-> ".$_POST['blabla'.$i]."<br>";
-  } 
-}
-?>
 <form action="" method="post"> 
   <div id="odpovedi">
   <input type="hidden" id="pocet" name="pocet" value="0">
   </div> 
   <a href="" onClick="pridejInput();return false;">Pridat odpoved</a> <br>
-  <input type="submit" value="Posli" name="poslal">
 </form> 
 	<div class="mezera"></div>
 	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
