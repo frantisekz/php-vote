@@ -1,22 +1,25 @@
 <?php
-class registerTest extends PHPUnit_Framework_TestCase {
-
-    private $user;
+class UserTest extends PHPUnit_Framework_TestCase {
 
     protected function setUp()
     {
-        include("functions.php");
+        include_once("functions.php");
         if (phpversion() < 5.5)
         {
             require_once ("passwordLib.php");
         }
-        $this->user = new user("test", 1);
     }
 
     public function testRegister()
     {
         $this->assertTrue(register("test", "test", "test", 3));
-        unlink("users/test.txt"); // CLeanup
+    }
+
+    public function testLogin()
+    {
+        $user = new User("test", 0);
+        $this->assertTrue($user->login("test", "test"));
+        unlink("users/test.txt");
     }
 }
 ?>
