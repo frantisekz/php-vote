@@ -3,6 +3,8 @@ php-vote
 
 Voting management system written in php | Maturita exam task
 
+[![Build Status](https://travis-ci.org/frantisekz/php-vote.svg?branch=master)](https://travis-ci.org/frantisekz/php-vote)
+
 Planned features:
 -------
 These features will be available before the deadline:
