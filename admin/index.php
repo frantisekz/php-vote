@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(3);
 session_start();
 ?>
 <html>
@@ -42,7 +42,8 @@ if (isset($_GET["voting_remove"]))
 
 if (isset($_POST["username_register"]))
 {
-	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
+	$register = new registercl();
+	$register->register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
 }
 ?>
 
