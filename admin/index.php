@@ -31,7 +31,28 @@ if (isset($_POST['username_logout']))
 
 if (isset($_POST["voting_name"]))
 {
-	$possibilities = array($_POST["possibility_1"], $_POST["possibility_2"], $_POST["possibility_3"], $_POST["possibility_4"]);
+	// Determine number of possibilities
+	$j = 1;
+	while($i != 1)
+	{
+		$name = "possibility_" . $j;
+		if(isset($_POST[$name]))
+		{
+			$j = $j + 1;
+		}
+		else
+		{
+			$i = 1;
+		}
+	}
+	// Include all posted possibilities into single array
+	$i = 1;
+	while($i<=$j)
+	{
+		$name = "possibility_" . $i;
+		$possibilities[] = array($_POST[$name]);
+		$i = $i + 1;
+	}
 	$voting->create_voting($_POST["voting_name"], $_POST["voting_end"], $possibilities);
 }
 

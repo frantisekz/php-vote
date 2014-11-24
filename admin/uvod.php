@@ -38,23 +38,21 @@ foreach ($voting->view_votings() as $b)
 	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
 	<input class="kod" type="textfield" name="voting_end" size="20" placeholder="Konec hlasování">
 	<div class="mezera"></div>
-	<input class="kod" type="textfield" name="possibility_1" size="20" placeholder="Možnost 1">
-	<input class="kod" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
-	<input class="kod" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
-	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
 	<script type="text/javascript"> 
   var counter=5;
   function pridejInput() { 
-    document.getElementById('odpovedi').innerHTML += "<input class=\"kod\" type=\"textfield\" name=\"possibility_"+counter+" size=\"20\" placeholder=\"Možnost "+counter+"\">";
+    document.getElementById('odpovedi').innerHTML += "<input class=\"kod\" type=\"textfield\" name=\"possibility_"+counter+"\" size=\"20\" placeholder=\"Možnost "+counter+"\">";
     document.getElementById('pocet').value=counter++;
   } 
 </script> 
-<form action="" method="post"> 
   <div id="odpovedi">
+  	<input class="kod" type="textfield" name="possibility_1" size="20" placeholder="Možnost 1">
+	<input class="kod" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
+	<input class="kod" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
+	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
   <input type="hidden" id="pocet" name="pocet" value="0">
   </div> 
   <a href="" onClick="pridejInput();return false;">Pridat odpoved</a> <br>
-</form> 
 	<div class="mezera"></div>
 	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
 </form>

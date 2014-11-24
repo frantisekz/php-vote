@@ -123,12 +123,14 @@ function create_voting($name, $end, $possibilities)
 	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end;
 	fwrite($file, $write);
 	fclose($file);
+	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
 		$to_touch = $dirname . "/" . $i;
 		$file_pos = fopen($to_touch, "w+");
-		fwrite($file_pos, $possibility);
+		fwrite($file_pos, $possibility[0]);
 		fclose($file_pos);
+		$i = $i + 1;
 	}
 }
 
@@ -227,8 +229,22 @@ function get_level($username)
 
 function delete_user($username)
 {
-  $write = "../users" . $username . ".txt";
-  unlink($write);
+	if ($this->in_admin == 1)
+	{
+		$write = "../users/" . $username . ".txt";
+	}
+	else
+	{
+		$write = "users/" . $username . ".txt";
+	}
+	if(unlink($write))
+	{
+		return true;
+	}
+	else
+	{
+  		return false;
+	}
 }
 
 function login($username, $password)
