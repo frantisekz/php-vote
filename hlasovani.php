@@ -23,13 +23,25 @@ else
 {
 	$header = $voting->view_voting($_POST["voting_code"]);
 	echo "<h2>" . $header . "</h2>";
+	$id = $_POST["voting_code"];
+	$file_name = "voting/" . $id;
+	$file = file($file_name);
+	$i = 1;
+	while($i < sizeof($file))
+	{
+		$possibilities[] = array($file[$i]);
+		$i = $i + 1;
+	}
+	echo print_r($possibilities);
+	$i = 1;
 	foreach ($voting->get_possibilities($_POST["voting_code"]) as $pos)
 	{
 		echo "
-		<a href=\"index.php?stranka=hlasovani&vote=" . $pos . "\"><div value=\"" . $pos . "\" id=\"Poll_1\">
-	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in ipsum sed massa varius volutpat. Nam gravida, velit at iaculis vestibulum, diam lectus scelerisque mauris.</span>
+		<a href=\"index.php?stranka=hlasovani&vote=" . $i . "\"><div value=\"" . $i . "\" id=\"Poll_1\">
+	<span>" . $pos[0] . "</span>
 	</div></a>
 		";
+		$i = $i + 1;
 	}
 }
 ?>
