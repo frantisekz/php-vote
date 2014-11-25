@@ -23,16 +23,6 @@ else
 {
 	$header = $voting->view_voting($_POST["voting_code"]);
 	echo "<h2>" . $header . "</h2>";
-	$id = $_POST["voting_code"];
-	$file_name = "voting/" . $id;
-	$file = file($file_name);
-	$i = 1;
-	while($i < sizeof($file))
-	{
-		$possibilities[] = array($file[$i]);
-		$i = $i + 1;
-	}
-	echo print_r($possibilities);
 	$i = 1;
 	foreach ($voting->get_possibilities($_POST["voting_code"]) as $pos)
 	{
