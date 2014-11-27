@@ -27,11 +27,10 @@ else
 	foreach ($voting->get_possibilities($_POST["voting_code"]) as $pos)
 	{
 		echo "
-		<a href=\"index.php?stranka=hlasovani&vote=" . $i . "\"><div value=\"" . $i . "\" id=\"Poll_1\">
-	<span>" . $pos[0] . "</span>
+		<a href=\"index.php?stranka=hlasovani&vote=" . $pos . "\"><div value=\"" . $pos . "\" id=\"Poll_1\">
+	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in ipsum sed massa varius volutpat. Nam gravida, velit at iaculis vestibulum, diam lectus scelerisque mauris.</span>
 	</div></a>
 		";
-		$i = $i + 1;
 	}
 }
 ?>

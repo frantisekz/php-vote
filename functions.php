@@ -56,14 +56,14 @@ function view_votings()
   
 function voting_exists($code)
 {
-	$filename = "voting/" . $code;
-	if(file_exists($filename))
+	$dirname = "voting/" . $code;
+	if(file_exists($dirname))
 	{
-		return true;
+		return 1;
 	}
 	else 
 	{
-		return false;
+		return 0;
 	}
 }
 
@@ -84,32 +84,25 @@ function get_possibilities($id)
 {
 	if ($this->in_admin == 1)
 	{
-		$file_name = "../voting/" . $id;
-		$file = file($file_name);
+		$dir = "../voting/" . $id . "/";
 	}
 	else
 	{
-		$file_name = "voting/" . $id;
-		$file = file($file_name);
+		$dir = "voting/" . $id . "/";
 	}
-	$i = 1;
-	while($i < sizeof($file))
-	{
-		$possibilities[] = array($file[$i]);
-		$i = $i + 1;
-	}
-	return $possibilities;
+	$votings = array_diff(scandir($dir), array('..', '.', 'info.txt'));
+	return $votings;
 }
 
 function get_more($id)
 {
 	if ($this->in_admin == 1)
 	{
-		$filename = "../voting/" . $id;
+		$filename = "../voting/" . $id . "/info.txt";
 	}
 	else
 	{
-		$filename = "voting/" . $id;
+		$filename = "voting/" . $id . "/info.txt";
 	}
 	$file = fopen($filename, "r");
 	$file_data = explode("+++", fgets($file));
@@ -119,40 +112,47 @@ function get_more($id)
 
 function create_voting($name, $end, $possibilities)
 {
-	$filename = "../voting/" . date("y") . rand(1000, 9999);
-	while (file_exists($filename))
+	$dirname = "../voting/" . date("y") . rand(1000, 9999);
+	while (file_exists($dirname))
 	{
-		$filename = "../voting/" . date("y") . rand(1000, 9999);
+		$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	}
-	$file = fopen($filename, "w+");
-	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end . "\n";
+	mkdir($dirname);
+	$file_name = "../voting/" . $dirname . "/info.txt";
+	$file = fopen($file_name, "w+");
+	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end;
 	fwrite($file, $write);
+	fclose($file);
 	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
-		$to_write = $possibility[0] . "\n";
-		fwrite($file, $to_write);
+		$to_touch = $dirname . "/" . $i;
+		$file_pos = fopen($to_touch, "w+");
+		fwrite($file_pos, $possibility[0]);
+		fclose($file_pos);
 		$i = $i + 1;
 	}
-	fclose($file);
 }
 
 function delete_voting($id)
 {
-	$file = "../voting/" . $id;
-	if(unlink($file))
+	$dir = "../voting/" . $id;
+	foreach(glob($dir . '/*') as $file) 
 	{
-		return true;
+		if(is_dir($file))
+		{
+			rmdir($file);
+		}
+		else
+		{
+			unlink($file);
+		}
 	}
-	else
-	{
-		return false;
-	}
+	rmdir($dir);
 }
 
 function write_vote($user, $code, $possibility)
 {
-	// Broken
 	$file_name = "../voting/" . $code . "/" . $possibility . ".txt";
 	$file = fopen($file_name, "w+");
 	$write = $user . "/n";
