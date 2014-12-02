@@ -96,7 +96,7 @@ function get_possibilities($id, $question)
 	}
 	$file_contents = file($file_name);
 	$explode = explode("+++", $file_contents[0]);
-	$votings = array_diff($file_contents, array($explode[0]));
+	$votings = array_diff($explode, array($explode[0]));
 	return $votings;
 }
 

@@ -6,7 +6,7 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">
-<form method="POST" action="index.php?stranka=hlasovani">
+<form method="POST" action="index.php?stranka=hlasovani&question=1">
 <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód k hlasování">
 <input class="kod" type="text" name="voting_user" size="20" placeholder="Číslo PC">
 <div class="mezera"></div>
