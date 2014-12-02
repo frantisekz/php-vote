@@ -176,8 +176,8 @@ function write_vote($user, $code, $question, $possibility)
 {
 	$file_name = "voting/" . $code . "/" . $question;
 	$file_contents = file($file_name);
-	$to_replace = $file_contents[$question];
-	$replacer = $file_contents[$question] . "+++" . $user . "\n";
+	$to_replace = $file_contents[$possibility];
+	$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
 	$file = str_replace($to_replace, $replacer, $file_contents);
 	file_put_contents($file_name, $file);
 }

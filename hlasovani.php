@@ -36,11 +36,11 @@ else
 	$question = $_GET["question"];
 	foreach ($voting->get_possibilities($_POST["voting_code"], $question) as $pos)
 	{
-		echo "
-		<a href=\"index.php?stranka=hlasovani&question=1&vote=" . $i . "\"><div value=\"" . $pos . "\" id=\"Poll_1\">
-	<span>" . $pos . "</span>
-	</div></a>
-		";
+		echo '
+		<a href="index.php?stranka=hlasovani&question=1&vote=' . $i . '"><div value="' . $pos . '" id="Poll_1">
+	<span>' . $pos . '</span>
+	</div></a>';
+		$i = $i + 1;
 	}
 }
 ?>
