@@ -5,6 +5,15 @@ if(!isset($_POST["voting_code"]))
 	die();
 }
 
+$more = $voting->get_more($_POST["voting_code"]);
+
+if(time() > $more[3])
+{
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=kod">';
+	// Header won't work here, 
+	die(); // And this is ugly, AJAX should be better in this case
+}
+
 if ((isset($_POST["voting_code"])) AND ($voting->voting_exists($_POST["voting_code"]) != 1))
 {
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=kod">';
