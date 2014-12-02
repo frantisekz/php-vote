@@ -28,8 +28,12 @@ if (isset($_POST['username_logout']))
 {
 	$user->logout(1);
 }
-
 if (isset($_POST["voting_name"]))
+{
+	$voting->create_voting($_POST["voting_name"], $_POST["voting_end"]);
+}
+
+if (isset($_POST["question_name"]))
 {
 	// Determine number of possibilities
 	$j = 1;
@@ -53,7 +57,7 @@ if (isset($_POST["voting_name"]))
 		$possibilities[] = array($_POST[$name]);
 		$i = $i + 1;
 	}
-	$voting->create_voting($_POST["voting_name"], $_POST["voting_end"], $possibilities);
+	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities);
 }
 
 if (isset($_GET["voting_remove"]))
@@ -63,8 +67,7 @@ if (isset($_GET["voting_remove"]))
 
 if (isset($_POST["username_register"]))
 {
-	$register = new registercl();
-	$register->register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
+	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
 }
 ?>
 
@@ -76,12 +79,10 @@ if (isset($_POST["username_register"]))
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="left_menu">
@@ -97,7 +98,8 @@ if (isset($_POST["username_register"]))
 </div>
 
 <div class="admin">
-<?php 
+<?php
+
 switch ($_GET['sub']){
 	case "uzivatele":
 		include('uzivatele.php');
@@ -105,11 +107,12 @@ switch ($_GET['sub']){
 	case "nastaveni":
 		include('nastaveni.php');
 		break;
+	case "nove":
+		include('new_voting.php');
 	default:
 		include('uvod.php');
 
 }
-
 ?>
 </div>
 <!--<div class="bottom_panel"></div>-->

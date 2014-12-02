@@ -33,18 +33,19 @@ foreach ($voting->view_votings() as $b)
 	
 </div>
 
-<h2>Vytvořit hlasování</h2>
-<form method="POST">
-	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
-	<input class="kod" type="textfield" name="voting_end" size="20" placeholder="Konec hlasování">
-	<div class="mezera"></div>
-	<script type="text/javascript"> 
+
+<?php
+if (isset($_GET["voting_edit"]))
+{
+	echo '<script type="text/javascript"> 
   var counter=5;
   function pridejInput() { 
-    document.getElementById('odpovedi').innerHTML += "<input class=\"kod\" type=\"textfield\" name=\"possibility_"+counter+"\" size=\"20\" placeholder=\"Možnost "+counter+"\">";
-    document.getElementById('pocet').value=counter++;
+    document.getElementById(\'odpovedi\').innerHTML += "<input class=\"kod\" type=\"textfield\" name=\"possibility_"+counter+"\" size=\"20\" placeholder=\"Možnost "+counter+"\">";
+    document.getElementById(\'pocet\').value=counter++;
   } 
 </script> 
+<form method="POST">
+<input class="kod" type="textfield" name="question_name" size="20" placeholder="Název otázky">
   <div id="odpovedi">
   	<input class="kod" type="textfield" name="possibility_1" size="20" placeholder="Možnost 1">
 	<input class="kod" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
@@ -52,7 +53,19 @@ foreach ($voting->view_votings() as $b)
 	<input class="kod" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
   <input type="hidden" id="pocet" name="pocet" value="0">
   </div> 
-  <a href="" onClick="pridejInput();return false;">Pridat odpoved</a> <br>
+  	<div class="mezera"></div>
+	<input id="new_poll" type="submit" value="Přidat otázku" name="JPW">
+</form>
+  <a href="" onClick="pridejInput();return false;">Pridat odpoved</a> <br>';
+}
+
+else
+{
+	echo '<h2>Vytvořit hlasování</h2>
+<form method="POST">
+	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
+	<input class="kod" type="textfield" name="voting_end" size="20" placeholder="Konec hlasování">
 	<div class="mezera"></div>
 	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
-</form>
+</form>';
+}

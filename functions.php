@@ -47,9 +47,13 @@ function view_votings()
 	else
 	{
 		$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
-		// TODO
-		// Check $username for each voting and 
-		// show only votings to their owners
+		foreach ($votings as $voting)
+		{
+			if ($this->get_more($voting) == $user->get_cur_username())
+			{
+				$votings[] = $voting;
+			}
+		}
 	}
 	return $votings;
 }
@@ -59,11 +63,11 @@ function voting_exists($code)
 	$dirname = "voting/" . $code;
 	if(file_exists($dirname))
 	{
-		return 1;
+		return true;
 	}
 	else 
 	{
-		return 0;
+		return false;
 	}
 }
 
@@ -80,17 +84,19 @@ function view_voting($code)
 
 }
 
-function get_possibilities($id)
+function get_possibilities($id, $question)
 {
 	if ($this->in_admin == 1)
 	{
-		$dir = "../voting/" . $id . "/";
+		$file_name = "../voting/" . $id . "/" . $question;
 	}
 	else
 	{
-		$dir = "voting/" . $id . "/";
+		$file_name = "voting/" . $id . "/" . $question;
 	}
-	$votings = array_diff(scandir($dir), array('..', '.', 'info.txt'));
+	$file_contents = file($file_name);
+	$explode = explode("+++", $file_contents[0]);
+	$votings = array_diff($file_contents, array($explode[0]));
 	return $votings;
 }
 
@@ -110,7 +116,7 @@ function get_more($id)
 	return $file_data;
 }
 
-function create_voting($name, $end, $possibilities)
+function create_voting($name, $end)
 {
 	$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	while (file_exists($dirname))
@@ -123,21 +129,36 @@ function create_voting($name, $end, $possibilities)
 	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end;
 	fwrite($file, $write);
 	fclose($file);
+}
+
+function add_question($code, $header, $possibilities)
+{
+	$path = "../voting/" . $code . "/";
+	$i = 1;
+	$filename = $path . $i;
+	while (file_exists($filename))
+	{
+		$filename = $path . $i;
+		$i = $i + 1;
+	}
+	$file = fopen($filename, "w+");
+	fwrite($file, $header);
 	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
-		$to_touch = $dirname . "/" . $i;
-		$file_pos = fopen($to_touch, "w+");
-		fwrite($file_pos, $possibility[0]);
-		fclose($file_pos);
+		$write = "+++" . $possibility[0];
+		fwrite($file, $write);
 		$i = $i + 1;
 	}
+	$write = "\n";
+	fwrite($file, $write);
+	fclose($file);
 }
 
 function delete_voting($id)
 {
 	$dir = "../voting/" . $id;
-	foreach(glob($dir . '/*') as $file) 
+	foreach(glob($dir . "/*") as $file) 
 	{
 		if(is_dir($file))
 		{
@@ -151,13 +172,14 @@ function delete_voting($id)
 	rmdir($dir);
 }
 
-function write_vote($user, $code, $possibility)
+function write_vote($user, $code, $question, $possibility)
 {
-	$file_name = "../voting/" . $code . "/" . $possibility . ".txt";
-	$file = fopen($file_name, "w+");
-	$write = $user . "/n";
-	fwrite($file, $write);
-	fclose($file);
+	$file_name = "voting/" . $code . "/" . $question;
+	$file_contents = file($file_name);
+	$to_replace = $file_contents[$question];
+	$replacer = $file_contents[$question] . "+++" . $user . "\n";
+	$file = str_replace($to_replace, $replacer, $file_contents);
+	file_put_contents($file_name, $file);
 }
 }
 

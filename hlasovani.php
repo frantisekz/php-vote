@@ -24,11 +24,20 @@ else
 	$header = $voting->view_voting($_POST["voting_code"]);
 	echo "<h2>" . $header . "</h2>";
 	$i = 1;
-	foreach ($voting->get_possibilities($_POST["voting_code"]) as $pos)
+	if (!isset($_GET["question"]))
+	{
+		$_GET["question"] = 1;
+	}
+	else
+	{
+		$_GET["question"] = $_GET["question"] + 1;
+	}
+	$question = $_GET["question"];
+	foreach ($voting->get_possibilities($_POST["voting_code"], $question) as $pos)
 	{
 		echo "
-		<a href=\"index.php?stranka=hlasovani&vote=" . $pos . "\"><div value=\"" . $pos . "\" id=\"Poll_1\">
-	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in ipsum sed massa varius volutpat. Nam gravida, velit at iaculis vestibulum, diam lectus scelerisque mauris.</span>
+		<a href=\"index.php?stranka=voting&question=1&vote=" . $i . "\"><div value=\"" . $pos[0] . "\" id=\"Poll_1\">
+	<span>" . $pos[0] . "</span>
 	</div></a>
 		";
 	}
