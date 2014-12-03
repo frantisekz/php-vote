@@ -152,6 +152,11 @@ function add_question($code, $header, $possibilities)
 	}
 	$write = "\n";
 	fwrite($file, $write);
+	foreach ($possibilities as $possibility)
+	{
+		$write = $possibility[0] . "\n";
+		fwrite($file, $write);
+	}
 	fclose($file);
 }
 
@@ -179,6 +184,8 @@ function write_vote($user, $code, $question, $possibility)
 	$to_replace = $file_contents[$possibility];
 	$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
 	$file = str_replace($to_replace, $replacer, $file_contents);
+	$file[$possibility] = str_replace("\n", "", $file[$possibility]);
+	$file[$possibility] = $file[$possibility] . "\n";
 	file_put_contents($file_name, $file);
 }
 }

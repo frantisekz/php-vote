@@ -5,10 +5,10 @@ session_start();
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
-	require_once ('passwordLib.php');
+	require_once ("passwordLib.php");
 }
 
-include('functions.php');
+include("functions.php");
 
 if (isset($_POST["username_login"]))
 {
@@ -49,7 +49,7 @@ else
 	$actual = "index";
 }
 
-include('header.php');
+include("header.php");
 
 if (isset($_GET["stranka"]))
 {
@@ -61,6 +61,6 @@ else
 	include("uvod.php");
 }
 
-include('footer.php');
+include("footer.php");
 ?>
 </body>
