@@ -2,17 +2,8 @@
 if(!isset($_POST["voting_code"]))
 {
 	// Somebody tried to load file directly, die in pain!
-	// die();
+	die();
 }
-// Debug ME
-
-/*include("functions.php");
-$user = new user("guest", 0);
-$voting = new voting("guest", 0);
-$_SESSION["voting_code"] = 141661;
-$_SESSION["voting_user"] = 1;
-$_GET["question"] = 1;*/
-
 
 $more = $voting->get_more($_SESSION["voting_code"]);
 $question = $_GET["question"];
