@@ -35,19 +35,17 @@ if(isset($_GET["vote"]))
 }
 $question = $_GET["question"] + 1;
 
-/*if(time() > $more[3])
+if(time() > $more[3])
 {
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=timeout">';
-	// Header won't work here, 
-	die(); // And this is ugly, AJAX should be better in this case
+	die();
 }
 
 if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["voting_code"]) != 1))
 {
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=password">';
-	// Header won't work here, 
-	die(); // And this is ugly, AJAX should be better in this case
-}*/
+	die();
+}
 
 $header = $voting->view_voting($_SESSION["voting_code"]);
 echo "<h2>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $question) . "</h2>";
