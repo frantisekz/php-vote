@@ -100,6 +100,20 @@ function get_possibilities($id, $question)
 	return $votings;
 }
 
+function get_questions($id)
+{
+	if ($this->in_admin == 1)
+	{
+		$dirname = "../voting/" . $id . "/";
+	}
+	else
+	{
+		$dirname = "voting/" . $id . "/";
+	}
+	$questions = scandir($dirname);
+	return $questions;
+}
+
 function get_more($id)
 {
 	if ($this->in_admin == 1)
@@ -116,7 +130,23 @@ function get_more($id)
 	return $file_data;
 }
 
-function create_voting($name, $end)
+function question_header($voting, $question)
+{
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/" . $question;
+	}
+	$file = fopen($filename, "r");
+	$file_data = explode("+++", fgets($file));
+	fclose($file);
+	return $file_data[0];
+}
+
+function create_voting($name)
 {
 	$dirname = "../voting/" . date("y") . rand(1000, 9999);
 	while (file_exists($dirname))
@@ -158,6 +188,21 @@ function add_question($code, $header, $possibilities)
 		fwrite($file, $write);
 	}
 	fclose($file);
+}
+
+function question_count($code)
+{
+	if ($this->in_admin == 1)
+	{
+		$path = "../voting/" . $code . "/";
+	}
+	else
+	{
+		$path = "voting/" . $code . "/";
+	}
+	$contents = scandir($path);
+	$contents = array_diff($contents, array('info.txt', '.', '..'));
+	return sizeof($contents);
 }
 
 function delete_voting($id)
