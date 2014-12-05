@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION["voting_code"]))
+if((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
 	// Somebody tried to load file directly, die in pain!
 	die();
@@ -25,15 +25,13 @@ if((isset($_POST["voting_code"])) AND ($_POST["voting_code"] != $_SESSION["votin
 }
 
 $more = $voting->get_more($_SESSION["voting_code"]);
-$question = $_GET["question"];
 
 // Check if somebody voted
 if(isset($_GET["vote"]))
 {
-	echo "Question: " . $question;
-	$voting->write_vote($_SESSION["voting_user"], $_SESSION["voting_code"], $question, $_GET["vote"]);
+	$voting->write_vote($_SESSION["voting_user"], $_SESSION["voting_code"], $_GET["question"], $_GET["vote"]);
 }
-$question = $_GET["question"] + 1;
+$_GET["question"] = $_GET["question"] + 1;
 
 if(time() > $more[3])
 {
@@ -47,13 +45,20 @@ if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["vot
 	die();
 }
 
+if ($_GET["question"] == $voting->question_count($_SESSION["voting_code"]))
+{
+	$voting->clear_session();
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=voting_finish">';
+	die();
+}
+
 $header = $voting->view_voting($_SESSION["voting_code"]);
-echo "<h2>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $question) . "</h2>";
+echo "<h2>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_GET["question"]) . "</h2>";
 $i = 1;
-foreach ($voting->get_possibilities($_SESSION["voting_code"], $question) as $pos)
+foreach ($voting->get_possibilities($_SESSION["voting_code"], $_GET["question"]) as $pos)
 {
 	echo '
-	<a href="index.php?stranka=hlasovani&question=' . $question . '&vote=' . $i . '"><div value="' . $pos . '" id="Poll_1">
+	<a href="index.php?stranka=hlasovani&question=' . $_GET["question"] . '&vote=' . $i . '"><div value="' . $pos . '" id="Poll_1">
 <span>' . $pos . '</span>
 </div></a>';
 	$i = $i + 1;

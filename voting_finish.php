@@ -1,0 +1,1 @@
+Konec hlasování :)

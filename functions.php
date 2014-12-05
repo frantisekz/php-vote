@@ -38,6 +38,12 @@ function __construct($username, $in_admin)
 	$this->in_admin = $in_admin;
 }
 
+function clear_session()
+{
+	unset($_SESSION["voting_code"]);
+	unset($_SESSION["voting_user"]);
+}
+
 function view_votings()
 {
 	if ($this->username == "admin")
