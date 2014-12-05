@@ -10,6 +10,7 @@
 	<th class="long">Identifikační kód</th>
 	<th class="short">Editace</th>
 	<th class="short">Výsledky</th>
+	<th class="short">Ukončit</th>
 	<th class="short">Odstranit</th>
 </tr>
 
@@ -17,15 +18,16 @@
 foreach ($voting->view_votings() as $b)
 	{
 		$more = $voting->get_more($b);
-		echo "
+		echo '
 		<tr>
-		<td>" . $more[0] . "</td>
-		<td>" . $today = date("d.m.Y H:i:s", $more[2]) . "</td>
-		<td>" . $b . "</td>
-		<td><a href=\"index.php?voting_edit=" . $b . "\"><img src=\"../img/edit.png\" class=\"icons\"></a></td>
-		<td><a href=\"index.php?voting_result=" . $b . "\"><img src=\"../img/result.png\" class=\"icons\"></a></td>
-		<td><a href=\"index.php?voting_remove=" . $b . "\"><img src=\"../img/erase.png\" class=\"icons\"></a></td>
-	</tr>";
+		<td>' . $more[0] . '</td>
+		<td>' . $today = date("d.m.Y H:i:s", $more[2]) . '</td>
+		<td>' . $b . '</td>
+		<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
+		<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
+		<td><a href="index.php?voting_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
+		<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
+	</tr>';
 	} 
 ?>
 </table>
@@ -57,6 +59,11 @@ if (isset($_GET["voting_edit"]))
 	<input id="new_poll" type="submit" value="Přidat otázku" name="JPW">
 </form>
   <a href="" onClick="pridejInput();return false;">Pridat odpoved</a> <br>';
+}
+
+elseif ($_GET["voting_lock"])
+{
+	$vtoing->voting_lock($_GET["voting_lock"]);
 }
 
 else
