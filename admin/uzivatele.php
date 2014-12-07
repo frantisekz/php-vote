@@ -19,6 +19,6 @@
 <form method="POST">
 	<input class="kod" type="textfield" name="username_register" size="20" placeholder="Uživatelské jméno">
 	<div class="mezera"></div>
-    <input class="vstoupit" type="submit" value="Vytvořit účet" name="JPW">
+    <input class="registrovat" type="submit" value="Odstranit účet" name="JPW">
 </form>
 <hr/>
