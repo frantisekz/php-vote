@@ -1,91 +1,93 @@
-html{
-	min-height:600px;
-	height:100%;
-	margin:0;
-	padding:0;
-	text-align:center;
-	min-width:1250px;
+html {
+	min-height: 600px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	min-width: 1250px;
 }
 
-div.loginbox{
-height: 100px;
-width: 300px;
-background-color: rgb(231, 231, 231);
-margin:auto;
-border-radius: 15px;
-text-align: center;	
+div.loginbox {
+	height: 100px;
+	width: 300px;
+	background-color: rgb(231, 231, 231);
+	margin: auto;
+	border-radius: 15px;
+	text-align: center;
 }
 
-div.admin{
-height: 100%;
-width: 960px;
-overflow-y: hidden;
-background-color: rgb(231, 231, 231);
-padding-left: 10px;
-padding-right: 10px;
+div.admin {
+	height: 100%;
+	width: 1100px;
+	overflow-y: hidden;
+	background-color: rgb(231, 231, 231);
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
-div.msg_wrap{
-overflow-y: scroll;
-height: 300px;
+div.msg_wrap {
+	overflow-y: scroll;
+	height: 300px;
 }
 
-div.left_menu{
-background-color: black;
-width: 150px;
-height: 100%;
-float: left;
+div.left_menu {
+	background-color: black;
+	width: 150px;
+	height: 100%;
+	float: left;
 }
 
-h1{
-text-align:center;
+h1 {
+	text-align: center;
 }
 
-h3 a{
-color: white;
+h3 a {
+	color: white;
 }
 
-#active{
-background-color: rgb(231, 231, 231);
+#active {
+	background-color: rgb(231, 231, 231);
 }
 
-#active a{
-color: black;
+#active a {
+	color: black;
 }
 
-#active a:hover{
-color: black;
+#active a:hover {
+	color: black;
 }
 
-.level{
-width:310px;
-text-align: center;
+.level {
+	width: 310px;
+	text-align: center;
 	border-radius: 4px;
 	font-size: 25px;
 	height: 35px;
 }
 
-.tlacitko{margin-top:38px;}
+.tlacitko {
+	margin-top: 38px;
+}
 
-.registrovat{
-cursor: pointer;
+.registrovat {
+	cursor: pointer;
 	background: linear-gradient(#4e84e0,#225cc0);
 	border-radius: 6px;
 	border: 0.5px solid green;
 	color: white;
-	height: 50px;
-	width: 220px;
+	height: 40px;
+	width: 180px;
 	box-shadow: -1px -1px -2px #000;
-	font-size: 27px;
-font-family:"verdana";
+	font-size: 21px;
+	font-family: "verdana";
 }
 
-.registrovat:hover{
-	background:#225cc0;
+.registrovat:hover {
+	background: #225cc0;
 }
 
 #list {
-	font-size:18px;
+	font-size: 17px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -99,13 +101,13 @@ th {
 }
 
 .long {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: 26px;
+	padding-right: 26px;
 }
 
 .short {
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 14px;
+	padding-right: 14px;
 }
 
 tr:nth-child(even) {
@@ -117,16 +119,17 @@ tr:nth-child(odd) {
 }
 
 .icons {
-	height: 22px;
-	width: 22px;
+	height: 18px;
+	width: 18px;
 }
 
-td {overflow:auto;
+td {
+	overflow: auto;
 	border: 1px solid black;
 }
 
-#new_poll{
-    cursor: pointer;
+#new_poll {
+	cursor: pointer;
 	background: linear-gradient(#4e84e0,#225cc0);
 	border-radius: 6px;
 	border: 0.5px solid green;
@@ -136,6 +139,23 @@ td {overflow:auto;
 	box-shadow: -1px -1px -2px #000;
 	font-size: 20px;
 }
+
 #new_poll:hover {
 	background: #225cc0;
+}
+
+#pridat {
+	color: green;
+}
+
+#odebrat {
+	color: red;
+}
+
+.moznost{
+	margin:3px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 20px;
+	height: 30px;
 }
