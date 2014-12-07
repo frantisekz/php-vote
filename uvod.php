@@ -10,6 +10,7 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód k hlasování">
 <div class="mezera"></div>
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
+    <input class="kod" type="text" name="voting_user" size="20" placeholder="Číslo PC">
 </form>
 	</div>	
 	<div class="mezera"></div>
