@@ -30,7 +30,7 @@ if (isset($_POST['username_logout']))
 }
 if (isset($_POST["voting_name"]))
 {
-	$voting->create_voting($_POST["voting_name"], $_POST["voting_end"]);
+	$voting->create_voting($_POST["voting_name"]);
 }
 
 if (isset($_POST["question_name"]))
@@ -107,8 +107,6 @@ switch ($_GET['sub']){
 	case "nastaveni":
 		include('nastaveni.php');
 		break;
-	case "nove":
-		include('new_voting.php');
 	default:
 		include('uvod.php');
 

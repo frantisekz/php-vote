@@ -42,6 +42,7 @@ function clear_session()
 {
 	unset($_SESSION["voting_code"]);
 	unset($_SESSION["voting_user"]);
+	unset($_SESSION["question"]);
 }
 
 function view_votings()
@@ -162,7 +163,7 @@ function create_voting($name)
 	mkdir($dirname);
 	$file_name = "../voting/" . $dirname . "/info.txt";
 	$file = fopen($file_name, "w+");
-	$write = $name . "+++" . $this->username . "+++" . time() . "+++" . $end;
+	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
 	fwrite($file, $write);
 	fclose($file);
 }
@@ -231,13 +232,16 @@ function delete_voting($id)
 function write_vote($user, $code, $question, $possibility)
 {
 	$file_name = "voting/" . $code . "/" . $question;
-	$file_contents = file($file_name);
-	$to_replace = $file_contents[$possibility];
-	$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
-	$file = str_replace($to_replace, $replacer, $file_contents);
-	$file[$possibility] = str_replace("\n", "", $file[$possibility]);
-	$file[$possibility] = $file[$possibility] . "\n";
-	file_put_contents($file_name, $file);
+	if (file_exists($file_name))
+	{
+		$file_contents = file($file_name);
+		$to_replace = $file_contents[$possibility];
+		$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
+		$file = str_replace($to_replace, $replacer, $file_contents);
+		$file[$possibility] = str_replace("\n", "", $file[$possibility]);
+		$file[$possibility] = $file[$possibility] . "\n";
+		file_put_contents($file_name, $file);
+	}
 }
 }
 

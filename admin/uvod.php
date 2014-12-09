@@ -9,7 +9,7 @@
 	<th class="long">Počet otázek</th>
 	<th class="long">Datum vytvoření</th>
 	<th class="long">Identifikační kód</th>
-	<th class="short">Editace</th>
+	<th class="short">Přidat otázku</th>
 	<th class="short">Výsledky</th>
 	<th class="short">Odstranit</th>
 	<th class="short">Uzavřít</th>
@@ -77,7 +77,6 @@ else
 	echo '<h2>Vytvořit hlasování</h2>
 <form method="POST">
 	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
-	<input class="kod" type="textfield" name="voting_end" size="20" placeholder="Konec hlasování">
 	<div class="mezera"></div>
 	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
 </form>';
