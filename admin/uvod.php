@@ -22,7 +22,7 @@ foreach ($voting->view_votings() as $b)
 		echo '
 		<tr>
 		<td>' . $more[0] . '</td>
-		<td>0</td>
+		<td>' . $voting->question_count($b) . '</td>
 		<td>' . $today = date("d.m.Y H:i:s", $more[2]) . '</td>
 		<td>' . $b . '</td>
 		<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
