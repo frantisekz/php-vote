@@ -2,7 +2,9 @@
 error_reporting(3);
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
 <?php
 // Work around missing functions in old php
 if (phpversion() < 5.5)
@@ -71,9 +73,6 @@ if (isset($_POST["username_register"]))
 }
 ?>
 
-<!DOCTYPE html>
-<head>
-<meta charset="UTF-8">
 <link rel="shortcut icon" href="favicon.gif" />
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
