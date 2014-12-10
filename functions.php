@@ -45,6 +45,32 @@ function clear_session()
 	unset($_SESSION["question"]);
 }
 
+function is_safe($input)
+{
+  $i = 0;
+  $p = 0;
+  $arr = str_split($input);
+  foreach ($arr as $char)
+  {
+    if ($char == "+")
+    {
+      $p = $p + 1;
+    }
+    elseif (!($p >= 3))
+    {
+      $p = 0;
+    }
+  }
+  if ($p >= 3)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+}
+
 function view_votings()
 {
 	if ($this->username == "admin")
@@ -155,17 +181,20 @@ function question_header($voting, $question)
 
 function create_voting($name)
 {
-	$dirname = "../voting/" . date("y") . rand(1000, 9999);
-	while (file_exists($dirname))
-	{
-		$dirname = "../voting/" . date("y") . rand(1000, 9999);
+  if($this->is_safe($name))
+  {
+  	$dirname = "../voting/" . date("y") . rand(1000, 9999);
+  	while (file_exists($dirname))
+  	{
+  		$dirname = "../voting/" . date("y") . rand(1000, 9999);
+  	}
+  	mkdir($dirname);
+  	$file_name = "../voting/" . $dirname . "/info.txt";
+  	$file = fopen($file_name, "w+");
+  	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
+  	fwrite($file, $write);
+  	fclose($file);
 	}
-	mkdir($dirname);
-	$file_name = "../voting/" . $dirname . "/info.txt";
-	$file = fopen($file_name, "w+");
-	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
-	fwrite($file, $write);
-	fclose($file);
 }
 
 function add_question($code, $header, $possibilities)
