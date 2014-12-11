@@ -186,12 +186,10 @@ function question_header($voting, $question)
 
 function voting_lock($code)
 {
-	$filename = "../voting/" . $code . "/info.txt";
-	$file = fopen($filename, "r");
-	$to_replace = explode("+++", fgets($file));
-	$replacer = "0";
-	$file = str_replace($to_replace[3], $replacer, $file);
-	file_put_contents($filename, $file);
+	$file_name = "../voting/" . $code . "/info.txt";
+	$file = file_get_contents($file_name);
+	$file .= "+++0\n";
+	file_put_contents($file_name, $file);
 }
 
 function create_voting($name)
@@ -206,7 +204,7 @@ function create_voting($name)
 		mkdir($dirname);
 		$file_name = "../voting/" . $dirname . "/info.txt";
 		$file = fopen($file_name, "w+");
-		$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
+		$write = $name . "+++" . $this->username . "+++" . time();
 		fwrite($file, $write);
 		fclose($file);
 	}
