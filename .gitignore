@@ -1,4 +1,4 @@
-users/admin.txt
+users/*
 voting/*
 php-vote.sublime-project
 php-vote.sublime-workspace
