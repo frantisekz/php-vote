@@ -338,7 +338,7 @@ function logged_in()
 	}
 }
 
-private function load_file($username)
+function load_file($username)
 {
 	if ($this->in_admin == 1)
 	{
@@ -352,6 +352,7 @@ private function load_file($username)
 	$user_data = explode("+++", fgets($user_file));
 	fclose($user_file);
 	$this->user_data = $user_data;
+	return $user_data;
 }
 
 function get_cur_username()
@@ -359,16 +360,16 @@ function get_cur_username()
 	return $this->username;
 }
 
-private function get_password($username)
+function get_password($username)
 {
 	$this->load_file($username);
-	return $user_data[0];
+	return $this->user_data[0];
 }
 
 function get_email($username)
 {
 	$this->load_file($username);
-	return $user_data[1];
+	return $this->user_data[1];
 }
 
 function get_level($username)
