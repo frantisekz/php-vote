@@ -47,28 +47,33 @@ function clear_session()
 
 function is_safe($input)
 {
-  $i = 0;
-  $p = 0;
-  $arr = str_split($input);
-  foreach ($arr as $char)
-  {
-    if ($char == "+")
-    {
-      $p = $p + 1;
-    }
-    elseif (!($p >= 3))
-    {
-      $p = 0;
-    }
-  }
-  if ($p >= 3)
-    {
-      return false;
-    }
-    else
-    {
-      return true;
-    }
+	$i = 0;
+	$p = 0;
+	$arr = str_split($input);
+	if (($arr[0] == "+") OR ($arr[sizeof($arr)] == "+"))
+	{
+		$over = 1;
+		return false;
+	}
+	foreach ($arr as $char)
+	{
+		if ($char == "+")
+		{
+			$p = $p + 1;
+		}
+		elseif (!($p >= 3))
+		{
+			$p = 0;
+		}
+	}
+	if ($p >= 3)
+		{
+			return false;
+		}
+		elseif ($over != 1)
+		{
+			return true;
+		}
 }
 
 function view_votings()
@@ -90,7 +95,7 @@ function view_votings()
 	}
 	return $votings;
 }
-  
+	
 function voting_exists($code)
 {
 	$dirname = "voting/" . $code;
@@ -191,55 +196,68 @@ function voting_lock($code)
 
 function create_voting($name)
 {
-  if($this->is_safe($name))
-  {
-  	$dirname = "../voting/" . date("y") . rand(1000, 9999);
-  	while (file_exists($dirname))
-  	{
-  		$dirname = "../voting/" . date("y") . rand(1000, 9999);
-  	}
-  	mkdir($dirname);
-  	$file_name = "../voting/" . $dirname . "/info.txt";
-  	$file = fopen($file_name, "w+");
-  	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
-  	fwrite($file, $write);
-  	fclose($file);
+	if($this->is_safe($name))
+	{
+		$dirname = "../voting/" . date("y") . rand(1000, 9999);
+		while (file_exists($dirname))
+		{
+			$dirname = "../voting/" . date("y") . rand(1000, 9999);
+		}
+		mkdir($dirname);
+		$file_name = "../voting/" . $dirname . "/info.txt";
+		$file = fopen($file_name, "w+");
+		$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
+		fwrite($file, $write);
+		fclose($file);
 	}
 }
 
 function add_question($code, $header, $possibilities)
 {
-	$path = "../voting/" . $code . "/";
-	$i = 1;
-	$filename = $path . $i;
-	while (file_exists($filename))
+	if (($this->is_safe($code)) AND (($this->is_safe($header))))
 	{
-		$filename = $path . $i;
-		$i = $i + 1;
-	}
-	$file = fopen($filename, "w+");
-	fwrite($file, $header);
-	$i = 1;
-	foreach ($possibilities as $possibility)
-	{
-		if ($possibility[0] != "")
+		/*foreach ($possibilities as $possibility)
 		{
-			$write = "+++" . $possibility[0];
+			if (!$this->is_safe($possibility))
+			{
+				$bad = 1;
+			}
+		}*/
+		if ($bad != 1)
+		{
+			$path = "../voting/" . $code . "/";
+			$i = 1;
+			$filename = $path . $i;
+			while (file_exists($filename))
+			{
+				$filename = $path . $i;
+				$i = $i + 1;
+			}
+			$file = fopen($filename, "w+");
+			fwrite($file, $header);
+			$i = 1;
+			foreach ($possibilities as $possibility)
+			{
+				if ($possibility[0] != "")
+				{
+					$write = "+++" . $possibility[0];
+					fwrite($file, $write);
+					$i = $i + 1;
+				}
+			}
+			$write = "\n";
 			fwrite($file, $write);
-			$i = $i + 1;
+			foreach ($possibilities as $possibility)
+			{
+				if ($possibility[0] != "")
+				{
+					$write = $possibility[0] . "\n";
+					fwrite($file, $write);
+				}
+			}
+			fclose($file);
 		}
 	}
-	$write = "\n";
-	fwrite($file, $write);
-	foreach ($possibilities as $possibility)
-	{
-		if ($possibility[0] != "")
-		{
-			$write = $possibility[0] . "\n";
-			fwrite($file, $write);
-		}
-	}
-	fclose($file);
 }
 
 function question_count($code)
@@ -276,16 +294,19 @@ function delete_voting($id)
 
 function write_vote($user, $code, $question, $possibility)
 {
-	$file_name = "voting/" . $code . "/" . $question;
-	if (file_exists($file_name))
+	if (($this->is_safe($user)) AND ($this->is_safe($code)) AND ($this->is_safe($question)) AND ($this->is_safe($possibility)))
 	{
-		$file_contents = file($file_name);
-		$to_replace = $file_contents[$possibility];
-		$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
-		$file = str_replace($to_replace, $replacer, $file_contents);
-		$file[$possibility] = str_replace("\n", "", $file[$possibility]);
-		$file[$possibility] = $file[$possibility] . "\n";
-		file_put_contents($file_name, $file);
+		$file_name = "voting/" . $code . "/" . $question;
+		if (file_exists($file_name))
+		{
+			$file_contents = file($file_name);
+			$to_replace = $file_contents[$possibility];
+			$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
+			$file = str_replace($to_replace, $replacer, $file_contents);
+			$file[$possibility] = str_replace("\n", "", $file[$possibility]);
+			$file[$possibility] = $file[$possibility] . "\n";
+			file_put_contents($file_name, $file);
+		}
 	}
 }
 }
@@ -372,7 +393,7 @@ function delete_user($username)
 	}
 	else
 	{
-  		return false;
+			return false;
 	}
 }
 
@@ -380,16 +401,16 @@ function login($username, $password)
 {
 	$this->load_file($username);
 	if (password_verify($password, $this->user_data[0]))
-  	{
-    	// OK
-    	$_SESSION["user_username"] = $username;
-    	return true;
-  	}
+		{
+			// OK
+			$_SESSION["user_username"] = $username;
+			return true;
+		}
  	else
-  	{
-    	// Wrong password
-    	return false;
-  	}
+		{
+			// Wrong password
+			return false;
+		}
 }
 
 function logout($in_admin)
