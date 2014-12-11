@@ -292,7 +292,7 @@ function delete_voting($id)
 
 function write_vote($user, $code, $question, $possibility)
 {
-	if ((is_numeric($user)) AND (is_numeric($code)) AND (is_numeric($question)) AND (is_numeric($possibility)))
+	if ((is_numeric($user)) AND (is_numeric($code)) AND (is_numeric($question)) AND (is_numeric($possibility)) AND ($possibility > 0))
 	{
 		$file_name = "voting/" . $code . "/" . $question;
 		if (file_exists($file_name))
