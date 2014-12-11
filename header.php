@@ -1,5 +1,7 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
 <link rel="icon" type="img/ico" href="img/favicon.ico">
-<body>
 <title>Hlasovací systém</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" lang="cs" />
@@ -8,7 +10,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
-
+</head>
+<body>
 	<header>
 	<?php if ($user->logged_in())
 	echo "<h4>" . $user->get_cur_username() . "</h4>";
@@ -34,9 +37,9 @@ else
 {
 	?>
 <form method="post">
- <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno">
+ <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno" autocomplete="off">
    <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">  
-<input class="tlacitko" type="submit"value="Přihlásit se" />
+<input class="tlacitko" type="submit" value="Přihlásit se" />
 		</form>	
 		<?php
 }
@@ -44,11 +47,11 @@ else
 	</fieldset>
 <ul>
    <li <?php if ($actual == "index"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php';">
-	   	<img src="img/index.png" style="height:17px;width:17px" href="index.php">
+	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
    <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=navod';">
-		   	<img src="img/navod.png" style="height:17px;width:17px">
+		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
 	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
 	</li>   
 </ul>
