@@ -1,5 +1,4 @@
 <h1>Vítejte v administraci systému php-vote!</h1>
-<a href="../"><strong>Přejít na web</strong></a>
 
 <h1>Správa hlasování</h1>
 
@@ -69,7 +68,7 @@ if (isset($_GET["voting_edit"]))
 
 elseif ($_GET["voting_lock"])
 {
-	$vtoing->voting_lock($_GET["voting_lock"]);
+	$voting->voting_lock($_GET["voting_lock"]);
 }
 
 else

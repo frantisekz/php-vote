@@ -153,6 +153,16 @@ function question_header($voting, $question)
 	return $file_data[0];
 }
 
+function voting_lock($code)
+{
+	$filename = "../voting/" . $code . "/info.txt";
+	$file = fopen($filename, "r");
+	$to_replace = explode("+++", fgets($file));
+	$replacer = "0";
+	$file = str_replace($to_replace[3], $replacer, $file);
+	file_put_contents($filename, $file);
+}
+
 function create_voting($name)
 {
 	$dirname = "../voting/" . date("y") . rand(1000, 9999);
@@ -183,16 +193,22 @@ function add_question($code, $header, $possibilities)
 	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
-		$write = "+++" . $possibility[0];
-		fwrite($file, $write);
-		$i = $i + 1;
+		if ($possibility[0] != "")
+		{
+			$write = "+++" . $possibility[0];
+			fwrite($file, $write);
+			$i = $i + 1;
+		}
 	}
 	$write = "\n";
 	fwrite($file, $write);
 	foreach ($possibilities as $possibility)
 	{
-		$write = $possibility[0] . "\n";
-		fwrite($file, $write);
+		if ($possibility[0] != "")
+		{
+			$write = $possibility[0] . "\n";
+			fwrite($file, $write);
+		}
 	}
 	fclose($file);
 }

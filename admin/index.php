@@ -89,6 +89,7 @@ if (isset($_POST["username_register"]))
 <form method="post">
 <input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
 </form>
+<a href="../"><strong>Přejít na web</strong></a>
 
 <br/>
 <hr>
