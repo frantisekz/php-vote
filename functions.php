@@ -49,8 +49,9 @@ function is_safe($input)
 {
 	$i = 0;
 	$p = 0;
+	$over = 0;
 	$arr = str_split($input);
-	if (($arr[0] == "+") OR ($arr[sizeof($arr)] == "+"))
+	if (($arr[0] == "+") OR ($arr[sizeof($arr) - 1] == "+"))
 	{
 		$over = 1;
 		return false;
@@ -297,13 +298,16 @@ function write_vote($user, $code, $question, $possibility)
 		$file_name = "voting/" . $code . "/" . $question;
 		if (file_exists($file_name))
 		{
-			$file_contents = file($file_name);
+			$file = file_get_contents($file_name);
+			$file .= "+++" . $user . "\n";
+			file_put_contents($file_name, $file);
+			/*$file_contents = file($file_name);
 			$to_replace = $file_contents[$possibility];
 			$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
 			$file = str_replace($to_replace, $replacer, $file_contents);
 			$file[$possibility] = str_replace("\n", "", $file[$possibility]);
 			$file[$possibility] = $file[$possibility] . "\n";
-			file_put_contents($file_name, $file);
+			file_put_contents($file_name, $file);*/
 		}
 	}
 }
