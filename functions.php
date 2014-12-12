@@ -197,17 +197,41 @@ function create_voting($name)
 {
 	if($this->is_safe($name))
 	{
-		$dirname = "../voting/" . date("y") . rand(1000, 9999);
+		$rand = rand(1000, 9999);
+		if ($this->in_admin == 1)
+		{
+			$dirname = "../voting/" . date("y") . $rand;
+		}
+		else
+		{
+			$dirname = "voting/" . date("y") . $rand;
+		}
 		while (file_exists($dirname))
 		{
-			$dirname = "../voting/" . date("y") . rand(1000, 9999);
+			$rand = rand(1000, 9999);
+			if ($this->in_admin == 1)
+			{
+				$dirname = "../voting/" . date("y") . $rand;
+			}
+			else
+			{
+				$dirname = "voting/" . date("y") . $rand;
+			}
 		}
 		mkdir($dirname);
-		$file_name = "../voting/" . $dirname . "/info.txt";
+		if ($this->in_admin == 1)
+		{
+			$file_name = $dirname . "/info.txt";
+		}
+		else
+		{
+			$file_name = $dirname . "/info.txt";
+		}
 		$file = fopen($file_name, "w+");
 		$write = $name . "+++" . $this->username . "+++" . time();
 		fwrite($file, $write);
 		fclose($file);
+		return $rand;
 	}
 }
 
@@ -276,7 +300,14 @@ function question_count($code)
 
 function delete_voting($id)
 {
-	$dir = "../voting/" . $id;
+	if ($this->in_admin == 1)
+	{
+		$dir = "../voting/" . $id;
+	}
+	else
+	{
+		$dir = "voting/" . $id;
+	}
 	foreach(glob($dir . "/*") as $file) 
 	{
 		if(is_dir($file))
@@ -288,7 +319,14 @@ function delete_voting($id)
 			unlink($file);
 		}
 	}
-	rmdir($dir);
+	if (rmdir($dir))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 function write_vote($user, $code, $question, $possibility)
