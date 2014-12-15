@@ -479,7 +479,7 @@ function delete_user($username)
 
 function login($username, $password)
 {
-	if ((is_safe($username)) (is_safe($username)))
+	if ((is_safe($username)) AND (is_safe($username)))
 	{
 		$this->load_file($username);
 		if (password_verify($password, $this->user_data[0]))
