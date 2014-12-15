@@ -26,25 +26,6 @@ function register($username, $password, $email, $level)
 	fclose($file);
 }
 
-class voting
-{
-	public $username;
-	public $possibilities;
-	public $in_admin;
-
-function __construct($username, $in_admin)
-{
-	$this->username = $username;
-	$this->in_admin = $in_admin;
-}
-
-function clear_session()
-{
-	unset($_SESSION["voting_code"]);
-	unset($_SESSION["voting_user"]);
-	unset($_SESSION["question"]);
-}
-
 function is_safe($input)
 {
 	$i = 0;
@@ -77,6 +58,25 @@ function is_safe($input)
 		}
 }
 
+class voting
+{
+	public $username;
+	public $possibilities;
+	public $in_admin;
+
+function __construct($username, $in_admin)
+{
+	$this->username = $username;
+	$this->in_admin = $in_admin;
+}
+
+function clear_session()
+{
+	unset($_SESSION["voting_code"]);
+	unset($_SESSION["voting_user"]);
+	unset($_SESSION["question"]);
+}
+
 function view_votings()
 {
 	if ($this->username == "admin")
@@ -99,103 +99,124 @@ function view_votings()
 	
 function voting_exists($code)
 {
-	$dirname = "voting/" . $code;
-	if(file_exists($dirname))
+	if (is_numeric($code))
 	{
-		return true;
-	}
-	else 
-	{
-		return false;
+		$dirname = "voting/" . $code;
+		if(file_exists($dirname))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 }
 
 function view_voting($code)
 {
-	// Single voting
-	$dirname = "voting/" . $code;
-	$more = $this->get_more($code);
-	// Voting name = $more[0]
-	// TODO
-	// Overkill here, write function which 
-	// would return only data that we need
-	return $more[0];
+	if (is_numeric($code))
+	{
+		// Single voting
+		$dirname = "voting/" . $code;
+		$more = $this->get_more($code);
+		// Voting name = $more[0]
+		// TODO
+		// Overkill here, write function which 
+		// would return only data that we need
+		return $more[0];
+	}
 
 }
 
 function get_possibilities($id, $question)
 {
-	if ($this->in_admin == 1)
+	if ((is_numeric($id)) AND (is_numeric($question)))
 	{
-		$file_name = "../voting/" . $id . "/" . $question;
+		if ($this->in_admin == 1)
+		{
+			$file_name = "../voting/" . $id . "/" . $question;
+		}
+		else
+		{
+			$file_name = "voting/" . $id . "/" . $question;
+		}
+		$file_contents = file($file_name);
+		$explode = explode("+++", $file_contents[0]);
+		$votings = array_diff($explode, array($explode[0]));
+		return $votings;
 	}
-	else
-	{
-		$file_name = "voting/" . $id . "/" . $question;
-	}
-	$file_contents = file($file_name);
-	$explode = explode("+++", $file_contents[0]);
-	$votings = array_diff($explode, array($explode[0]));
-	return $votings;
 }
 
 function get_questions($id)
 {
-	if ($this->in_admin == 1)
+	if (is_numeric($id))
 	{
-		$dirname = "../voting/" . $id . "/";
+		if ($this->in_admin == 1)
+		{
+			$dirname = "../voting/" . $id . "/";
+		}
+		else
+		{
+			$dirname = "voting/" . $id . "/";
+		}
+		$questions = scandir($dirname);
+		return $questions;
 	}
-	else
-	{
-		$dirname = "voting/" . $id . "/";
-	}
-	$questions = scandir($dirname);
-	return $questions;
 }
 
 function get_more($id)
 {
-	if ($this->in_admin == 1)
+	if (is_numeric($id))
 	{
-		$filename = "../voting/" . $id . "/info.txt";
+		if ($this->in_admin == 1)
+		{
+			$filename = "../voting/" . $id . "/info.txt";
+		}
+		else
+		{
+			$filename = "voting/" . $id . "/info.txt";
+		}
+		$file = fopen($filename, "r");
+		$file_data = explode("+++", fgets($file));
+		fclose($file);
+		return $file_data;
 	}
-	else
-	{
-		$filename = "voting/" . $id . "/info.txt";
-	}
-	$file = fopen($filename, "r");
-	$file_data = explode("+++", fgets($file));
-	fclose($file);
-	return $file_data;
 }
 
 function question_header($voting, $question)
 {
-	if ($this->in_admin == 1)
+	if ((is_numeric($voting)) AND (is_numeric($question)))
 	{
-		$filename = "../voting/" . $voting . "/" . $question;
+		if ($this->in_admin == 1)
+		{
+			$filename = "../voting/" . $voting . "/" . $question;
+		}
+		else
+		{
+			$filename = "voting/" . $voting . "/" . $question;
+		}
+		$file = fopen($filename, "r");
+		$file_data = explode("+++", fgets($file));
+		fclose($file);
+		return $file_data[0];
 	}
-	else
-	{
-		$filename = "voting/" . $voting . "/" . $question;
-	}
-	$file = fopen($filename, "r");
-	$file_data = explode("+++", fgets($file));
-	fclose($file);
-	return $file_data[0];
 }
 
 function voting_lock($code)
 {
-	$file_name = "../voting/" . $code . "/info.txt";
-	$file = file_get_contents($file_name);
-	$file .= "+++0\n";
-	file_put_contents($file_name, $file);
+	if (is_numeric($code))
+	{
+		$file_name = "../voting/" . $code . "/info.txt";
+		$file = file_get_contents($file_name);
+		$file .= "+++0\n";
+		file_put_contents($file_name, $file);
+	}
 }
 
 function create_voting($name)
 {
-	if($this->is_safe($name))
+	if(is_safe($name))
 	{
 		$rand = rand(1000, 9999);
 		if ($this->in_admin == 1)
@@ -237,11 +258,11 @@ function create_voting($name)
 
 function add_question($code, $header, $possibilities)
 {
-	if (($this->is_safe($code)) AND (($this->is_safe($header))))
+	if ((is_safe($code)) AND ((is_safe($header))))
 	{
 		/*foreach ($possibilities as $possibility)
 		{
-			if (!$this->is_safe($possibility))
+			if (!is_safe($possibility))
 			{
 				$bad = 1;
 			}
@@ -285,47 +306,53 @@ function add_question($code, $header, $possibilities)
 
 function question_count($code)
 {
-	if ($this->in_admin == 1)
+	if (is_numeric($code))
 	{
-		$path = "../voting/" . $code . "/";
+		if ($this->in_admin == 1)
+		{
+			$path = "../voting/" . $code . "/";
+		}
+		else
+		{
+			$path = "voting/" . $code . "/";
+		}
+		$contents = scandir($path);
+		$contents = array_diff($contents, array('info.txt', '.', '..'));
+		return sizeof($contents);
 	}
-	else
-	{
-		$path = "voting/" . $code . "/";
-	}
-	$contents = scandir($path);
-	$contents = array_diff($contents, array('info.txt', '.', '..'));
-	return sizeof($contents);
 }
 
 function delete_voting($id)
 {
-	if ($this->in_admin == 1)
+	if (is_numeric($id))
 	{
-		$dir = "../voting/" . $id;
-	}
-	else
-	{
-		$dir = "voting/" . $id;
-	}
-	foreach(glob($dir . "/*") as $file) 
-	{
-		if(is_dir($file))
+		if ($this->in_admin == 1)
 		{
-			rmdir($file);
+			$dir = "../voting/" . $id;
 		}
 		else
 		{
-			unlink($file);
+			$dir = "voting/" . $id;
 		}
-	}
-	if (rmdir($dir))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
+		foreach(glob($dir . "/*") as $file) 
+		{
+			if(is_dir($file))
+			{
+				rmdir($file);
+			}
+			else
+			{
+				unlink($file);
+			}
+		}
+		if (rmdir($dir))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 
@@ -377,19 +404,22 @@ function logged_in()
 
 function load_file($username)
 {
-	if ($this->in_admin == 1)
+	if (is_safe($username))
 	{
-		$filename = "../users/" . $username . ".txt";
+		if ($this->in_admin == 1)
+		{
+			$filename = "../users/" . $username . ".txt";
+		}
+		else
+		{
+			$filename = "users/" . $username . ".txt";
+		}
+		$user_file = fopen($filename, "r");
+		$user_data = explode("+++", fgets($user_file));
+		fclose($user_file);
+		$this->user_data = $user_data;
+		return $user_data;
 	}
-	else
-	{
-		$filename = "users/" . $username . ".txt";
-	}
-	$user_file = fopen($filename, "r");
-	$user_data = explode("+++", fgets($user_file));
-	fclose($user_file);
-	$this->user_data = $user_data;
-	return $user_data;
 }
 
 function get_cur_username()
@@ -399,70 +429,88 @@ function get_cur_username()
 
 function get_password($username)
 {
-	$this->load_file($username);
-	return $this->user_data[0];
+	if (is_safe($username))
+	{
+		$this->load_file($username);
+		return $this->user_data[0];
+	}
 }
 
 function get_email($username)
 {
-	$this->load_file($username);
-	return $this->user_data[1];
+	if (is_safe($username))
+	{
+		$this->load_file($username);
+		return $this->user_data[1];
+	}
 }
 
 function get_level($username)
 {
-	$this->load_file($username);
-	return $this->user_data[2];
+	if (is_safe($username))
+	{
+		$this->load_file($username);
+		return $this->user_data[2];
+	}
 }
 
 function delete_user($username)
 {
-	if ($this->in_admin == 1)
+	if (is_safe($username))
 	{
-		$write = "../users/" . $username . ".txt";
-	}
-	else
-	{
-		$write = "users/" . $username . ".txt";
-	}
-	if(unlink($write))
-	{
-		return true;
-	}
-	else
-	{
-			return false;
+		if ($this->in_admin == 1)
+		{
+			$write = "../users/" . $username . ".txt";
+		}
+		else
+		{
+			$write = "users/" . $username . ".txt";
+		}
+		if(unlink($write))
+		{
+			return true;
+		}
+		else
+		{
+				return false;
+		}
 	}
 }
 
 function login($username, $password)
 {
-	$this->load_file($username);
-	if (password_verify($password, $this->user_data[0]))
-		{
-			// OK
-			$_SESSION["user_username"] = $username;
-			return true;
-		}
- 	else
-		{
-			// Wrong password
-			return false;
-		}
+	if ((is_safe($username)) AND (is_safe($username)))
+	{
+		$this->load_file($username);
+		if (password_verify($password, $this->user_data[0]))
+			{
+				// OK
+				$_SESSION["user_username"] = $username;
+				return true;
+			}
+	 	else
+			{
+				// Wrong password
+				return false;
+			}
+	}
 }
 
 function logout($in_admin)
 {
-	unset($_SESSION["user_username"]);
-	unset($_POST["username_logout"]);
+	if (is_numeric($in_admin))
+	{
+		unset($_SESSION["user_username"]);
+		unset($_POST["username_logout"]);
 
-	if ($in_admin == 1)
-	{
-		header("Location: ../index.php");
-	}
-	else
-	{
-		header("Location: index.php");
+		if ($in_admin == 1)
+		{
+			header("Location: ../index.php");
+		}
+		else
+		{
+			header("Location: index.php");
+		}
 	}
 }
 }
