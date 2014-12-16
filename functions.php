@@ -1,7 +1,7 @@
 <?php
 function register($username, $password, $email, $level)
 {
-	// We specify BCRYPT directly to avoid potential 
+	// We specify BCRYPT directly to avoid potential
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
 	$write = $password . "+++" . $email . "+++" . $level . "+++" . time();
@@ -37,15 +37,18 @@ function is_safe($input)
 		$over = 1;
 		return false;
 	}
-	foreach ($arr as $char)
+	if ($over != 1)
 	{
-		if ($char == "+")
+		foreach ($arr as $char)
 		{
-			$p = $p + 1;
-		}
-		elseif (!($p >= 3))
-		{
-			$p = 0;
+			if ($char == "+")
+			{
+				$p = $p + 1;
+			}
+			elseif (!($p >= 3))
+			{
+				$p = 0;
+			}
 		}
 	}
 	if ($p >= 3)
@@ -96,7 +99,7 @@ function view_votings()
 	}
 	return $votings;
 }
-	
+
 function voting_exists($code)
 {
 	if (is_numeric($code))
@@ -106,7 +109,7 @@ function voting_exists($code)
 		{
 			return true;
 		}
-		else 
+		else
 		{
 			return false;
 		}
@@ -122,7 +125,7 @@ function view_voting($code)
 		$more = $this->get_more($code);
 		// Voting name = $more[0]
 		// TODO
-		// Overkill here, write function which 
+		// Overkill here, write function which
 		// would return only data that we need
 		return $more[0];
 	}
@@ -334,7 +337,7 @@ function delete_voting($id)
 		{
 			$dir = "voting/" . $id;
 		}
-		foreach(glob($dir . "/*") as $file) 
+		foreach(glob($dir . "/*") as $file)
 		{
 			if(is_dir($file))
 			{
