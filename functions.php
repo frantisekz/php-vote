@@ -124,9 +124,6 @@ function view_voting($code)
 		$dirname = "voting/" . $code;
 		$more = $this->get_more($code);
 		// Voting name = $more[0]
-		// TODO
-		// Overkill here, write function which
-		// would return only data that we need
 		return $more[0];
 	}
 
@@ -145,8 +142,13 @@ function get_possibilities($id, $question)
 			$file_name = "voting/" . $id . "/" . $question;
 		}
 		$file_contents = file($file_name);
-		$explode = explode("+++", $file_contents[0]);
-		$votings = array_diff($explode, array($explode[0]));
+		$votings = array();
+		foreach ($file_contents as $line)
+		{
+			$explode = explode("+++", $line);
+			$votings[] = $explode[0];
+		}
+		$votings = array_diff($votings, array($votings[0]));
 		return $votings;
 	}
 }
@@ -281,19 +283,8 @@ function add_question($code, $header, $possibilities)
 				$i = $i + 1;
 			}
 			$file = fopen($filename, "w+");
-			fwrite($file, $header);
+			fwrite($file, $header . "\n");
 			$i = 1;
-			foreach ($possibilities as $possibility)
-			{
-				if ($possibility[0] != "")
-				{
-					$write = "+++" . $possibility[0];
-					fwrite($file, $write);
-					$i = $i + 1;
-				}
-			}
-			$write = "\n";
-			fwrite($file, $write);
 			foreach ($possibilities as $possibility)
 			{
 				if ($possibility[0] != "")
