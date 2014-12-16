@@ -166,6 +166,7 @@ function get_questions($id)
 			$dirname = "voting/" . $id . "/";
 		}
 		$questions = scandir($dirname);
+		$questions = array_diff($questions, array(".", "..", "info.txt"));
 		return $questions;
 	}
 }
