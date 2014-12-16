@@ -78,7 +78,6 @@ elseif(isset($_GET["voting_result"]))
 		{
 			$p = $p + 1;
 			echo "Možnost č. " . $p . ":<br/>";
-			echo "Volám get_result s parametry: " . $q . " a " . $p . "<br/>";
 			foreach ($voting->get_result($_GET["voting_result"], $q, $p) as $echo)
 			{
 				echo $echo . ", ";
