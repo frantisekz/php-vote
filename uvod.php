@@ -16,4 +16,4 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 	<div class="mezera"></div>
         </div>
 	<div style="height: 30px;"></div>
-<img src="img/logo_GK.png" alt="logo">
+<img src="img/logo_GK.png" alt="logo" id="logo">

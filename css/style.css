@@ -26,9 +26,6 @@ body {
 
 h4{
 float:right;
-
-
-
 }
 
 a {
@@ -110,7 +107,7 @@ header h1 a strong {
 
 }
 
-ul {
+#header {
 padding-right:70px;
 width:400px;
 margin:0 auto;
@@ -118,14 +115,11 @@ margin:0 auto;
 	text-align: center;
 }
 
-li {
-	display: inline;
-}
-
 .odkazy{
 	cursor:pointer;
 	margin-left: 40px;
 	padding: 10px 8px 8px 6px;
+		display: inline;
 }
 
 .odkazy:hover{
@@ -216,6 +210,8 @@ h2 {
 }
 
 #logo {
+	padding-left:390px;
+	padding-right:390px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -246,24 +242,9 @@ h4 {
 	font-size: 25px;
 }
 
-#Poll {
-	text-align: center;
-	margin: 50px auto;
-	width: 1015px;
-	padding: 8px 15px 15px 15px;
-	border: 1px solid black;
-}
-
-legend {
-	padding: 4px 6px 4px 6px;
-	border: 1px solid black;
-	font-size: 1.0em;
-	color: black;
-	font-style: italic;
-	text-align: center;
-}
 
 #Poll_1, #Poll_2, #Poll_3, #Poll_4 {
+	text-align:center;
 	cursor: pointer;
 	font-size: 20px;
 	height: 100px;
@@ -304,16 +285,39 @@ legend {
 	background: linear-gradient(#5883da,#4374d5);
 }
 
-#diskuze {
+
+.back {
+	padding-top:18px;
+	float:right;
+	padding-right: 20px;
+	display: inline-block;
+}
+/* Kod */
+h8{
+color:red;
+text-align:center;
+font-size:100px;
+text-shadow: 0.8px 0.8px 0px #eee, 1.6px 1.6px 0px #707070;	
+}
+
+/* Návod */
+h9{
+text-align:center;
+font-size:100px;
+text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
+}
+
+.voting {
+	color: #262626;
+	background-color: #dfdfdf;
+	font-size: 30px;
+	font-family: sans-serif;
+	padding-left: 200px;
+	padding-right: 200px;
+	padding-bottom: 1px;
 	width: auto;
 	max-width: 1720px;
 	text-align: center;
 	margin: 0 auto;
 	min-width: 1040px;
-}
-/* Kod */
-h8{
-text-align:center;
-font-size:100px;
-text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
 }

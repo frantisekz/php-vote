@@ -159,3 +159,38 @@ td {
 	font-size: 20px;
 	height: 30px;
 }
+
+#canvas-holder{
+	padding:0 0 30px 30px;
+	width:30%;
+			}
+
+legend {
+	padding: 4px 6px 4px 6px;
+	border: 1px solid black;
+	font-size: 25px;
+	color: black;
+	font-style: italic;
+}
+span{color:black;}
+
+.graph{
+list-style-position:inside;
+float:right;
+border: 1px solid black;
+font-size:20px;
+width:600px;
+}
+
+#result{
+	position:relative;
+	width:600px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#legenda{
+padding-right:10px;
+font-size:25px;
+position:absolute;
+right:100px;}

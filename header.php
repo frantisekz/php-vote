@@ -10,6 +10,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
+<script src="js/Chart.js"></script>
 </head>
 <body>
 	<header>
@@ -45,7 +46,7 @@ else
 }
 		?>
 	</fieldset>
-<ul>
+<ul id="header">
    <li <?php if ($actual == "index"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php';">
 	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
