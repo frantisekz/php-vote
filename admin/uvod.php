@@ -87,7 +87,7 @@ elseif(isset($_GET["voting_result"]))
 		$p = 0;
 		echo "<hr>";
 	}
-  echo '<body>
+  /* echo '
 <div id="result">
 			<h1>Celkem hlasů: 34</h1>
 			<fieldset class="graph">
@@ -112,8 +112,7 @@ elseif(isset($_GET["voting_result"]))
 		</div>
 
 		</fieldset>
-</div>
-	</body>';
+</div>';*/
 }
 
 elseif ($_GET["voting_lock"])

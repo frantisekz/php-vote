@@ -19,7 +19,7 @@ div.loginbox {
 div.admin {
 	height: 100%;
 	width: 1100px;
-	overflow-y: hidden;
+	overflow-y: scroll;
 	background-color: rgb(231, 231, 231);
 	padding-left: 10px;
 	padding-right: 10px;
