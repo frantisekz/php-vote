@@ -86,6 +86,33 @@ elseif(isset($_GET["voting_result"]))
 		}
 		echo "<hr>";
 	}
+  echo '<body>
+<div id="result">
+			<h1>Celkem hlasů: 34</h1>
+			<fieldset class="graph">
+		<legend><a>Otázka 1</a>
+			|
+			<a>Otázka 2</a>
+			|
+			<a>Otázka 3</a>
+			|
+			<a>Otázka 4</a>
+			|
+			<a>Otázka 5</a>
+		</legend>
+<ul id="legenda">
+	<li style="color:#F7464A;width:200px;"><span class="question">Odpověď 1</span>
+	<li style="color:#46BFBD"><span class="question">Odpověď 2</span>
+	<li style="color:#FDB45C"><span class="question">Odpověď 3</span>
+	<li style="color:#2c6acf"><span class="question">Odpověď 4</span>
+</ul>
+		<div id="canvas-holder">
+			<canvas id="chart-area" width="800" height="800"/>
+		</div>
+
+		</fieldset>
+</div>
+	</body>';
 }
 
 elseif ($_GET["voting_lock"])

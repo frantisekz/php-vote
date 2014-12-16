@@ -2,7 +2,7 @@
 error_reporting(3);
 session_start();
 ?>
-<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <?php
@@ -72,7 +72,9 @@ if (isset($_POST["username_register"]))
 	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
 }
 ?>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../scripts.js"></script>
+<script src="../js/Chart.js"></script>
 <link rel="shortcut icon" href="favicon.gif" />
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
@@ -88,6 +90,7 @@ if (isset($_POST["username_register"]))
 <form method="post">
 <input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
 </form>
+<br>
 <a href="../"><strong>Přejít na web</strong></a>
 
 <br/>
