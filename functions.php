@@ -80,6 +80,25 @@ function clear_session()
 	unset($_SESSION["question"]);
 }
 
+function get_result($id, $question, $possibility)
+{
+	if ((is_numeric($id)) AND (is_numeric($question)) AND (is_numeric($possibility)))
+	{
+		if ($this->in_admin == 1)
+		{
+			$file_name = "../voting/" . $id . "/" . $question;
+		}
+		else
+		{
+			$file_name = "voting/" . $id . "/" . $question;
+		}
+		$file_contents = file($file_name);
+		$explode = explode("+++", $file_contents[$possibility]);
+		$voters = array_diff($explode, array($explode[0]));
+		return $voters;
+	}
+}
+
 function view_votings()
 {
 	if ($this->username == "admin")

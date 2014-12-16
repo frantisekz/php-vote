@@ -14,7 +14,7 @@
 	<th class="short">Uzavřít</th>
 </tr>
 
-<?php 
+<?php
 foreach ($voting->view_votings() as $b)
 	{
 		$more = $voting->get_more($b);
@@ -29,24 +29,24 @@ foreach ($voting->view_votings() as $b)
 		<td><a href="index.php?voting_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
 		<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/lock.png" class="icons"></a></td>
 	</tr>';
-	} 
+	}
 ?>
 </table>
 <div style="height:10px;">
-	
+
 </div>
 
 
 <?php
 if (isset($_GET["voting_edit"]))
 {
-	echo '<script type="text/javascript"> 
+	echo '<script type="text/javascript">
   var counter=5;
-  function pridejInput() { 
+  function pridejInput() {
     document.getElementById(\'odpovedi\').innerHTML += "<input class=\"moznost\" type=\"textfield\" name=\"possibility_"+counter+"\" size=\"20\" placeholder=\"Možnost "+counter+"\">";
     document.getElementById(\'pocet\').value=counter++;
-  } 
-</script> 
+  }
+</script>
 <form method="POST">
 <input class="kod" type="textfield" name="question_name" size="20" placeholder="Název otázky">
   <div id="odpovedi">
@@ -55,15 +55,37 @@ if (isset($_GET["voting_edit"]))
 	<input class="moznost" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
 	<input class="moznost" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
   <input type="hidden" id="pocet" name="pocet" value="0">
-  </div> 
+  </div>
   	<div class="mezera"></div>
 	  <a id="pridat" href="" onClick="pridejInput();return false;">Přidat  </a>
-	   | 
+	   |
 	  <a id="odebrat" href="" onClick="pridejInput();return false;">  Odebrat</a>
 	  <br>
 	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
 </form>
 ';
+}
+
+elseif(isset($_GET["voting_result"]))
+{
+	$q = 0;
+	$p = 0;
+	foreach ($voting->get_questions($_GET["voting_result"]) as $qid)
+	{
+		$q = $q + 1;
+		echo "Otázka č. " . $q . ":<br/>";
+		foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+		{
+			$p = $p + 1;
+			echo "Možnost č. " . $p . ":<br/>";
+			foreach ($voting->get_result($_GET["voting_result"], $q, $p) as $echo)
+			{
+				echo $echo . ", ";
+			}
+			echo "<br/>";
+		}
+		echo "<hr>";
+	}
 }
 
 elseif ($_GET["voting_lock"])
