@@ -10,7 +10,7 @@ class VotingTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    /*public function testIs_safe()
+    public function testIs_safe()
     {
         $this->assertFalse(is_safe("+++"));
         $this->assertFalse(is_safe("++"));
@@ -19,7 +19,7 @@ class VotingTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse(is_safe("test+"));
         $this->assertFalse(is_safe("test+++test"));
         $this->assertTrue(is_safe("test++test"));
-    }*/
+    }
 
     public function testCreate_delete_voting()
     {
