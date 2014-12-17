@@ -63,7 +63,16 @@ if (isset($_GET["voting_edit"]))
 	  <br>
 	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
 </form>
+<hr>
+<h3>Existující otázky:</h3>
 ';
+$i = 0;
+
+foreach ($voting->get_questions($_GET["voting_edit"]) as $qid)
+ {
+	$i = $i + 1;
+	echo "<h2>" . $voting->question_header($_GET["voting_edit"], $i) . "</h2>";
+	}
 }
 
 elseif(isset($_GET["voting_result"]))
