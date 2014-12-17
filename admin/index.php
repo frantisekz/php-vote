@@ -92,7 +92,6 @@ if (isset($_POST["username_register"]))
 </form>
 <br>
 <a href="../"><strong>Přejít na web</strong></a>
-
 <br/>
 <hr>
 <h3<?php if ($_GET['sub'] == "uvod") echo " id=\"active\" "?>><a href="index.php">Úvod</a></h3>
