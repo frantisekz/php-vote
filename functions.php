@@ -415,6 +415,18 @@ function logged_in()
 		return false;
 	}
 }
+function view_users()
+{
+	if ($this->username == "admin")
+	{
+		$users = array_diff(scandir("../users/"), array('..', '.', '.htaccess'));
+	}
+	else
+	{
+		$users = array_diff(scandir("../users/"), array('..', '.', '.htaccess'));
+	}
+	return $users;
+}
 
 function load_file($username)
 {

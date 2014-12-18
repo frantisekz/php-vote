@@ -21,4 +21,16 @@
 	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Odstranit účet" name="JPW">
 </form>
+<table>
+<?php 
+  foreach ($user->view_users() as $b)
+	{
+	  $b = chop($b,".txt");
+		echo '
+		<tr>
+		<td>' . $b . '</td>
+	</tr>';
+	}
+?>
+</table>
 <hr/>
