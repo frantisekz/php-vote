@@ -34,28 +34,28 @@ function is_safe($input)
 	$arr = str_split($input);
 	if (($arr[0] == "+") OR ($arr[sizeof($arr) - 1] == "+"))
 	{
-		$over = 1;
 		return false;
 	}
-	if ($over != 1)
+	foreach ($arr as $char)
 	{
-		foreach ($arr as $char)
+		if ($char == "+")
 		{
-			if ($char == "+")
-			{
-				$p = $p + 1;
-			}
-			elseif (!($p >= 3))
-			{
-				$p = 0;
-			}
+			$p = $p + 1;
+		}
+		elseif (!($p >= 3))
+		{
+			$p = 0;
+		}
+		if ($p >= 3)
+		{
+			break;
 		}
 	}
 	if ($p >= 3)
 		{
 			return false;
 		}
-		elseif ($over != 1)
+	elseif ($over != 1)
 		{
 			return true;
 		}
