@@ -72,6 +72,11 @@ foreach ($voting->get_questions($_GET["voting_edit"]) as $qid)
  {
 	$i = $i + 1;
 	echo "<h2>" . $voting->question_header($_GET["voting_edit"], $i) . "</h2>";
+	echo "Možnosti: ";
+	foreach ($voting->get_possibilities($_GET["voting_edit"], $i) as $possibility)
+	{
+		echo $possibility . "; ";
+	}
 	}
 }
 
