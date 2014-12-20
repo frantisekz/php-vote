@@ -1,4 +1,5 @@
 <?php
+echo '<div class="voting">';
 if((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
 	// Somebody tried to load file directly, die in pain!
@@ -47,14 +48,21 @@ if (isset($more[3]))
 }
 
 $header = $voting->view_voting($_SESSION["voting_code"]);
-echo "<h2>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h2>";
+echo "	<div class='mezera'></div>";
+echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
+echo "<br>";
+echo "<p>1/2</p>";
+echo "<br>";
 $i = 1;
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
-{
+{echo '<div style="margin-left:auto;margin-right:auto;width:1100px;">';
 	echo '
-	<a href="index.php?stranka=hlasovani&vote=' . $i . '"><div value="' . $pos . '" id="Poll_1">
+	<a href="index.php?stranka=hlasovani&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
 <span>' . $pos . '</span>
 </div></a>';
-	$i = $i + 1;
+
+$i=$i+1;
+ echo '</div>';
 }
+echo '</div>';
 ?>
