@@ -33,6 +33,7 @@ if (isset($_POST['username_logout']))
 if (isset($_POST["voting_name"]))
 {
 	$voting->create_voting($_POST["voting_name"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
 if (isset($_POST["question_name"]))
@@ -65,11 +66,18 @@ if (isset($_POST["question_name"]))
 if (isset($_GET["voting_remove"]))
 {
 	$voting->delete_voting($_GET["voting_remove"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
 if (isset($_POST["username_register"]))
 {
 	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+if (isset($_GET["voting_lock"]))
+{
+	$voting->voting_lock($_GET["voting_lock"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -80,7 +88,7 @@ if (isset($_POST["username_register"]))
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
