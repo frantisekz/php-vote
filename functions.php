@@ -103,12 +103,26 @@ function view_votings()
 {
 	if ($this->username == "admin")
 	{
-		$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
+		if ($this->in_admin == 1)
+		{
+			$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
+		}
+		else
+		{
+			$votings = array_diff(scandir("voting/"), array('..', '.', '.htaccess'));
+		}
 	}
 	else
 	{
-		$votings = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
-		foreach ($votings as $voting)
+		if ($this->in_admin == 1)
+		{
+			$votings_dir = array_diff(scandir("../voting/"), array('..', '.', '.htaccess'));
+		}
+		else
+		{
+			$votings_dir = array_diff(scandir("voting/"), array('..', '.', '.htaccess'));
+		}
+		foreach ($votings_dir as $voting)
 		{
 			if ($this->get_more($voting) == $user->get_cur_username())
 			{
@@ -244,6 +258,10 @@ function create_voting($name)
 	if(is_safe($name))
 	{
 		$rand = rand(1000, 9999);
+		if ($name == "test")
+		{
+			$rand = 1111;
+		}
 		if ($this->in_admin == 1)
 		{
 			$dirname = "../voting/" . date("y") . $rand;
