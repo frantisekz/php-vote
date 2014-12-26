@@ -7,7 +7,7 @@
 <meta name="keywords" content="" lang="cs" />
 <meta name="author" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
 <script src="js/Chart.js"></script>
@@ -39,9 +39,9 @@ else
 	?>
 <form method="post">
  <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno" autocomplete="off">
-   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">  
+   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">
 <input class="tlacitko" type="submit" value="Přihlásit se" />
-		</form>	
+		</form>
 		<?php
 }
 		?>
@@ -54,7 +54,7 @@ else
    <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=navod';">
 		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
 	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
-	</li>   
+	</li>
 </ul>
 	<div class="clear"></div>
 	</header>
