@@ -55,7 +55,7 @@ echo "<p>1/2</p>";
 echo "<br>";
 $i = 1;
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
-{echo '<div style="margin-left:auto;margin-right:auto;width:1100px;">';
+{echo '<div class="hlasovani">';
 	echo '
 	<a href="index.php?stranka=hlasovani&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
 <span>' . $pos . '</span>

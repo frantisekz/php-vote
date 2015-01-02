@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <head>
-<meta charset="UTF-8">
-<link rel="icon" type="img/ico" href="img/favicon.ico">
-<title>Hlasovací systém</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" lang="cs" />
-<meta name="author" content="" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/jquery.textfill.min.js"></script>
-<script type="text/javascript" src="scripts.js"></script>
-<script src="js/Chart.js"></script>
+	<meta charset="UTF-8">
+	<link rel="icon" type="img/ico" href="img/favicon.ico">
+	<title>Hlasovací systém</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" lang="cs" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="css/style.css">
+	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="css/style_mobile.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/jquery.textfill.min.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+	<script src="js/Chart.js"></script>
 </head>
 <body>
 	<header>
