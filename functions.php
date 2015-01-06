@@ -61,6 +61,34 @@ function is_safe($input)
 		}
 }
 
+function set_cookie($value)
+{
+	if (is_numeric($value))
+	{
+		if (setcookie("computer_id", $value, 2147483647, "/"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+function unset_cookie()
+{
+	if (setcookie("computer_id", "", time()-3600, "/"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
 class voting
 {
 	public $username;
@@ -540,22 +568,10 @@ function login($username, $password)
 	}
 }
 
-function logout($in_admin)
+function logout()
 {
-	if (is_numeric($in_admin))
-	{
 		unset($_SESSION["user_username"]);
 		unset($_POST["username_logout"]);
-
-		if ($in_admin == 1)
-		{
-			header("Location: ../index.php");
-		}
-		else
-		{
-			header("Location: index.php");
-		}
-	}
 }
 }
 ?>

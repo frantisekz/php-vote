@@ -38,7 +38,7 @@ else
 
 if (isset($_POST["username_logout"]))
 {
-	$user->logout(0);
+	$user->logout();
 }
 elseif (isset($_GET["stranka"]))
 {

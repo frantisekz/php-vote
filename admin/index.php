@@ -1,11 +1,7 @@
 <?php
 error_reporting(3);
 session_start();
-?>
-<html>
-<head>
-<meta charset="UTF-8">
-<?php
+
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
@@ -28,12 +24,25 @@ if (!isset($_GET['sub']))
 
 if (isset($_POST['username_logout']))
 {
-	$user->logout(1);
+	$user->logout();
+	header("Location: ../index.php");
 }
 if (isset($_POST["voting_name"]))
 {
 	$voting->create_voting($_POST["voting_name"]);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+
+if (isset($_POST["computer_id"]))
+{
+	set_cookie($_POST["computer_id"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=nastaveni">';
+}
+
+if (isset($_GET["unset_cookie"]))
+{
+	unset_cookie($_POST["computer_id"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=nastaveni">';
 }
 
 if (isset($_POST["question_name"]))
@@ -80,6 +89,9 @@ if (isset($_GET["voting_lock"]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 ?>
+<html>
+<head>
+<meta charset="UTF-8">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../scripts.js"></script>
 <script src="../js/Chart.js"></script>

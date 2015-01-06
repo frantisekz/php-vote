@@ -8,15 +8,15 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 <div class="vstoupit-div">
 <form method="POST" action="index.php?stranka=hlasovani">
 <?php
-/*if (!cookie)
+if (!isset($_COOKIE["computer_id"]))
 {
-  echo '<strong>Identifikační číslo počítače není nastaveno, kontaktujte správce a nebo jej vyplňte ručně!</strong>';
-  <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód k hlasování" autocomplete="off">
-}*/
+  echo '<strong>Identifikační číslo počítače není nastaveno, kontaktujte správce a nebo jej vyplňte ručně!</strong>
+  <input class="kod" type="text" name="voting_user" size="20" placeholder="Číslo PC">';
+}
 ?>
 <div class="mezera"></div>
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
-    <input class="kod" type="text" name="voting_user" size="20" placeholder="Číslo PC">
+    <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód k hlasování" autocomplete="off">
 </form>
 	</div>
 	<div class="mezera"></div>
