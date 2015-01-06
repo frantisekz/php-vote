@@ -53,8 +53,11 @@ include("header.php");
 
 if (isset($_GET["stranka"]))
 {
-	$inc = $_GET["stranka"] . ".php";
-	include($inc);
+	if (ctype_alpha($_GET["stranka"]))
+	{
+		$inc = $_GET["stranka"] . ".php";
+		include($inc);
+	}
 }
 else
 {
