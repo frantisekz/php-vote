@@ -29,7 +29,7 @@ if(isset($_GET["vote"]))
 	if ($_SESSION["question"] == $voting->question_count($_SESSION["voting_code"]))
 	{
 		$voting->clear_session();
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=voting_finish">';
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=finish">';
 		die();
 	}
 	$_SESSION["question"] = $_SESSION["question"] + 1;
