@@ -1,21 +1,28 @@
 <?php
 echo '<div class="voting">';
-if((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
+if ((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
 	// Somebody tried to load file directly, die in pain!
 	die();
 }
 
-if(!isset($_SESSION["question"]))
+if (!isset($_SESSION["question"]))
 {
 	$_SESSION["question"] = 1;
 }
 
-if(!isset($_SESSION["voting_user"]))
+if (!isset($_SESSION["voting_user"]))
 {
-	$_SESSION["voting_user"] = $_POST["voting_user"];
+	if (isset($_COOKIE["computer_id"]))
+	{
+
+	}
+	elseif (isset($_POST["voting_user"]))
+	{
+		$_SESSION["voting_user"] = $_POST["voting_user"];
+	}
 }
-if(!isset($_SESSION["voting_code"]))
+if (!isset($_SESSION["voting_code"]))
 {
 	$_SESSION["voting_code"] = $_POST["voting_code"];
 }
@@ -23,7 +30,7 @@ if(!isset($_SESSION["voting_code"]))
 $more = $voting->get_more($_SESSION["voting_code"]);
 
 // Check if somebody voted
-if(isset($_GET["vote"]))
+if (isset($_GET["vote"]))
 {
 	$voting->write_vote($_SESSION["voting_user"], $_SESSION["voting_code"], $_SESSION["question"] , $_GET["vote"]);
 	if ($_SESSION["question"] == $voting->question_count($_SESSION["voting_code"]))
