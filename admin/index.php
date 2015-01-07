@@ -81,12 +81,19 @@ if (isset($_GET["voting_remove"]))
 if (isset($_POST["username_register"]))
 {
 	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+	echo '<META HTTP-EQUIV="Refresh" Content="0">';
 }
+
 if (isset($_GET["voting_lock"]))
 {
 	$voting->voting_lock($_GET["voting_lock"]);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+
+if (isset($_GET["user_remove"]))
+{
+	$user->delete_user($_GET["user_remove"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=uzivatele">';
 }
 ?>
 <html>
