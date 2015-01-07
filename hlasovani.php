@@ -58,7 +58,7 @@ $header = $voting->view_voting($_SESSION["voting_code"]);
 echo "	<div class='mezera'></div>";
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
 echo "<br>";
-echo "<p>1/2</p>";
+echo "<p>" . $_SESSION["question"] . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
 $i = 1;
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
