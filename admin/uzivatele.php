@@ -17,6 +17,11 @@
 		echo '
 		<tr>
 		<td>' . $b . '</td>
+		<td>E-mail</td>
+		<td>Úroveň</td>
+		<td>Počet hlasování</td>
+		<td>Datum vytvoření</td>
+		<td><a href="index.php?sub=uzivatele&user_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
 		</tr>';
 	}
 	?>
@@ -36,11 +41,5 @@
 </select>
 	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Vytvořit účet" name="JPW">
-</form>
-<h2>Smazat uživatele</h2>
-<form method="POST">
-	<input class="kod" type="textfield" name="username_register" size="20" placeholder="Uživatelské jméno">
-	<div class="mezera"></div>
-    <input class="registrovat" type="submit" value="Odstranit účet" name="JPW">
 </form>
 <hr/>
