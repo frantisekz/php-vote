@@ -36,7 +36,7 @@ if (isset($_GET["vote"]))
 	if ($_SESSION["question"] == $voting->question_count($_SESSION["voting_code"]))
 	{
 		$voting->clear_session();
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=voting_finish">';
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?stranka=finish">';
 		die();
 	}
 	$_SESSION["question"] = $_SESSION["question"] + 1;
@@ -62,7 +62,7 @@ echo "<p>" . $_SESSION["question"] . "/" . $voting->question_count($_SESSION["vo
 echo "<br>";
 $i = 1;
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
-{echo '<div style="margin-left:auto;margin-right:auto;width:1100px;">';
+{echo '<div class="hlasovani">';
 	echo '
 	<a href="index.php?stranka=hlasovani&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
 <span>' . $pos . '</span>
