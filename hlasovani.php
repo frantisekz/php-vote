@@ -15,7 +15,7 @@ if (!isset($_SESSION["voting_user"]))
 {
 	if (isset($_COOKIE["computer_id"]))
 	{
-
+		$_SESSION["voting_user"] = $_COOKIE["computer_id"];
 	}
 	elseif (isset($_POST["voting_user"]))
 	{
