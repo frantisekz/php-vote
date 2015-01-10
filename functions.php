@@ -127,9 +127,9 @@ function get_result($id, $question, $possibility)
 	}
 }
 
-function view_votings()
+function view_votings($username, $all)
 {
-	if ($this->username == "admin")
+	if (($username == "admin") AND ($all == 1))
 	{
 		if ($this->in_admin == 1)
 		{
@@ -152,7 +152,8 @@ function view_votings()
 		}
 		foreach ($votings_dir as $voting)
 		{
-			if ($this->get_more($voting) == $user->get_cur_username())
+			$more = $this->get_more($voting);
+			if ($more[1] == $username)
 			{
 				$votings[] = $voting;
 			}

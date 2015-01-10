@@ -11,16 +11,18 @@
 	</tr>
 
 	<?php
+	$levels = array(2 => "Učitel", 3=> "Správce");
 	foreach ($user->view_users() as $b)
 	{
-		$b = chop($b,".txt");
+		$b = $b = substr($b, 0, -4); // returns $b without .txt
+		$user_data = $user->load_file($b);
 		echo '
 		<tr>
 		<td>' . $b . '</td>
-		<td>E-mail</td>
-		<td>Úroveň</td>
-		<td>Počet hlasování</td>
-		<td>Datum vytvoření</td>
+		<td>' . $user_data[1] . '</td>
+		<td>' . $levels[$user_data[2]] . '</td>
+		<td>' . sizeof($voting->view_votings($b, 0)) . '</td>
+		<td>' . date("d.m.Y H:i:s", $user_data[3]) . '</td>
 		<td><a href="index.php?sub=uzivatele&user_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
 		</tr>';
 	}

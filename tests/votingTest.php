@@ -33,7 +33,7 @@ class VotingTest extends PHPUnit_Framework_TestCase {
     {
       $code = date("y") . 1111;
       $voting = new Voting("admin", 0);
-      $this->assertContains($code, $voting->view_votings());
+      $this->assertContains($code, $voting->view_votings("admin", 1));
     }
 
     public function testview_voting()
