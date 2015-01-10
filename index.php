@@ -14,14 +14,16 @@ if (isset($_POST["username_login"]))
 {
 	$user = new user($_SESSION["user_username"], 0);
 	if($user->login($_POST["username_login"], $_POST["password_login"]))
-{}
+	{
+		header("Location: ../admin/index.php");
+	}
 else
-{
-?>
-<script>
-alert("Chybné heslo!");
-</script>
-<?php
+	{
+	?>
+	<script>
+	alert("Chybné heslo!");
+	</script>
+	<?php
 }
 	$voting = new voting($_SESSION["user_username"], 0);
 }
