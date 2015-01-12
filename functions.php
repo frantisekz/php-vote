@@ -1,4 +1,24 @@
 <?php
+function jquery($line)
+{
+	// Includes jQuery js file
+	if ($line == 1)
+	{
+		echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>\n';
+	}
+	if ($line == 2)
+	{
+		echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>\n';
+	}
+}
+
+function bootstrap()
+{
+	echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">\n
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">\n
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>\n';
+}
+
 function register($username, $password, $email, $level)
 {
 	// We specify BCRYPT directly to avoid potential

@@ -8,7 +8,7 @@
 	<meta name="author" content="" />
 	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="css/style.css">
 	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="css/style_mobile.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<?php jquery(1); ?>
 </head>
 <body>
 	<header>
