@@ -49,9 +49,9 @@ else
 	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
-   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=guide';">
+   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=guide';">
 		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
-	<a class="odkaz1" href="index.php?stranka=guide">Návod</a>
+	<a class="odkaz1" href="index.php?page=guide">Návod</a>
 	</li>
 </ul>
 	<div class="clear"></div>

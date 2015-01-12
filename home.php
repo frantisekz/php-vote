@@ -6,7 +6,7 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 </p>
 <div class="mezera"></div>
 <div class="vstoupit-div">
-<form method="POST" action="index.php?stranka=hlasovani">
+<form method="POST" action="index.php?page=hlasovani">
 <?php
 if (!isset($_COOKIE["computer_id"]))
 {
