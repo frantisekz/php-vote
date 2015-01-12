@@ -100,8 +100,6 @@ if (isset($_GET["user_remove"]))
 <head>
 <meta charset="UTF-8">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="../scripts.js"></script>
-<script src="../js/Chart.js"></script>
 <link rel="shortcut icon" href="favicon.gif" />
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
