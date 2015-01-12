@@ -51,6 +51,12 @@ else
 	$actual = "index";
 }
 
+if (isset($_GET["clear_session"]))
+{
+	$voting->clear_session();
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+
 include("themes/" . $theme . "/template/header.php");
 
 if (isset($_GET["page"]))
