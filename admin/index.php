@@ -19,7 +19,7 @@ if (!isset($_SESSION["user_username"]))
 
 if (!isset($_GET['sub']))
 {
-	$_GET['sub'] = "uvod";
+	$_GET['sub'] = "home";
 }
 
 if (isset($_POST['username_logout']))
@@ -103,7 +103,7 @@ if (isset($_GET["user_remove"]))
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" type="text/css" href="styles.css"/>
-<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
 jquery(1);
 bootstrap();

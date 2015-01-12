@@ -51,7 +51,7 @@ else
 	$actual = "index";
 }
 
-include("header.php");
+include("themes/" . $theme . "/template/header.php");
 
 if (isset($_GET["page"]))
 {
@@ -66,6 +66,6 @@ else
 	include("home.php");
 }
 
-include("footer.php");
+include("themes/" . $theme . "/template/footer.php");
 ?>
 </body>

@@ -6,8 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" lang="cs" />
 	<meta name="author" content="" />
-	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="css/style.css">
-	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="css/style_mobile.css">
+	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style.css">
+	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style_mobile.css">
 	<?php jquery(1); ?>
 </head>
 <body>
