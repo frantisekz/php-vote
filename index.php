@@ -42,9 +42,9 @@ if (isset($_POST["username_logout"]))
 {
 	$user->logout();
 }
-elseif (isset($_GET["stranka"]))
+elseif (isset($_GET["page"]))
 {
-	$actual = $_GET["stranka"];
+	$actual = $_GET["page"];
 }
 else
 {
@@ -53,17 +53,17 @@ else
 
 include("header.php");
 
-if (isset($_GET["stranka"]))
+if (isset($_GET["page"]))
 {
-	if (ctype_alpha($_GET["stranka"]))
+	if (ctype_alpha($_GET["page"]))
 	{
-		$inc = $_GET["stranka"] . ".php";
+		$inc = $_GET["page"] . ".php";
 		include($inc);
 	}
 }
 else
 {
-	include("uvod.php");
+	include("home.php");
 }
 
 include("footer.php");

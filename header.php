@@ -9,9 +9,6 @@
 	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="css/style.css">
 	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="css/style_mobile.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/jquery.textfill.min.js"></script>
-	<script type="text/javascript" src="scripts.js"></script>
-	<script src="js/Chart.js"></script>
 </head>
 <body>
 	<header>
@@ -52,9 +49,9 @@ else
 	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
-   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=navod';">
+   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?stranka=guide';">
 		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
-	<a class="odkaz1" href="index.php?stranka=navod">Návod</a>
+	<a class="odkaz1" href="index.php?stranka=guide">Návod</a>
 	</li>
 </ul>
 	<div class="clear"></div>

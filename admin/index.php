@@ -36,13 +36,13 @@ if (isset($_POST["voting_name"]))
 if (isset($_POST["computer_id"]))
 {
 	set_cookie($_POST["computer_id"]);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=nastaveni">';
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
 }
 
 if (isset($_GET["unset_cookie"]))
 {
 	unset_cookie($_POST["computer_id"]);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=nastaveni">';
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
 }
 
 if (isset($_POST["question_name"]))
@@ -93,7 +93,7 @@ if (isset($_GET["voting_lock"]))
 if (isset($_GET["user_remove"]))
 {
 	$user->delete_user($_GET["user_remove"]);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=uzivatele">';
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=users">';
 }
 ?>
 <html>
@@ -119,23 +119,23 @@ if (isset($_GET["user_remove"]))
 <a href="../"><strong>Přejít na web</strong></a>
 <br/>
 <hr>
-<h3<?php if ($_GET['sub'] == "uvod") echo " id=\"active\" "?>><a href="index.php">Úvod</a></h3>
-<h3<?php if ($user->get_level($user->get_cur_username()) == 3) {if ($_GET['sub'] == "uzivatele") echo " id=\"active\" "?>><a href="index.php?sub=uzivatele">Uživatelé</a></h3>
-<h3<?php if ($_GET['sub'] == "nastaveni") echo " id=\"active\" "?>><a href="index.php?sub=nastaveni">Nastavení</a><?php } ?></h3>
+<h3<?php if ($_GET['sub'] == "home") echo " id=\"active\" "?>><a href="index.php">Úvod</a></h3>
+<h3<?php if ($user->get_level($user->get_cur_username()) == 3) {if ($_GET['sub'] == "users") echo " id=\"active\" "?>><a href="index.php?sub=users">Uživatelé</a></h3>
+<h3<?php if ($_GET['sub'] == "settings") echo " id=\"active\" "?>><a href="index.php?sub=settings">Nastavení</a><?php } ?></h3>
 </div>
 
 <div class="admin">
 <?php
 
 switch ($_GET['sub']){
-	case "uzivatele":
-		include('uzivatele.php');
+	case "users":
+		include('users.php');
 		break;
-	case "nastaveni":
-		include('nastaveni.php');
+	case "settings":
+		include('settings.php');
 		break;
 	default:
-		include('uvod.php');
+		include('home.php');
 
 }
 ?>
