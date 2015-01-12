@@ -13,7 +13,7 @@ if (!isset($_SESSION["question"]))
 
 if (!isset($_SESSION["voting_user"]))
 {
-	if (isset($_COOKIE["computer_id"]))
+	if ((isset($_COOKIE["computer_id"])) AND (is_numeric($_COOKIE["computer_id"])))
 	{
 		$_SESSION["voting_user"] = $_COOKIE["computer_id"];
 	}
