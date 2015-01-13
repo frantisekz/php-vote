@@ -254,8 +254,7 @@ function get_questions($id)
 		{
 			$dirname = "voting/" . $id . "/";
 		}
-		$questions = scandir($dirname);
-		$questions = array_diff($questions, array(".", "..", "info.txt"));
+		$questions = array_diff(scandir($dirname), array(".", "..", "info.txt"));
 		return $questions;
 	}
 }
@@ -388,6 +387,74 @@ function add_question($code, $header, $possibilities)
 				}
 			}
 			fclose($file);
+		}
+	}
+}
+
+function remove_question($voting_id, $question_id)
+{
+	if ((is_numeric($voting_id)) AND (is_numeric($question_id)))
+	{
+		if ($this->in_admin == 1)
+		{
+			$write = "../voting/" . $voting_id . "/" . $question_id;
+		}
+		else
+		{
+			$write = "../voting/" . $voting_id . "/" . $question_id;
+		}
+		if(unlink($write))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+function renumber_questions($voting_id)
+{
+	// Must be called after remove_question to maintain consistency of data files
+	$dir = "../voting/" . $voting_id;
+	$questions_real = array_diff(scandir($dir . "/"), array("..", ".", "info.txt"));
+	if ($this->question_count($voting_id) == 0)
+	{
+		// There is no need to renumber voting without questions
+		return false;
+	}
+	$question_last = max($questions_real);
+	if ($this->question_count($voting_id) != $question_last)
+	{
+		// Data files are not consistent, proceed with renumbering
+		$i = 1;
+		foreach ($questions_real as $qq)
+		{
+			// Align array so it starts from 0 key
+			$questions_real_aligned[] = $qq;
+		}
+		while ($i <= $question_last)
+		{
+			if ($questions_real[$i] != $i)
+			{
+				rename($dir . "/" . $questions_real_aligned[$i - 1], $dir . "/" . $i);
+			}
+			$i = $i + 1;
+		}
+	}
+}
+
+function remove_possibility($voting_id, $question, $possibility_id)
+{
+	if ((is_numeric($voting_id)) AND (is_numeric($question)) AND (is_numeric($possibility_id)))
+	{
+		$file_name = "../voting/" . $voting_id . "/" . $question;
+		if (file_exists($file_name))
+		{
+			$file_contents = file($file_name);
+			$file_contents = str_replace($file_contents[$possibility_id], '', $file_contents);
+			file_put_contents($file_name, $file_contents);
 		}
 	}
 }

@@ -72,10 +72,21 @@ if (isset($_POST["question_name"]))
 	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities);
 }
 
+if (isset($_GET["remove_question"]))
+{
+	$voting->remove_question($_GET["voting_edit"], $_GET["remove_question"]);
+	$voting->renumber_questions($_GET["voting_edit"]);
+}
+
 if (isset($_GET["voting_remove"]))
 {
 	$voting->delete_voting($_GET["voting_remove"]);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+
+if (isset($_GET["remove_possibility"]))
+{
+	$voting->remove_possibility($_GET["voting_edit"], $_GET["edit_question"], $_GET["remove_possibility"]);
 }
 
 if (isset($_POST["username_register"]))
