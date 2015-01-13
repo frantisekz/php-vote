@@ -36,7 +36,7 @@ a {
 .prihlasovani {
 	border: 0;
 	float: right;
-	padding-top: 20px;
+	padding-top: 12px;
 }
 
 .okno {
@@ -76,7 +76,7 @@ header {
 	width: 100%;
 	background: linear-gradient(#565656, #222222);
 	text-align: left;
-	height: 60px;
+	height: 55px;
 	min-width: 1240px;
 }
 
@@ -111,7 +111,7 @@ header h1 a strong {
 padding-right:70px;
 width:400px;
 margin:0 auto;
-	padding-top: 20px;
+	padding-top: 17px;
 	text-align: center;
 }
 
@@ -236,7 +236,7 @@ footer {
 /* Poll */ 
 h4 {
 	margin-right: 50px;
-	padding-top: 20px;
+	padding-top: 13px;
 	color: whitesmoke;
 	text-align: right;
 	font-size: 25px;

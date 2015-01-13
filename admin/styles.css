@@ -174,12 +174,13 @@ legend {
 }
 span{color:black;}
 
-.graph{
-list-style-position:inside;
-float:right;
-border: 1px solid black;
-font-size:20px;
-width:600px;
+.chart div{
+  font: 14px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 6px;
+  margin: 1px;
+  color: white;
 }
 
 #result{
@@ -191,6 +192,18 @@ width:600px;
 
 #legenda{
 padding-right:10px;
-font-size:25px;
+font-size:21px;
 position:absolute;
 right:100px;}
+
+#pc_submit {
+	cursor: pointer;
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+	border: 0.5px solid green;
+	color: white;
+	height: 30px;
+	width: 150px;
+	box-shadow: -1px -1px -2px #000;
+	font-size: 20px;
+}

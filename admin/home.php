@@ -1,3 +1,4 @@
+<hr/>
 <h1>Vítejte v administraci systému php-vote!</h1>
 
 <h1>Správa hlasování</h1>
@@ -110,7 +111,7 @@ elseif(isset($_GET["voting_result"]))
 		$p = 0;
 		echo "<hr>";
 	}
-  /* echo '
+echo '
 <div id="result">
 			<h1>Celkem hlasů: 34</h1>
 			<fieldset class="graph">
@@ -125,17 +126,21 @@ elseif(isset($_GET["voting_result"]))
 			<a>Otázka 5</a>
 		</legend>
 <ul id="legenda">
-	<li style="color:#F7464A;width:200px;"><span class="question">Odpověď 1</span>
+	<li style="color:#F7464A;"><span class="question">Odpověď 1</span>
 	<li style="color:#46BFBD"><span class="question">Odpověď 2</span>
 	<li style="color:#FDB45C"><span class="question">Odpověď 3</span>
 	<li style="color:#2c6acf"><span class="question">Odpověď 4</span>
 </ul>
-		<div id="canvas-holder">
-			<canvas id="chart-area" width="800" height="800"/>
+		<div class="chart">
+  <div style="width: 40px;background-color:#F7464A">4</div>
+  <div style="width: 80px;background-color:#46BFBD">8</div>
+  <div style="width: 150px;background-color:#FDB45C">15</div>
+  <div style="width: 160px;background-color:#2c6acf">16</div>
+</div>
 		</div>
 
 		</fieldset>
-</div>';*/
+</div>';
 ?>
 <script type="text/javascript">
 var doughnutData = [';
@@ -260,3 +265,5 @@ else
 	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
 </form>';
 }
+?>
+<hr/>
