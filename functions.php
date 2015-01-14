@@ -301,10 +301,24 @@ function voting_lock($code)
 {
 	if (is_numeric($code))
 	{
-		$file_name = "../voting/" . $code . "/info.txt";
+		if ($this->in_admin == 1)
+		{
+			$file_name = "../voting/" . $code . "/info.txt";
+		}
+		else
+		{
+			$file_name = "voting/" . $code . "/info.txt";
+		}
 		$file = file_get_contents($file_name);
 		$file .= "+++0\n";
-		file_put_contents($file_name, $file);
+		if(file_put_contents($file_name, $file))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 
@@ -312,18 +326,14 @@ function create_voting($name)
 {
 	if(is_safe($name))
 	{
-		$rand = rand(1000, 9999);
-		if ($name == "test")
-		{
-			$rand = 1111;
-		}
+		$rand = date("y") . rand(1000, 9999);
 		if ($this->in_admin == 1)
 		{
-			$dirname = "../voting/" . date("y") . $rand;
+			$dirname = "../voting/" . $rand;
 		}
 		else
 		{
-			$dirname = "voting/" . date("y") . $rand;
+			$dirname = "voting/" . $rand;
 		}
 		while (file_exists($dirname))
 		{
@@ -358,6 +368,7 @@ function add_question($code, $header, $possibilities)
 {
 	if ((is_safe($code)) AND ((is_safe($header))))
 	{
+		$bad = 0;
 		/*foreach ($possibilities as $possibility)
 		{
 			if (!is_safe($possibility))
@@ -367,7 +378,14 @@ function add_question($code, $header, $possibilities)
 		}*/
 		if ($bad != 1)
 		{
-			$path = "../voting/" . $code . "/";
+			if ($this->in_admin == 1)
+			{
+				$path = "../voting/" . $code . "/";
+			}
+			else
+			{
+				$path = "voting/" . $code . "/";
+			}
 			$i = 1;
 			$filename = $path . $i;
 			while (file_exists($filename))
@@ -383,7 +401,14 @@ function add_question($code, $header, $possibilities)
 				if ($possibility[0] != "")
 				{
 					$write = $possibility[0] . "\n";
-					fwrite($file, $write);
+					if (fwrite($file, $write))
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 			}
 			fclose($file);
@@ -401,7 +426,7 @@ function remove_question($voting_id, $question_id)
 		}
 		else
 		{
-			$write = "../voting/" . $voting_id . "/" . $question_id;
+			$write = "voting/" . $voting_id . "/" . $question_id;
 		}
 		if(unlink($write))
 		{
@@ -417,12 +442,19 @@ function remove_question($voting_id, $question_id)
 function renumber_questions($voting_id)
 {
 	// Must be called after remove_question to maintain consistency of data files
-	$dir = "../voting/" . $voting_id;
+	if ($this->in_admin == 1)
+	{
+		$dir = "../voting/" . $voting_id;
+	}
+	else
+	{
+		$dir = "voting/" . $voting_id;
+	}
 	$questions_real = array_diff(scandir($dir . "/"), array("..", ".", "info.txt"));
 	if ($this->question_count($voting_id) == 0)
 	{
 		// There is no need to renumber voting without questions
-		return false;
+		return true;
 	}
 	$question_last = max($questions_real);
 	if ($this->question_count($voting_id) != $question_last)
@@ -434,14 +466,27 @@ function renumber_questions($voting_id)
 			// Align array so it starts from 0 key
 			$questions_real_aligned[] = $qq;
 		}
-		while ($i <= $question_last)
+		while ($i < $question_last)
 		{
-			if ($questions_real[$i] != $i)
+			if (!isset($questions_real_aligned[$i]))
 			{
 				rename($dir . "/" . $questions_real_aligned[$i - 1], $dir . "/" . $i);
 			}
 			$i = $i + 1;
 		}
+	}
+	// Update variables
+	$questions_real = array_diff(scandir($dir . "/"), array("..", ".", "info.txt"));
+	$question_last = max($questions_real);
+	if ($this->question_count($voting_id) == $question_last)
+	{
+		// After-run test OK
+		return true;
+	}
+	else
+	{
+		// Something went wrong, please fix data files by hand
+		return false;
 	}
 }
 
