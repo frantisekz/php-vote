@@ -15,7 +15,7 @@ if (isset($_POST["username_login"]))
 	$user = new user($_SESSION["user_username"], 0);
 	if($user->login($_POST["username_login"], $_POST["password_login"]))
 	{
-		header("Location: ../admin/index.php");
+		header("Location: admin/index.php");
 	}
 else
 	{
