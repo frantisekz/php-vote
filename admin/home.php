@@ -17,7 +17,9 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	<th class="short">Odstranit</th>
 	<th class="short">Uzavřít</th>
 	</tr>';
-	foreach ($voting->view_votings($user->get_cur_username(), 0) as $b)
+	if ($voting->view_votings($user->get_cur_username(), 0)!=0)
+	{
+  	foreach ($voting->view_votings($user->get_cur_username(), 0) as $b)
 	{
 			$more = $voting->get_more($b);
 			echo '
@@ -32,6 +34,8 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/lock.png" class="icons"></a></td>
 		</tr>';
 	}
+  }
+
 }
 	echo '</table>';
 ?>

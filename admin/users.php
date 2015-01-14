@@ -44,4 +44,24 @@
 	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Vytvořit účet" name="JPW">
 </form>
+
+<h2>Upravit uživatele</h2>
+<form method="POST">
+	<input class="kod" type="textfield" name="old_name" size="20" placeholder="Staré jméno">
+	<br/><br/>
+		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Nové jméno">
+	<br/><br/>
+	<div class="mezera"></div>
+    <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
+ 	<div class="mezera"></div>
+</form>
+
+<form method="POST">
+		<input class="kod" type="textfield" name="cokoliv" size="20" placeholder="Uživatelské jméno">
+	<br/><br/>
+		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail">
+	<br/><br/>
+	<div class="mezera"></div>
+    <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
+</form>
 <hr/>
