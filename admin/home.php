@@ -162,7 +162,6 @@ echo '
 
 		</fieldset>
 </div>';
-?>
 }
 
 else
