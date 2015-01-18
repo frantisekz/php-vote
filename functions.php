@@ -3,6 +3,10 @@
 // Add support for themes
 $theme = "default";
 
+function random_color() {
+	return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+}
+
 function jquery($line)
 {
 	// Includes jQuery js file
@@ -556,7 +560,23 @@ function delete_voting($id)
 	}
 }
 
-
+function write_vote($user, $code, $question, $possibility)
+{
+	if ((is_numeric($user)) AND (is_numeric($code)) AND (is_numeric($question)) AND (is_numeric($possibility)) AND ($possibility > 0))
+	{
+		$file_name = "voting/" . $code . "/" . $question;
+		if (file_exists($file_name))
+		{
+			$file_contents = file($file_name);
+			$to_replace = $file_contents[$possibility];
+			$replacer = $file_contents[$possibility] . "+++" . $user . "\n";
+			$file = str_replace($to_replace, $replacer, $file_contents);
+			$file[$possibility] = str_replace("\n", "", $file[$possibility]);
+			$file[$possibility] = $file[$possibility] . "\n";
+			file_put_contents($file_name, $file);
+		}
+	}
+}
 }
 
 class user
