@@ -129,39 +129,63 @@ elseif(isset($_GET["voting_result"]))
 			}
 			echo "<br/><br/>";
 		}
-		$p = 0;
+		echo '
+		<!-- Modal -->
+		<div class="modal fade" id="myModal' . $qid . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Graf k otázce: ' . $voting->question_header($_GET["voting_result"], $qid) . '</h4>
+					</div>
+					<div class="modal-body">
+					<div id="result">';
+						$count = 0;
+						$p = 0;
+						foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+						{
+							$count = $count + sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
+							$p = $p + 1;
+						}
+						echo '<h1>Celkem hlasů: ' . $count . '</h1>
+						<fieldset class="graph">
+							<ul id="legenda">';
+								$p = 0;
+								foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+								{
+									$palette[] = random_color();
+									echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $pid . '</span>';
+									$p = $p + 1;
+								}
+								echo  '
+							</ul>
+							<div class="chart">';
+								$p = 0;
+								foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+								{
+									$size = sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
+									echo '<div style="width: ' . ($size * 10) . 'px;background-color:' . $palette[$p] . '">' . $size . '</div>';
+									$p = $p + 1;
+								}
+								echo '
+							</div>
+						</fieldset>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal' . $qid . '">
+		Zobrazit graf
+		</button>
+		';
 		echo "<hr>";
 	}
-echo '
-<div id="result">
-			<h1>Celkem hlasů: 34</h1>
-			<fieldset class="graph">
-		<legend><a>Otázka 1</a>
-			|
-			<a>Otázka 2</a>
-			|
-			<a>Otázka 3</a>
-			|
-			<a>Otázka 4</a>
-			|
-			<a>Otázka 5</a>
-		</legend>
-<ul id="legenda">
-	<li style="color:#F7464A;"><span class="question">Odpověď 1</span>
-	<li style="color:#46BFBD"><span class="question">Odpověď 2</span>
-	<li style="color:#FDB45C"><span class="question">Odpověď 3</span>
-	<li style="color:#2c6acf"><span class="question">Odpověď 4</span>
-</ul>
-		<div class="chart">
-  <div style="width: 40px;background-color:#F7464A">4</div>
-  <div style="width: 80px;background-color:#46BFBD">8</div>
-  <div style="width: 150px;background-color:#FDB45C">15</div>
-  <div style="width: 160px;background-color:#2c6acf">16</div>
-</div>
-		</div>
 
-		</fieldset>
-</div>';
 }
 
 else

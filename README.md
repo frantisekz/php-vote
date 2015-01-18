@@ -18,7 +18,7 @@ These features must be available before the deadline:
 * Authentication with cookies - DONE
 * Administration -
   * Voting -
-    * Graphical output of results
+    * Graphical output of results - DONE
     * Text output of results - DONE
     * Editing of votings, questions and possibilities
     * Removing of votings, questions and possibilities - DONE

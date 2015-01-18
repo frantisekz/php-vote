@@ -8,7 +8,10 @@
 	<meta name="author" content="" />
 	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style.css">
 	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style_mobile.css">
-	<?php jquery(1); ?>
+	<?php
+	jquery(1); 
+	bootstrap();
+	?>
 </head>
 <body>
 	<header>

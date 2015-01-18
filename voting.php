@@ -35,7 +35,6 @@ if (isset($_GET["vote"]))
 	$voting->write_vote($_SESSION["voting_user"], $_SESSION["voting_code"], $_SESSION["question"] , $_GET["vote"]);
 	if ($_SESSION["question"] == $voting->question_count($_SESSION["voting_code"]))
 	{
-		$voting->clear_session();
 		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=finish">';
 		die();
 	}
