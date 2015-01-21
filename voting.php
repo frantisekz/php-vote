@@ -61,12 +61,12 @@ echo "<p>" . $_SESSION["question"] . "/" . $voting->question_count($_SESSION["vo
 echo "<br>";
 $i = 1;
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
-{echo '<div class="hlasovani">';
+{
+	echo '<div class="hlasovani">';
 	echo '
 	<a href="index.php?page=voting&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
 <span>' . $pos . '</span>
 </div></a>';
-
 $i=$i+1;
  echo '</div>';
 }
