@@ -66,7 +66,7 @@ if (isset($_POST["question_name"]))
 	while($i<=$j)
 	{
 		$name = "possibility_" . $i;
-		$possibilities[] = array($_POST[$name]);
+		$possibilities[] = $_POST[$name];
 		$i = $i + 1;
 	}
 	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]);
