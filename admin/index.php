@@ -69,7 +69,7 @@ if (isset($_POST["question_name"]))
 		$possibilities[] = array($_POST[$name]);
 		$i = $i + 1;
 	}
-	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities);
+	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]);
 }
 
 if (isset($_POST["old_name"]))

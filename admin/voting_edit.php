@@ -30,6 +30,7 @@ else
 	<input class="moznost" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
 	<input type="hidden" id="pocet" name="pocet" value="0">
 	</div>
+	<input class="moznost" type="textfield" name="possibility_right" size="20" placeholder="Číslo správné odpovědi">
 	<div class="mezera"></div>
 	<a id="pridat" href="" onClick="pridejInput();return false;">Přidat  </a>
 	|

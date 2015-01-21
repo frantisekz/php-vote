@@ -1,7 +1,49 @@
 <?php
 echo '<a href="index.php">Zpět na přehled všech hlasování</a><br/>';
 echo '<h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>';
+echo '
+<div id="result">';
+$count = 0;
+$p = 0;
 $questions = $voting->get_questions($_GET["voting_result"]);
+$voters = $voting->voters($_GET["voting_result"]);
+
+foreach ($questions as $qid)
+{
+	foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+	{
+		$count = $count + sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
+		$p = $p + 1;
+	}
+
+}
+
+echo '<h1>Celkem hlasů: ' . $count . '/Správných hlasů: ' . $count . '</h1>
+<fieldset class="graph">
+	<ul id="legenda">';
+		$p = 0;
+		foreach ($voters as $voter)
+		{
+			$palette[] = random_color();
+			echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
+			$p = $p + 1;
+		}
+		echo  '
+	</ul>
+	<div class="chart">';
+		$p = 0;
+		foreach ($voters as $voter)
+		{
+			$count = $voting->count_answered_right($_GET["voting_result"], $voter);
+			echo '<div style="width: ' . ($count * 10) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
+			$p = $p + 1;
+		}
+		echo '
+		</div>
+	</fieldset>
+</div>
+';
+
 $q = 0;
 $p = 0;
 foreach ($questions as $qid)

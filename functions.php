@@ -316,6 +316,112 @@ function question_header($voting, $question)
 	return $file_data[0];
 }
 
+function question_right($voting, $question)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($question)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/" . $question;
+	}
+	$file = fopen($filename, "r");
+	$file_data = explode("+++", fgets($file));
+	fclose($file);
+	return $file_data[1];
+}
+
+function answered_right($voting, $question, $voter)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($question)) OR (!is_numeric($voter)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/" . $question;
+	}
+	$file_contents = file($filename);
+	$i = 0;
+	foreach ($file_contents as $line)
+	{
+		if ($i != 0)
+		{
+			$explode = explode("+++", $line);
+			if ((in_array($voter, $explode)) AND ($this->question_right($voting, $question) == $i))
+			{
+				return true;
+			}
+		}
+		$i = $i + 1;
+	}
+	return false;
+}
+
+function count_answered_right($voting, $voter)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($voter)))
+	{
+		return false;
+	}
+	$questions = $this->get_questions($voting);
+	$right = 0;
+	foreach ($questions as $question)
+	{
+		if ($this->answered_right($voting, $question, $voter))
+		{
+			$right = $right + 1;
+		}
+	}
+	return $right;
+}
+
+function voters($voting)
+{
+	if (!is_numeric($voting))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/1";
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/1";
+	}
+	$file_contents = file($filename);
+	foreach ($file_contents as $line)
+	{
+		$explode = explode("+++", $line);
+		$i = 0;
+		foreach ($explode as $exploded)
+		{
+			if ($i == 0)
+			{
+				// Skip first
+			}
+			else
+			{
+				settype($exploded, "integer");
+				$voters[] = $exploded;
+			}
+			$i = $i + 1;
+		}
+	}
+	$unique = array_unique($voters, SORT_NUMERIC);
+	return $unique;
+}
+
 function voting_lock($code)
 {
 	if (!is_numeric($code))
@@ -385,9 +491,9 @@ function create_voting($name)
 	return $rand;
 }
 
-function add_question($code, $header, $possibilities)
+function add_question($code, $header, $possibilities, $possibility_right)
 {
-	if ((!is_safe($code)) OR ((!is_safe($header))))
+	if ((!is_numeric($code)) OR ((!is_safe($header))) OR (!is_numeric($possibility_right)))
 	{
 		return false;
 		/*foreach ($possibilities as $possibility)
@@ -414,24 +520,30 @@ function add_question($code, $header, $possibilities)
 		$i = $i + 1;
 	}
 	$file = fopen($filename, "w+");
-	fwrite($file, $header . "\n");
+	fwrite($file, $header . "+++" . $possibility_right . "\n");
 	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
 		if ($possibility[0] != "")
 		{
-			$write = $possibility[0] . "\n";
-			if (fwrite($file, $write))
-			{
-				return true;
-			}
+			$write = $possibility . "\n";
+			$bad = 0;
+			if(fwrite($file, $write)) {}
 			else
 			{
-				return false;
+				$bad = 1;
 			}
 		}
 	}
 	fclose($file);
+	if ($bad != 1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 function remove_question($voting_id, $question_id)
