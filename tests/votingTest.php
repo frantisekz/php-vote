@@ -55,10 +55,10 @@ class VotingTest extends PHPUnit_Framework_TestCase {
       $voting = new Voting("admin", 0);
       $possibilities = array("Possibility 1", "Possibility 2", "Possibility 3", "Possibility 4");
       // Probably encountering phpunit bug here, so questions aren't created properly
-      $this->assertTrue($voting->add_question($rand, "Question number 1 Header", $possibilities));
-      $this->assertTrue($voting->add_question($rand, "Question number 2 Header", $possibilities));
-      $this->assertTrue($voting->add_question($rand, "Question number 3 Header", $possibilities));
-      $this->assertTrue($voting->add_question($rand, "Question number 4 Header", $possibilities));
+      $this->assertTrue($voting->add_question($rand, "Question number 1 Header", $possibilities, rand(1,4)));
+      $this->assertTrue($voting->add_question($rand, "Question number 2 Header", $possibilities, rand(1,4)));
+      $this->assertTrue($voting->add_question($rand, "Question number 3 Header", $possibilities, rand(1,4)));
+      $this->assertTrue($voting->add_question($rand, "Question number 4 Header", $possibilities, rand(1,4)));
     }
 
     /**
