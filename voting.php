@@ -94,15 +94,17 @@ echo '</div>
             $count = 0;
             $p = 0;
             $voters = $voting->voters($_SESSION["voting_code"]);
-           echo '<h1>Správných hlasů: ' . $right . '</h1>
+           echo '<h1>Graf počtu správných hlasů</h1>
             <fieldset class="graph">
               <ul id="legenda">';
                 $p = 0;
                 foreach ($voters as $voter)
                 {
-                  $palette[] = random_color();
-                  echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
-                  $p = $p + 1;
+                	$count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
+					$right = $right + $count;
+                	$palette[] = random_color();
+                	echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
+                	$p = $p + 1;
                 }
                 echo  '
               </ul>
