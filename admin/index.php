@@ -101,7 +101,7 @@ if (isset($_GET["remove_possibility"]))
 
 if (isset($_POST["username_register"]))
 {
-	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"]);
+	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"], 1);
 	echo '<META HTTP-EQUIV="Refresh" Content="0">';
 }
 

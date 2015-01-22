@@ -30,7 +30,7 @@ function bootstrap()
 	';
 }
 
-function register($username, $password, $email, $level)
+function register($username, $password, $email, $level, $in_admin)
 {
 	if ((!is_safe($username)) OR (!is_safe($password)) OR (!is_safe($email)) OR (!is_numeric($level)))
 	{
@@ -40,7 +40,7 @@ function register($username, $password, $email, $level)
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
 	$write = $password . "+++" . $email . "+++" . $level . "+++" . time();
-	if ($username == "test")
+	if ($in_admin == 0)
 	{
 		$file_name = "users/" . $username . ".txt";
 	}

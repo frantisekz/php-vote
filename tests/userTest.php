@@ -12,7 +12,7 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
     public function testRegister()
     {
-        $this->assertTrue(register("test", "test", "test", 3));
+        $this->assertTrue(register("test", "test", "test", 3, 0));
 
     }
 
