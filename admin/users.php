@@ -23,7 +23,7 @@
 		<td>' . $levels[$user_data[2]] . '</td>
 		<td>' . sizeof($voting->view_votings($b, 0)) . '</td>
 		<td>' . date("d.m.Y H:i:s", $user_data[3]) . '</td>
-		<td><a href="index.php?sub=uzivatele&user_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
+		<td><a href="index.php?sub=users&user_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
 		</tr>';
 	}
 	?>
