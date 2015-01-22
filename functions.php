@@ -436,8 +436,44 @@ function voting_lock($code)
 	{
 		$file_name = "voting/" . $code . "/info.txt";
 	}
-	$file = file_get_contents($file_name);
-	$file .= "+++0\n";
+	$file_contents = file($file_name);
+	$to_replace = $file_contents[0];
+	$more = $this->get_more($code);
+	$replacer = $more[0] . "+++" . $more[1] . "+++" . $more[2] . "+++0";
+	$file = str_replace($to_replace, $replacer, $file_contents);
+	$file[0] = str_replace("\n", "", $file[0]);
+	$file[0] = $file[0] . "\n";
+	if(file_put_contents($file_name, $file))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function voting_unlock($code)
+{
+	if (!is_numeric($code))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$file_name = "../voting/" . $code . "/info.txt";
+	}
+	else
+	{
+		$file_name = "voting/" . $code . "/info.txt";
+	}	
+	$file_contents = file($file_name);
+	$to_replace = $file_contents[0];
+	$more = $this->get_more($code);
+	$replacer = $more[0] . "+++" . $more[1] . "+++" . $more[2] . "+++1";
+	$file = str_replace($to_replace, $replacer, $file_contents);
+	$file[0] = str_replace("\n", "", $file[0]);
+	$file[0] = $file[0] . "\n";
 	if(file_put_contents($file_name, $file))
 	{
 		return true;
@@ -485,7 +521,7 @@ function create_voting($name)
 		$file_name = $dirname . "/info.txt";
 	}
 	$file = fopen($file_name, "w+");
-	$write = $name . "+++" . $this->username . "+++" . time();
+	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
 	fwrite($file, $write);
 	fclose($file);
 	return $rand;

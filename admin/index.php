@@ -111,6 +111,12 @@ if (isset($_GET["voting_lock"]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
+if (isset($_GET["voting_unlock"]))
+{
+	$voting->voting_unlock($_GET["voting_unlock"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+}
+
 if (isset($_GET["user_remove"]))
 {
 	$user->delete_user($_GET["user_remove"]);

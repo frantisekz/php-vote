@@ -126,6 +126,7 @@ tr:nth-child(odd) {
 td {
 	overflow: auto;
 	border: 1px solid black;
+	height: 50px;
 }
 
 #new_poll {

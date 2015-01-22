@@ -50,7 +50,7 @@ if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["vot
 	die();
 }
 
-if (isset($more[3]))
+if ($more[3] == 0)
 {
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=timeout">';
 	die();

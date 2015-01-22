@@ -9,7 +9,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	echo '
 	<table id="list">
 	<tr>
-	<th class="long">Jméno</th>
+	<th class="long">Název</th>
 	<th class="long">Počet otázek</th>
 	<th class="long">Datum vytvoření</th>
 	<th class="long">Identifikační kód</th>
@@ -25,14 +25,14 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			$more = $voting->get_more($b);
 			echo '
 			<tr>
-			<td>' . $more[0] . '</td>
+			<td>' . $more[0] . ' <br/>['; if ($more[3] == 0) {echo "Uzamčeno";} else {echo "Otevřeno";} echo ']</td>
 			<td>' . $voting->question_count($b) . '</td>
 			<td>' . $today = date("d.m.Y H:i:s", $more[2]) . '</td>
 			<td>' . $b . '</td>
 			<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
 			<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
 			<td><a href="index.php?voting_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
-			<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/locked.png" class="icons"></a></td>
+			<td><a href="index.php?voting_'; if ($more[3] == 0) {echo "un";} echo 'lock=' . $b . '"><img src="../img/'; if ($more[3] == 0) {echo "un";} echo 'locked.png" class="icons"></a></td>
 		</tr>';
 	}
   }
