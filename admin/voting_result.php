@@ -41,7 +41,15 @@ echo '<h1>Správných hlasů: ' . $right . '</h1>
 		foreach ($voters as $voter)
 		{
 			$count = $voting->count_answered_right($_GET["voting_result"], $voter);
-			echo '<div style="width: ' . ($count * 10) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
+			if ($count != 0)
+			{
+				$percent = ($count * 100) / $right;
+			}
+			else
+			{
+				$percent = 0;
+			}
+			echo '<div style="width: ' . round(($percent * 4)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
 			$p = $p + 1;
 		}
 		echo '

@@ -110,9 +110,17 @@ echo '</div>
                 $p = 0;
                 foreach ($voters as $voter)
                 {
-                  $count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
-                  echo '<div style="width: ' . ($count * 10) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
-                  $p = $p + 1;
+                	$count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
+       				if ($count != 0)
+					{
+						$percent = ($count * 100) / $right;
+					}
+					else
+					{
+						$percent = 0;
+					}
+                	echo '<div style="width: ' . round(($percent * 4)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
+                	$p = $p + 1;
                 }
                 echo '
                 </div>
