@@ -1,4 +1,4 @@
-<hr/>
+﻿<hr/>
 <h1>Vítejte v administraci systému php-vote!</h1>
 
 <h1>Správa hlasování</h1>
@@ -32,7 +32,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
 			<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
 			<td><a href="index.php?voting_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
-			<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/lock.png" class="icons"></a></td>
+			<td><a href="index.php?voting_lock=' . $b . '"><img src="../img/locked.png" class="icons"></a></td>
 		</tr>';
 	}
   }
