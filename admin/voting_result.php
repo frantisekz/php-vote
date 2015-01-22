@@ -15,10 +15,16 @@ foreach ($questions as $qid)
 		$count = $count + sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
 		$p = $p + 1;
 	}
-
+}
+$right = 0;
+$count = 0;
+foreach ($voters as $voter)
+{
+	$count = $voting->count_answered_right($_GET["voting_result"], $voter);
+	$right = $right + $count;
 }
 
-echo '<h1>Celkem hlasů: ' . $count . '/Správných hlasů: ' . $count . '</h1>
+echo '<h1>Správných hlasů: ' . $right . '</h1>
 <fieldset class="graph">
 	<ul id="legenda">';
 		$p = 0;
