@@ -1,4 +1,4 @@
-<hr/>
+﻿<hr/>
 <h2>Existující uživatelé</h2>
 <table id="list">
 	<tr>
@@ -44,24 +44,22 @@
 	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Vytvořit účet" name="JPW">
 </form>
-
+<hr/>
 <h2>Upravit uživatele</h2>
 <form method="POST">
-	<input class="kod" type="textfield" name="old_name" size="20" placeholder="Staré jméno">
+	<input class="kod" type="textfield" name="old_name" size="20" placeholder="Staré uživ. jméno">
 	<br/><br/>
-		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Nové jméno">
+		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Nové uživ. jméno">
 	<br/><br/>
-	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
  	<div class="mezera"></div>
 </form>
-
+<br>
 <form method="POST">
 		<input class="kod" type="textfield" name="cokoliv" size="20" placeholder="Uživatelské jméno">
 	<br/><br/>
 		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail">
 	<br/><br/>
-	<div class="mezera"></div>
-    <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
+    <input class="registrovat" type="submit" value="Změnit email" name="JPW">
 </form>
 <hr/>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" type="img/ico" href="img/favicon.ico">
@@ -8,9 +8,10 @@
 	<meta name="author" content="" />
 	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style.css">
 	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style_mobile.css">
-	<?php
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<?php
 	jquery(1); 
-	bootstrap();
 	?>
 </head>
 <body>
@@ -52,7 +53,7 @@ else
 	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
-   <li <?php if ($actual == "navod"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=guide';">
+   <li <?php if ($actual == "guide"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=guide';">
 		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
 	<a class="odkaz1" href="index.php?page=guide">Návod</a>
 	</li>

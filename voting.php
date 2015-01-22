@@ -1,4 +1,7 @@
+﻿<script src="js/jquery.textfill.min.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
 <?php
+bootstrap();
 echo '<div class="voting">';
 if ((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
@@ -52,10 +55,7 @@ if (isset($more[3]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=timeout">';
 	die();
 }
-echo '    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
-      Zobrazit graf
-    </button>';
+
 $header = $voting->view_voting($_SESSION["voting_code"]);
 echo "	<div class='mezera'></div>";
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
@@ -63,18 +63,25 @@ echo "<br>";
 echo "<p>" . $_SESSION["question"] . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
 $i = 1;
+	echo '<div class="hlasovani">';
 foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
 {
-	echo '<div class="hlasovani">';
+
 	echo '
 	<a href="index.php?page=voting&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
 <span>' . $pos . '</span>
 </div></a>';
 $i=$i+1;
- echo '</div>';
+
 }
+ echo '</div>';
+echo '    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
+      Zobrazit graf
+    </button>';
 echo '</div>
 <!-- Modal -->
+
   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 echo '<a href="index.php">Zpět na přehled všech hlasování</a><br/>';
 echo '<h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>';
 echo '
@@ -55,12 +55,14 @@ $p = 0;
 foreach ($questions as $qid)
 {
 	$q = $q + 1;
-	echo '<strong>Otázka: ' . $qid . '</strong> (<a href="">Zobrazit graf</a>)<br/>';
+	echo '<h1>Otázka: ' . $qid . '</h1> ';
 	foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 	{
 		$p = $p + 1;
-		echo $pid . ":<br/>";
-		echo "Pro tuto možnost hlasovali: ";
+echo "<h11>";
+			echo $pid . '<br/>';
+echo "</h11>";
+echo "<h12>Pro tuto možnost hlasovali: </h12>";
 		foreach ($voting->get_result($_GET["voting_result"], $q, $p) as $echo)
 		{
 			echo $echo . ", ";
