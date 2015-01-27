@@ -2,7 +2,7 @@
 if (isset($_GET["edit_question"]))
 {
 	echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '">Zpět na úpravy hlasování</a><br/>';
-	echo '<h3>Úpravy hlasování č. ' . $_GET["voting_edit"] . ', otázka č. ' . $_GET["edit_question"] . '</h3>
+	echo '<h3>Úpravy hlasování č. ' . $_GET["voting_edit"] . ', otázka: ' . $voting->question_header($_GET["voting_edit"], $_GET["edit_question"]) . '</h3>
 	<form method="POST">
 	<input class="moznost" type="textfield" name="question_name_edit" size="20" placeholder="Nový název otázky">
 	<div class="mezera"></div>
