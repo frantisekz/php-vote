@@ -582,6 +582,64 @@ function add_question($code, $header, $possibilities, $possibility_right)
 	}
 }
 
+function question_edit($code, $question, $new_title)
+{
+	if ((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_safe($new_title)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$file_name = "../voting/" . $code . "/" . $question;
+	}
+	else
+	{
+		$file_name = "voting/" . $code . "/" . $question;
+	}
+	$file_contents = file($file_name);
+	$to_replace = $file_contents[0];
+	$replacer = $new_title;
+	$file = str_replace($to_replace, $replacer, $file_contents);
+	$file[0] = str_replace("\n", "", $file[0]);
+	$file[0] = $file[0] . "\n";
+	if(file_put_contents($file_name, $file))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function possibility_edit($code, $question, $possibility, $new_title)
+{
+	if ((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_numeric($possibility)) OR (!is_safe($new_title)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$file_name = "../voting/" . $code . "/" . $question;
+	}
+	else
+	{
+		$file_name = "voting/" . $code . "/" . $question;
+	}
+	$file_contents = file($file_name);
+	$exploded = explode("+++", $file_contents);
+	$file = str_replace($exploded[0], $new_title, $file_contents);
+	$to_replace = $file_contents[$possibility];
+	if(file_put_contents($file_name, $file))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function remove_question($voting_id, $question_id)
 {
 	if ((!is_numeric($voting_id)) OR (!is_numeric($question_id)))

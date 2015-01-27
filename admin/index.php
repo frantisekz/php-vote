@@ -45,6 +45,12 @@ if (isset($_GET["unset_cookie"]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
 }
 
+if (isset($_POST["question_name_edit"]))
+{
+	$voting->question_edit($_GET["voting_edit"], $_GET["edit_question"], $_POST["question_name_edit"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?voting_edit=' . $_GET["voting_edit"] . '">';
+}
+
 if (isset($_POST["question_name"]))
 {
 	// Determine number of possibilities
