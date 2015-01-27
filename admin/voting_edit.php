@@ -53,15 +53,18 @@ else
 	foreach ($voting->get_questions($_GET["voting_edit"]) as $qid)
 	{
 		$i = $i + 1;
-		echo '<h2>' . $voting->question_header($_GET["voting_edit"], $i) . '</h2>
-		<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&remove_question=' . $i . '">Odstranit otázku</a>
-		<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $i . '">Upravit otázku</a><br/>
-		';
-		echo "Možnosti: ";
-		foreach ($voting->get_possibilities($_GET["voting_edit"], $i) as $possibility)
+		if ($voting->question_exists($_GET["voting_edit"], $i))
 		{
-			echo $possibility . "; ";
+			echo '<h2>' . $voting->question_header($_GET["voting_edit"], $i) . '</h2>
+			<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&remove_question=' . $i . '">Odstranit otázku</a>
+			<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $i . '">Upravit otázku</a><br/>
+			';
+			echo "Možnosti: ";
+			foreach ($voting->get_possibilities($_GET["voting_edit"], $i) as $possibility)
+			{
+				echo $possibility . "; ";
+			}
 		}
-	}
+		}
 }
 ?>

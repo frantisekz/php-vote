@@ -142,6 +142,7 @@ function clear_session()
 	unset($_SESSION["voting_code"]);
 	unset($_SESSION["voting_user"]);
 	unset($_SESSION["question"]);
+	unset($_SESSION["decrease"]);
 }
 
 function get_result($id, $question, $possibility)
@@ -158,7 +159,14 @@ function get_result($id, $question, $possibility)
 	{
 		$file_name = "voting/" . $id . "/" . $question;
 	}
-	$file_contents = file($file_name);
+	if (file_exists($file_name))
+	{
+		$file_contents = file($file_name);
+	}
+	else
+	{
+		return false;
+	}
 	$explode = explode("+++", $file_contents[$possibility]);
 	$voters = array_diff($explode, array($explode[0]));
 	return $voters;
@@ -247,7 +255,14 @@ function get_possibilities($id, $question)
 	{
 		$file_name = "voting/" . $id . "/" . $question;
 	}
-	$file_contents = file($file_name);
+	if (file_exists($file_name))
+	{
+		$file_contents = file($file_name);
+	}
+	else
+	{
+		return false;
+	}
 	$votings = array();
 	foreach ($file_contents as $line)
 	{
@@ -296,6 +311,30 @@ function get_more($id)
 	return $file_data;
 }
 
+function question_exists($voting, $question)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($question)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/" . $question;
+	}
+	if (file_exists($filename))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function question_header($voting, $question)
 {
 	if ((!is_numeric($voting)) OR (!is_numeric($question)))
@@ -310,7 +349,14 @@ function question_header($voting, $question)
 	{
 		$filename = "voting/" . $voting . "/" . $question;
 	}
-	$file = fopen($filename, "r");
+	if (file_exists($filename))
+	{
+		$file = fopen($filename, "r");
+	}
+	else
+	{
+		return false;
+	}
 	$file_data = explode("+++", fgets($file));
 	fclose($file);
 	return $file_data[0];
@@ -664,7 +710,7 @@ function remove_question($voting_id, $question_id)
 	}
 }
 
-function renumber_questions($voting_id)
+function renumber_questions($voting_id) // Should not be used, will be removed soon!!!
 {
 	if (!is_numeric($voting_id))
 	{

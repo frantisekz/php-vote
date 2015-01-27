@@ -63,7 +63,9 @@ $p = 0;
 foreach ($questions as $qid)
 {
 	$q = $q + 1;
-	echo '<h1>Otázka: ' . $qid . '</h1> ';
+	if ($voting->question_exists($_GET["voting_result"], $q))
+	{
+		echo '<h1>Otázka: ' . $voting->question_header($_GET["voting_result"], $qid). '</h1> ';
 	foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 	{
 		$p = $p + 1;
@@ -132,5 +134,6 @@ echo "<h12>Pro tuto možnost hlasovali: </h12>";
 	</button>
 	';
 	echo "<hr>";
+	}
 }
 ?>

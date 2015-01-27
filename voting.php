@@ -57,24 +57,34 @@ if ($more[3] == 0)
 }
 
 $header = $voting->view_voting($_SESSION["voting_code"]);
+if (!isset($_SESSION["decrease"]))
+{
+	$_SESSION["decrease"] = 0;
+}
+// Check if question exists
+while (!$voting->question_exists($_SESSION["voting_code"], $_SESSION["question"]))
+{
+	$_SESSION["question"] = $_SESSION["question"] + 1;
+	$_SESSION["decrease"] = $_SESSION["decrease"] + 1;
+}
+
 echo "	<div class='mezera'></div>";
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
 echo "<br>";
-echo "<p>" . $_SESSION["question"] . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
+echo "<p>" . ($_SESSION["question"] - $_SESSION["decrease"]) . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
 $i = 1;
 	echo '<div class="hlasovani">';
-foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
-{
+	foreach ($voting->get_possibilities($_SESSION["voting_code"], $_SESSION["question"]) as $pos)
+	{
 
-	echo '
-	<a href="index.php?page=voting&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
-<span>' . $pos . '</span>
-</div></a>';
-$i=$i+1;
-
-}
- echo '</div>';
+		echo '
+		<a href="index.php?page=voting&vote=' . $i . '"><div value="' . $pos . '" id="Poll_'.$i.'">
+	<span>' . $pos . '</span>
+	</div></a>';
+	$i=$i+1;
+	}
+echo '</div>';
 echo '    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
       Zobrazit graf
