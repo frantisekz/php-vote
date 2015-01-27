@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" type="img/ico" href="img/favicon.ico">
@@ -51,10 +51,18 @@ else
 	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
+  
    <li <?php if ($actual == "guide"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=guide';">
 		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
 	<a class="odkaz1" href="index.php?page=guide">Návod</a>
 	</li>
+  
+  	</li>
+   <li <?php if ($actual == "results"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=results';">
+		   	<img src="img/results.png" style="height:17px;width:17px" alt="vysledky">
+	<a class="odkaz1" href="index.php?page=results">Výsledky</a>
+	</li>
+  
 </ul>
 	<div class="clear"></div>
 	</header>
