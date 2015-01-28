@@ -22,11 +22,6 @@ else
 	echo '<a href="index.php">Zpět na přehled všech hlasování</a><br/>';
 	echo '<h3>Úpravy hlasování č. ' . $_GET["voting_edit"] . '</h3>';
 	echo '<script type="text/javascript">
-	var counter=5;
-	function pridejInput() {
-		document.getElementById(\'odpovedi\').innerHTML += "<input class=\"moznost\" type=\"textfield\" name=\"possibility_"+counter+"\" size=\"20\" placeholder=\"Možnost "+counter+"\">";
-		document.getElementById(\'pocet\').value=counter++;
-	}
 	</script>
 	<form method="POST">
 	<input class="kod" type="textfield" name="question_name" size="20" placeholder="Název otázky">
@@ -35,13 +30,14 @@ else
 	<input class="moznost" type="textfield" name="possibility_2" size="20" placeholder="Možnost 2">
 	<input class="moznost" type="textfield" name="possibility_3" size="20" placeholder="Možnost 3">
 	<input class="moznost" type="textfield" name="possibility_4" size="20" placeholder="Možnost 4">
+  <input class="moznost" type="textfield" name="possibility_5" size="20" placeholder="Možnost 5">
+  <input class="moznost" type="textfield" name="possibility_6" size="20" placeholder="Možnost 6">
+  <input class="moznost" type="textfield" name="possibility_7" size="20" placeholder="Možnost 7">
+  <input class="moznost" type="textfield" name="possibility_8" size="20" placeholder="Možnost 8">
 	<input type="hidden" id="pocet" name="pocet" value="0">
 	</div>
 	<input class="moznost" type="textfield" name="possibility_right" size="20" placeholder="Číslo správné odpovědi">
 	<div class="mezera"></div>
-	<a id="pridat" href="" onClick="pridejInput();return false;">Přidat  </a>
-	|
-	<a id="odebrat" href="" onClick="pridejInput();return false;">  Odebrat</a>
 	<br>
 	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
 	</form>
