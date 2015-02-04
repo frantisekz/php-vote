@@ -1,4 +1,4 @@
-﻿<hr/>
+<hr/>
 <h2>Existující uživatelé</h2>
 <table id="list">
 	<tr>
@@ -7,6 +7,7 @@
 		<th class="long">Úroveň</th>
 		<th class="short">Počet hlasování</th>
 		<th class="short">Datum vytvoření</th>
+		<th class="short">Upravit</th>
 		<th class="short">Odstranit</th>
 	</tr>
 
@@ -23,12 +24,17 @@
 		<td>' . $levels[$user_data[2]] . '</td>
 		<td>' . sizeof($voting->view_votings($b, 0)) . '</td>
 		<td>' . date("d.m.Y H:i:s", $user_data[3]) . '</td>
+		<td><a href="index.php?sub=users&user_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>		
 		<td><a href="index.php?sub=users&user_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
 		</tr>';
 	}
 	?>
 
 </table>
+<?php
+if(!isset($_GET["user_edit"]))
+{
+echo '
 <h2>Vytvořit uživatele</h2>
 <form method="POST">
 	<input class="kod" type="textfield" name="username_register" size="20" placeholder="Uživatelské jméno">
@@ -44,22 +50,29 @@
 	<div class="mezera"></div>
     <input class="registrovat" type="submit" value="Vytvořit účet" name="JPW">
 </form>
-<hr/>
+<hr/>';
+}
+
+if(isset($_GET["user_edit"]))
+{
+echo '
+<a href="index.php?sub=users">Zpět na přehled všech uživatelů</a><br/>
 <h2>Upravit uživatele</h2>
 <form method="POST">
-	<input class="kod" type="textfield" name="old_name" size="20" placeholder="Staré uživ. jméno">
-	<br/><br/>
-		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Nové uživ. jméno">
+		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Uživatelské jméno" value="' . $_GET["user_edit"] . '">
 	<br/><br/>
     <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
  	<div class="mezera"></div>
 </form>
 <br>
 <form method="POST">
-		<input class="kod" type="textfield" name="cokoliv" size="20" placeholder="Uživatelské jméno">
-	<br/><br/>
-		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail">
+		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail" value="' . $user->get_email($_GET["user_edit"]) . '">
 	<br/><br/>
     <input class="registrovat" type="submit" value="Změnit email" name="JPW">
-</form>
+</form>';
+}
+
+
+
+?>
 <hr/>
