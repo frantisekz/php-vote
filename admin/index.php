@@ -78,14 +78,14 @@ if (isset($_POST["question_name"]))
 	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]);
 }
 
-if (isset($_POST["old_name"]))
+if (isset($_POST["new_name"]))
 {
-	$user->edit_user($_POST["old_name"], $_POST["new_name"]);
+	$user->edit_user($_GET["user_edit"], $_POST["new_name"]);
 }
 
-if (isset($_POST["cokoliv"]))
+if (isset($_POST["new_email"]))
 {
-	$user->re_email($_POST["cokoliv"], $_POST["new_email"]);
+	$user->re_email($_GET["user_edit"], $_POST["new_email"]);
 }
 
 if (isset($_GET["remove_question"]))
