@@ -15,7 +15,7 @@
 	$levels = array(2 => "Učitel", 3=> "Správce");
 	foreach ($user->view_users() as $b)
 	{
-		$b = $b = substr($b, 0, -4); // returns $b without .txt
+		$b = $b = substr($b, 0, -4); // returns username without .txt
 		$user_data = $user->load_file($b);
 		echo '
 		<tr>
@@ -55,21 +55,19 @@ echo '
 
 if(isset($_GET["user_edit"]))
 {
-echo '
-<a href="index.php?sub=users">Zpět na přehled všech uživatelů</a><br/>
-<h2>Upravit uživatele</h2>
+echo '<h2>Upravit uživatele</h2>
 <form method="POST">
 		<input class="kod" type="textfield" name="new_name" size="20" placeholder="Uživatelské jméno" value="' . $_GET["user_edit"] . '">
-	<br/><br/>
     <input class="registrovat" type="submit" value="Změnit jméno" name="JPW">
  	<div class="mezera"></div>
 </form>
 <br>
 <form method="POST">
 		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail" value="' . $user->get_email($_GET["user_edit"]) . '">
-	<br/><br/>
     <input class="registrovat" type="submit" value="Změnit email" name="JPW">
-</form>';
+</form>
+<a class="btn btn-default btn-lg" href="index.php?sub=users" role="button">Zpět</a>
+';
 }
 
 

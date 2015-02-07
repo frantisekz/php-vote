@@ -1,9 +1,13 @@
 ﻿<hr/>
-<h1>Vítejte v administraci systému php-vote!</h1>
-
-<h1>Správa hlasování</h1>
-
 <?php
+
+if (!isset($_SESSION["welcome"]))
+{
+	echo '<h1>Vítejte v administraci systému php-vote!</h1>';
+	$_SESSION["welcome"] = 1;
+}
+
+echo '<h1>Správa hlasování</h1>';
 if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!isset($_GET["voting_remove"])) AND (!isset($_GET["voting_lock"])))
 {
 	echo '
@@ -13,10 +17,10 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	<th class="long">Počet otázek</th>
 	<th class="long">Datum vytvoření</th>
 	<th class="long">Identifikační kód</th>
-	<th class="short">Přidat/Upravit ot.</th>
+	<th class="short">Upravit otázku</th>
 	<th class="short">Výsledky</th>
 	<th class="short">Odstranit</th>
-	<th class="short">Uzavřít</th>
+	<th class="short">Uzamčení</th>
 	</tr>';
 	if ($voting->view_votings($user->get_cur_username(), 0)!=0)
 	{

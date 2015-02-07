@@ -52,11 +52,6 @@ else
 	<a  class="odkaz1" href="index.php">Domů</a>
 	</li>
   
-   <li <?php if ($actual == "guide"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=guide';">
-		   	<img src="img/navod.png" style="height:17px;width:17px" alt="navod">
-	<a class="odkaz1" href="index.php?page=guide">Návod</a>
-	</li>
-  
   	</li>
    <li <?php if ($actual == "results"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=results';">
 		   	<img src="img/results.png" style="height:17px;width:17px" alt="vysledky">

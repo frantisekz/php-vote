@@ -1,30 +1,20 @@
 ﻿<?php
-echo '<a href="index.php">Zpět na přehled všech hlasování</a><br/>';
-echo '<h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>';
-echo '
+echo '<a class="btn btn-default btn-lg" href="index.php" role="button">Zpět</a>
+<h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>
 <div id="result">';
 $count = 0;
 $p = 0;
+$right = 0;
 $questions = $voting->get_questions($_GET["voting_result"]);
 $voters = $voting->voters($_GET["voting_result"]);
 
-foreach ($questions as $qid)
-{
-	foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
-	{
-		$count = $count + sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
-		$p = $p + 1;
-	}
-}
-$right = 0;
-$count = 0;
 foreach ($voters as $voter)
 {
 	$count = $voting->count_answered_right($_GET["voting_result"], $voter);
 	$right = $right + $count;
 }
 
-echo '<h1>Správných hlasů: ' . $right . '</h1>
+echo '<h3>Správných hlasů: ' . $right . '</h3>
 <fieldset class="graph">
 	<ul id="legenda">';
 		$p = 0;

@@ -1015,8 +1015,9 @@ function login($username, $password)
 
 function logout()
 {
-		unset($_SESSION["user_username"]);
-		unset($_POST["username_logout"]);
+	unset($_SESSION["user_username"]);
+	unset($_POST["username_logout"]);
+	unset($_POST["welcome"]);
 }
 }
 ?>
