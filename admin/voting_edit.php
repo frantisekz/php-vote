@@ -50,7 +50,7 @@ else
 	</select>
 	<div class="mezera"></div>
 	<br>
-	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
+	<input class="submit_question" type="submit" value="Uložit otázku">
 	<a class="btn btn-default btn-lg" href="index.php" role="button">Zpět</a>
 	</form>
 	<hr>
