@@ -38,24 +38,24 @@ else
 {
 	?>
 <form method="post">
- <input class="okno" type="text" name="username_login" size="20" placeholder="Jméno" autocomplete="off">
-   <input class="okno" type="password" name="password_login" size="20" placeholder="Heslo">
-<input class="tlacitko" type="submit" value="Přihlásit se" />
+ <input class="login_window" type="text" name="username_login" size="20" placeholder="Jméno" autocomplete="off">
+   <input class="login_window" type="password" name="password_login" size="20" placeholder="Heslo">
+<input class="login_button" type="submit" value="Přihlásit se" />
 		</form>
 		<?php
 }
 		?>
 	</fieldset>
-<ul id="header">
-   <li <?php if ($actual == "index"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php';">
-	   	<img src="img/index.png" style="height:17px;width:17px" alt="uvod">
-	<a  class="odkaz1" href="index.php">Domů</a>
+<ul id="buttons">
+   <li <?php if ($actual == "index"){?>id="active_button" <?php } else { ?> id="neaktivni" <?php } ?>  onclick="location.href = 'index.php';">
+	   	<img style="align:middle" src="img/index.png" alt="uvod">
+	<a href="index.php">Domů</a>
 	</li>
   
   	</li>
-   <li <?php if ($actual == "results"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=results';">
-		   	<img src="img/results.png" style="height:17px;width:17px" alt="vysledky">
-	<a class="odkaz1" href="index.php?page=results">Výsledky</a>
+   <li <?php if ($actual == "results"){?>id="active_button" <?php } else { ?> id="neaktivni" <?php } ?>  onclick="location.href = 'index.php?page=results';">
+		   	<img src="img/results.png" alt="vysledky">
+	<a class="button" href="index.php?page=results">Výsledky</a>
 	</li>
   
 </ul>
