@@ -1,7 +1,8 @@
-Ôªø<script src="js/jquery.textfill.min.js"></script>
+
+<script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <?php
-bootstrap();
+bootstrap(1);
 echo '<div class="voting">';
 if ((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
@@ -70,7 +71,6 @@ while (!$voting->question_exists($_SESSION["voting_code"], $_SESSION["question"]
 
 echo "	<div class='mezera'></div>";
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
-echo "<br>";
 echo "<p>" . ($_SESSION["question"] - $_SESSION["decrease"]) . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
 $i = 1;
@@ -85,10 +85,13 @@ $i = 1;
 	$i=$i+1;
 	}
 echo '</div>';
+echo '</div>';
+echo '<div style="text-align:center">';
 echo '    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
       Zobrazit graf
     </button>';
+echo '</div>';
 echo '</div>
 <!-- Modal -->
 
@@ -97,16 +100,16 @@ echo '</div>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Pr≈Øbƒõ≈æn√Ω graf spr√°vn√Ωch odpovƒõd√≠</h4>
+          <h4 class="modal-title" id="myModalLabel">Pr˘bÏûn˝ graf spr·vn˝ch odpovÏdÌ</h4>
         </div>
         <div class="modal-body">
           <div id="result">';
             $count = 0;
             $p = 0;
             $voters = $voting->voters($_SESSION["voting_code"]);
-           echo '<h1>Graf poƒçtu spr√°vn√Ωch hlas≈Ø</h1>
+           echo '<h1>Graf poËtu spr·vn˝ch hlas˘</h1>
             <fieldset class="graph">
-              <ul id="legenda">';
+              <ul id="legenda" style="float:right">';
                 $p = 0;
                 foreach ($voters as $voter)
                 {
@@ -140,10 +143,9 @@ echo '</div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Zav≈ô√≠t</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Zav¯Ìt</button>
           </div>
         </div>
       </div>
-    </div>
 ';
 ?>

@@ -139,7 +139,7 @@ if (isset($_GET["user_remove"]))
 <link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
 jquery(1);
-bootstrap();
+bootstrap(2);
 ?>
 </head>
 <body>

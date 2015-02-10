@@ -197,10 +197,9 @@ margin: 1px;
 }
 
 #legenda{
-padding-right:10px;
-font-size:21px;
+font-size:20px;
 position:absolute;
-right:100px;}
+right:160px;}
 
 #pc_submit {
 	cursor: pointer;
