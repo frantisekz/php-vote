@@ -33,7 +33,7 @@ a {
 	padding-top: 12px;
 }
 
-.okno {
+.login_window {
 	margin-right: 5px;
 	width: 150px;
 	border-radius: 4px;
@@ -42,7 +42,7 @@ a {
 	box-shadow: -1px -1px -2px #000
 }
 
-.tlacitko {
+.login_button {
 	font-family: "verdana";
 	display: inline;
 	cursor: pointer;
@@ -65,6 +65,11 @@ a {
 	display: inline-block;
 }
 
+
+
+header a {color: #2A5BBB;
+	text-decoration: none;
+}
 
 header {
 	width: 100%;
@@ -93,40 +98,41 @@ header h1 a strong {
 	color: #2A5BBB;
 }
 
-.odkaz1 {
-	border-bottom: none;
-	text-shadow: 0.5px 0.5px 1px gray;
-	font-size: 20px;
-	color: #dddddd;
-
-}
-
-#header {
+#buttons {
 padding-right:70px;
-width:400px;
+width:500px;
 margin:0 auto;
 	padding-top: 17px;
 	text-align: center;
 }
 
-.odkazy{
+#buttons li{
 	cursor:pointer;
 	margin-left: 40px;
 	padding: 10px 8px 8px 6px;
 		display: inline;
 }
 
-.odkazy:hover{
+#buttons li:hover{
 	background:#b2b2b2;
 	border-radius: 6px;
 }
 
-#aktivni{
+#buttons li a {
+	border-bottom: none;
+	text-shadow: 0.5px 0.5px 1px gray;
+	font-size: 20px!important;
+	color: #dddddd!important;
+
+}
+
+#active_button{
 	padding: 10px 8px 8px 6px;
 background: linear-gradient(#4e84e0,#225cc0);
-	border-radius: 6px;}
+	border-radius: 6px;
+  }
 
-#aktivni:hover{
+#active_button:hover{
 background:#225cc0;
 }
 
