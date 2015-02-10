@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION["voting_code"]))
+{
+	echo '<div class="alert alert-danger" role="alert">
+	<strong>Do hlasování se už nelze vrátit!</strong>
+	</div>';
+}
+else
+{
+?>
 <div class="clear"></div>
 <div class="body">
 	<h2>Děkujeme za váš hlas</h2>
@@ -10,5 +20,6 @@
 	</div>
 </div>
 <?php
+}
 $voting->clear_session();
 ?>
