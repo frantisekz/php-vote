@@ -305,3 +305,37 @@ text-align:center;
 font-size:100px;
 text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
 }
+
+/* Výsledky */
+legend {
+	padding: 4px 6px 4px 6px;
+	border: 1px solid black;
+	font-size: 25px;
+color:black
+	font-style: italic;
+}
+
+.chart div{
+padding: 7 0.5 7 0.5;
+border: 0.5px solid black;
+opacity:50%;
+  font: 18px sans-serif;
+    font-weight: bold;
+  background-color: steelblue;
+  text-align: right;
+
+ margin-right:5px;
+margin: 1px;
+  color: white;
+}
+
+#result{
+position:relative;
+	width:550px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#legenda{
+font-size:20px;
+float:right}

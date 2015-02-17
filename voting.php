@@ -1,5 +1,4 @@
-
-<script src="js/jquery.textfill.min.js"></script>
+ï»¿<script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <?php
 bootstrap(1);
@@ -92,22 +91,21 @@ echo '    <!-- Button trigger modal -->
       Zobrazit graf
     </button>';
 echo '</div>';
-echo '</div>
+echo '<div>
 <!-- Modal -->
-
   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Prùbìnı graf správnıch odpovìdí</h4>
+          <h4 class="modal-title" id="myModalLabel">PrÅ¯bÄ›Å¾nÃ½ graf sprÃ¡vnÃ½ch odpovÄ›dÃ­</h4>
         </div>
         <div class="modal-body">
           <div id="result">';
             $count = 0;
             $p = 0;
             $voters = $voting->voters($_SESSION["voting_code"]);
-           echo '<h1>Graf poètu správnıch hlasù</h1>
+           echo '<h1>Graf poÄtu sprÃ¡vnÃ½ch hlasÅ¯</h1>
             <fieldset class="graph">
               <ul id="legenda" style="float:right">';
                 $p = 0;
@@ -143,9 +141,11 @@ echo '</div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Zavøít</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">ZavÅ™Ã­t</button>
           </div>
         </div>
       </div>
+
 ';
+echo '</div>';
 ?>
