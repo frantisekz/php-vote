@@ -1,7 +1,7 @@
 ﻿<script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <?php
-bootstrap();
+bootstrap(1);
 echo '<div class="voting">';
 if ((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
@@ -70,7 +70,6 @@ while (!$voting->question_exists($_SESSION["voting_code"], $_SESSION["question"]
 
 echo "	<div class='mezera'></div>";
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
-echo "<br>";
 echo "<p>" . ($_SESSION["question"] - $_SESSION["decrease"]) . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
 $i = 1;
@@ -85,13 +84,15 @@ $i = 1;
 	$i=$i+1;
 	}
 echo '</div>';
+echo '</div>';
+echo '<div style="text-align:center">';
 echo '    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
       Zobrazit graf
     </button>';
-echo '</div>
+echo '</div>';
+echo '<div>
 <!-- Modal -->
-
   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -106,7 +107,7 @@ echo '</div>
             $voters = $voting->voters($_SESSION["voting_code"]);
            echo '<h1>Graf počtu správných hlasů</h1>
             <fieldset class="graph">
-              <ul id="legenda">';
+              <ul id="legenda" style="float:right">';
                 $p = 0;
                 foreach ($voters as $voter)
                 {
@@ -144,6 +145,7 @@ echo '</div>
           </div>
         </div>
       </div>
-    </div>
+
 ';
+echo '</div>';
 ?>

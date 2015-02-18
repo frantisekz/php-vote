@@ -1,3 +1,5 @@
+
+
 * {
 	font-family: "times new roman";
 	margin: 0;
@@ -18,13 +20,9 @@ body {
 
 /* Hlavicka */ 
 
-h4{
-float:right;
-}
 
 a {
-	color: #2A5BBB;
-	text-decoration: none;
+	text-decoration: none!important;
 }
 
 .prihlasovani {
@@ -33,7 +31,7 @@ a {
 	padding-top: 12px;
 }
 
-.login_window {
+.okno {
 	margin-right: 5px;
 	width: 150px;
 	border-radius: 4px;
@@ -42,7 +40,7 @@ a {
 	box-shadow: -1px -1px -2px #000
 }
 
-.login_button {
+.tlacitko {
 	font-family: "verdana";
 	display: inline;
 	cursor: pointer;
@@ -66,11 +64,6 @@ a {
 }
 
 
-
-header a {color: #2A5BBB;
-	text-decoration: none;
-}
-
 header {
 	width: 100%;
 	background: linear-gradient(#565656, #222222);
@@ -79,12 +72,13 @@ header {
 	min-width: 1240px;
 }
 
-header h1 {
+header h20 {
+font-family
 margin: 0;
 	float: left;
 }
 
-header h1 a, header h1 a:hover {
+header h20 a, header h20 a:hover {
 	color: #999;
 	font-size: 1.2em;
 	padding-left: 10px;
@@ -93,46 +87,45 @@ header h1 a, header h1 a:hover {
 	display: block;
 }
 
-header h1 a strong {
+header h20 a strong {
 	font-weight: normal;
 	color: #2A5BBB;
 }
 
-#buttons {
+.odkaz1 {
+	border-bottom: none;
+	text-shadow: 0.5px 0.5px 1px gray;
+	font-size: 20px;
+	color: #dddddd;
+
+}
+
+#header {
 padding-right:70px;
-width:500px;
+width:400px;
 margin:0 auto;
 	padding-top: 17px;
 	text-align: center;
 }
 
-#buttons li{
+.odkazy{
 	cursor:pointer;
 	margin-left: 40px;
 	padding: 10px 8px 8px 6px;
 		display: inline;
 }
 
-#buttons li:hover{
+.odkazy:hover{
 	background:#b2b2b2;
 	border-radius: 6px;
 }
 
-#buttons li a {
-	border-bottom: none;
-	text-shadow: 0.5px 0.5px 1px gray;
-	font-size: 20px!important;
-	color: #dddddd!important;
-
-}
-
-#active_button{
+#aktivni{
 	padding: 10px 8px 8px 6px;
 background: linear-gradient(#4e84e0,#225cc0);
-	border-radius: 6px;
-  }
+	border-radius: 6px;}
 
-#active_button:hover{
+#aktivni:hover{
 background:#225cc0;
 }
 
@@ -140,7 +133,7 @@ background:#225cc0;
 	clear: both;
 }
 
-h1 {
+h20 {
 	color: #000;
 	font-size: 2.4em;
 }
@@ -234,7 +227,8 @@ footer {
 }
 
 /* Poll */ 
-h4 {
+#username {
+float:right;
 	margin-right: 50px;
 	padding-top: 13px;
 	color: whitesmoke;
@@ -247,8 +241,8 @@ h4 {
 	text-align:center;
 	cursor: pointer;
 	font-size: 20px;
-	height: 100px;
-	width: 500px;
+	height: 80px;
+	width: 400px;
 	color: white;
 	box-shadow: 1px 1px 2px #000;
 	border: 1px solid #6a9cf2;
@@ -277,7 +271,7 @@ h4 {
 .voting {
 	text-align:center;
 	height:auto;
-	min-height:600px;
+	min-height:500px;
 	color: #262626;
 	background-color: #dfdfdf;
 	font-size: 30px;
@@ -295,7 +289,7 @@ h10{
 }
 
 .hlasovani{
-margin-left:auto;margin-right:auto;width:1100px;
+margin-left:auto;margin-right:auto;width:920px;
 }
 /* Kod */
 h8{
@@ -311,3 +305,37 @@ text-align:center;
 font-size:100px;
 text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
 }
+
+/* Výsledky */
+legend {
+	padding: 4px 6px 4px 6px;
+	border: 1px solid black;
+	font-size: 25px;
+color:black
+	font-style: italic;
+}
+
+.chart div{
+padding: 7 0.5 7 0.5;
+border: 0.5px solid black;
+opacity:50%;
+  font: 18px sans-serif;
+    font-weight: bold;
+  background-color: steelblue;
+  text-align: right;
+
+ margin-right:5px;
+margin: 1px;
+  color: white;
+}
+
+#result{
+position:relative;
+	width:550px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#legenda{
+font-size:20px;
+float:right}

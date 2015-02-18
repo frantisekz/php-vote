@@ -13,7 +13,7 @@ $voters = $voting->voters($code);
 
 <h1>Graf počtu správných hlasů</h1> - <strong>Hlasování číslo <?php echo $code ?></strong>
 <fieldset class="graph">
-  <ul id="legenda">
+  <ul dir="rtl" id="legenda">
   	<?php
 	$p = 0;
 	foreach ($voters as $voter)
