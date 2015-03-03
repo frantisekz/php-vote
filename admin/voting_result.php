@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 echo '<a class="btn btn-default btn-lg" href="index.php" role="button">Zpět</a>
 <h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>
 <div id="result">';
@@ -7,47 +7,11 @@ $p = 0;
 $right = 0;
 $questions = $voting->get_questions($_GET["voting_result"]);
 $voters = $voting->voters($_GET["voting_result"]);
-
 foreach ($voters as $voter)
 {
 	$count = $voting->count_answered_right($_GET["voting_result"], $voter);
 	$right = $right + $count;
 }
-
-echo '<h3>Správných hlasů: ' . $right . '</h3>
-<fieldset class="graph">
-	<ul id="legenda">';
-		$p = 0;
-		foreach ($voters as $voter)
-		{
-			$palette[] = random_color();
-			echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
-			$p = $p + 1;
-		}
-		echo  '
-	</ul>
-	<div class="chart">';
-		$p = 0;
-		foreach ($voters as $voter)
-		{
-			$count = $voting->count_answered_right($_GET["voting_result"], $voter);
-			if ($count != 0)
-			{
-				$percent = ($count * 100) / $right;
-			}
-			else
-			{
-				$percent = 0;
-			}
-			echo '<div style="width: ' . round(($percent * 4)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
-			$p = $p + 1;
-		}
-		echo '
-		</div>
-	</fieldset>
-</div>
-';
-
 $q = 0;
 $p = 0;
 foreach ($questions as $qid)
@@ -72,8 +36,8 @@ echo "<h12>Pro tuto možnost hlasovali: </h12>";
 	echo '
 	<!-- Modal -->
 	<div class="modal fade" id="myModal' . $qid . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
+    <div class="modal-dialog" style="width:900px;">
+      <div class="modal-content" style="width:900px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Graf k otázce: ' . $voting->question_header($_GET["voting_result"], $qid) . '</h4>
@@ -88,28 +52,38 @@ echo "<h12>Pro tuto možnost hlasovali: </h12>";
 						$p = $p + 1;
 					}
 					echo '<h1>Celkem hlasů: ' . $count . '</h1>
-					<fieldset class="graph">
-						<ul id="legenda">';
+					<fieldset class="graph">';
 							$p = 0;
 							foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 							{
 								$palette[] = random_color();
-								echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $pid . '</span>';
 								$p = $p + 1;
 							}
 							echo  '
-						</ul>
-						<div class="chart">';
-							$p = 0;
-							foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
-							{
-								$size = sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
-								echo '<div style="width: ' . ($size * 10) . 'px;background-color:' . $palette[$p] . '">' . $size . '</div>';
-								$p = $p + 1;
-							}
-							echo '
-						</div>
-					</fieldset>
+<div class="bargraph2" style= "width: 700px;">';
+echo'<ul class="bars">';
+	$p = 0;
+foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+{
+$size = sizeof($voting->get_result($_GET["voting_result"], $qid, $p));
+echo '<li class="bar'.$p.'" style="height: ' . ($size * 14) . 'px;background-color:' . $palette[$p] . '">' . $size . '</li>';
+		$p = $p + 1;	
+}
+echo '</ul>';
+echo'<ul class="label2" style="left:-10px">';
+	$p = 0;
+foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
+	{
+		$palette[] = random_color();
+		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $pid . '</span>';
+		$p = $p + 1;
+}
+
+echo'</ul>
+<p class="centered">Odpovědi</p>
+
+                </div>
+              </fieldset>
 					</div>
 				</div>
 				<div class="modal-footer">
