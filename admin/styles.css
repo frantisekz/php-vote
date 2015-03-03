@@ -166,28 +166,8 @@ td {
 	width:30%;
 			}
 
-legend {
-	padding: 4px 6px 4px 6px;
-	border: 1px solid black;
-	font-size: 25px;
-	color: black;
-	font-style: italic;
-}
 span{color:black;}
 
-.chart div{
-padding: 7 0.5 7 0.5;
-border: 0.5px solid black;
-opacity:50%;
-  font: 18px sans-serif;
-    font-weight: bold;
-  background-color: steelblue;
-  text-align: right;
-
- margin-right:5px;
-margin: 1px;
-  color: white;
-}
 
 #result{
 	position:relative;
@@ -195,11 +175,6 @@ margin: 1px;
 	margin-left:auto;
 	margin-right:auto;
 }
-
-#legenda{
-font-size:20px;
-position:absolute;
-right:160px;}
 
 #pc_submit {
 	cursor: pointer;
@@ -242,3 +217,5 @@ vertical-align:middle;
 .submit_question:hover {
 	background: #225cc0;
 }
+
+

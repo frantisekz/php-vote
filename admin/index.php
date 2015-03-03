@@ -132,7 +132,7 @@ if (isset($_GET["user_remove"]))
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="../favicon.gif" />
+<link rel="shortcut icon" href="../img/favicon.ico" />
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" type="text/css" href="styles.css"/>
