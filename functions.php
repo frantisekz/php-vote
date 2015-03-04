@@ -639,6 +639,10 @@ function add_question($code, $header, $possibilities, $possibility_right)
 
 function add_possibility($code, $question, $possibility)
 {
+	if((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_safe($possibility)))
+	{
+		return false;
+	}
 	if ($this->in_admin == 1)
 	{
 		$path = "../voting/" . $code . "/";
