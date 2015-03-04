@@ -1,7 +1,12 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../img/favicon.ico" />
+<title>php-vote - Administrace</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
-error_reporting(3);
-session_start();
-
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
@@ -9,12 +14,21 @@ if (phpversion() < 5.5)
 }
 
 include('../functions.php');
+jquery(1);
+bootstrap(2);
+?>
+</head>
+<body>
+<?php
+error_reporting(3);
+session_start();
+
 $user = new user($_SESSION["user_username"], 1);
 $voting = new voting($_SESSION["user_username"], 1);
 
 if (!isset($_SESSION["user_username"]))
 {
-	die("Neautorizovaný přístup!!!");
+	die("<div class=\"alert alert-danger\" role=\"alert\">Neautorizovaný přístup</div>");
 }
 
 if (!isset($_GET['sub']))
@@ -108,6 +122,7 @@ if (isset($_POST["possibility_new"]))
 if (isset($_GET["remove_possibility"]))
 {
 	$voting->remove_possibility($_GET["voting_edit"], $_GET["edit_question"], $_GET["remove_possibility"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?voting_edit='. $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] .'">';
 }
 
 if (isset($_POST["username_register"]))
@@ -134,20 +149,7 @@ if (isset($_GET["user_remove"]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=users">';
 }
 ?>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="shortcut icon" href="../img/favicon.ico" />
-<title>php-vote - Administrace</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" type="text/css" href="styles.css"/>
-<link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
-<?php
-jquery(1);
-bootstrap(2);
-?>
-</head>
-<body>
+
 <div class="left_menu">
 <form method="post">
 <input class="tlacitko" name="username_logout" type="submit" value="Odhlásit se" />
