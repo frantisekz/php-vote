@@ -100,6 +100,11 @@ if (isset($_GET["voting_remove"]))
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
+if (isset($_POST["possibility_new"]))
+{
+	$voting->add_possibility($_GET["voting_edit"], $_GET["edit_question"], $_POST["possibility_new"]);
+}
+
 if (isset($_GET["remove_possibility"]))
 {
 	$voting->remove_possibility($_GET["voting_edit"], $_GET["edit_question"], $_GET["remove_possibility"]);
