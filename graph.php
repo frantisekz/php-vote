@@ -13,7 +13,7 @@ $voters = $voting->voters($code);
 
 <h1>Graf počtu správných hlasů</h1> - <strong>Hlasování číslo <?php echo $code ?></strong>
 <fieldset class="graph">
-  <ul dir="rtl" id="legenda">
+
   	<?php
 	$p = 0;
 	foreach ($voters as $voter)
@@ -21,12 +21,10 @@ $voters = $voting->voters($code);
 		$count = $voting->count_answered_right($code, $voter);
 		$right = $right + $count;
 		$palette[] = random_color();
-		echo '<li style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
-		$p = $p + 1;
 	}
 	echo  '
-  </ul>
-  <div class="chart">';
+<div class="bargraph" style= "width: 700px;">';
+echo'<ul class="bars">';
 	$p = 0;
 	$count = 0;
 	foreach ($voters as $voter)
@@ -40,9 +38,31 @@ $voters = $voting->voters($code);
 		{
 			$percent = 0;
 		}
-		echo '<div style="width: ' . round(($percent * 4)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</div>';
+
+		echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 7)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
+		$p = $p + 1;	
+}
+echo'</ul>';
+
+
+
+echo'<ul class="label">';
+	$p = 0;
+	foreach ($voters as $voter)
+	{
+		$count = $voting->count_answered_right($code, $voter);
+		$right = $right + $count;
+		$palette[] = random_color();
+		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
 		$p = $p + 1;
-	}
+}
+
+
+
+
+echo'</ul>';
+echo'<ul class="y-axis"><li>20</li><li>15</li><li>10</li><li>5</li><li>0</li></ul>
+<p class="centered">Číslo počítače</p>';
 	?>
 	</div>
   </fieldset>
