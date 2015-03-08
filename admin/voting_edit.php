@@ -9,6 +9,11 @@ if (isset($_GET["edit_question"]))
 	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
 	<a class="btn btn-default btn-lg" href="index.php?voting_edit=' . $_GET["voting_edit"] . '" role="button">Zpět</a>
 	</form>
+
+	<form method="POST">
+	<strong>Možnost 1: </strong><input class="moznost" type="textfield" name="possibility_new" size="20" placeholder="Možnost 1">
+	<input id="new_poll" type="submit" value="Přidat možnost" name="JPW">
+	</form>
 	';
 	$i = 1;
 	foreach ($voting->get_possibilities($_GET["voting_edit"], $_GET["edit_question"]) as $possibility)

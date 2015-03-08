@@ -637,6 +637,26 @@ function add_question($code, $header, $possibilities, $possibility_right)
 	}
 }
 
+function add_possibility($code, $question, $possibility)
+{
+	if((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_safe($possibility)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$path = "../voting/" . $code . "/";
+	}
+	else
+	{
+		$path = "voting/" . $code . "/";
+	}
+	$filename = $path . $question;
+	$file = fopen($filename, "a");
+	$write = $possibility . "\n";
+	fwrite($file, $write);
+}
+
 function question_edit($code, $question, $new_title)
 {
 	if ((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_safe($new_title)))

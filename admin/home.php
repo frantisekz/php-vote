@@ -1,4 +1,4 @@
-﻿<hr/>
+<hr/>
 <?php
 
 if (!isset($_SESSION["welcome"]))
@@ -24,8 +24,10 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	</tr>';
 	if ($voting->view_votings($user->get_cur_username(), 0)!=0)
 	{
+	$qid = 0;
   	foreach ($voting->view_votings($user->get_cur_username(), 0) as $b)
 	{
+	    $qid = $qid + 1;
 			$more = $voting->get_more($b);
 			echo '
 			<tr>
@@ -35,14 +37,38 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			<td>' . $b . '</td>
 			<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
 			<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
-			<td><a href="index.php?voting_remove=' . $b . '"><img src="../img/erase.png" class="icons"></a></td>
+			<td><a href="#" data-toggle="modal" data-target="#myModal' . $qid . '"><img src="../img/erase.png" class="icons"></a></td>
 			<td><a href="index.php?voting_'; if ($more[3] == 0) {echo "un";} echo 'lock=' . $b . '"><img src="../img/'; if ($more[3] == 0) {echo "un";} echo 'locked.png" class="icons"></a></td>
 		</tr>';
+		
 	}
   }
 
 }
 	echo '</table>';
+	$qid = 0;
+	foreach ($voting->view_votings($user->get_cur_username(), 0) as $b)
+	{
+	$qid = $qid + 1;
+echo	'	<!-- Modal -->
+	<div class="modal fade" id="myModal' . $qid . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Přejete si opravdu odstranit toto hlasování?</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+				  <a href="index.php?voting_remove=' . $b . '"><button type="button" class="btn btn-danger" >Ano</button></a>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Ne</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Button trigger modal --> ';
+	}
 ?>
 <div style="height:10px;">
 
