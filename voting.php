@@ -121,7 +121,7 @@ echo'<ul class="bars">';
 					{
 						$percent = 0;
 					}
-echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 7)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
+echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 7.8)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
 		$p = $p + 1;	
 }
 echo'</ul>';

@@ -1,4 +1,4 @@
-<div id="result">
+﻿<div id="result">
 <?php
 if (!isset($_POST["voting_code"]))
 {
@@ -29,7 +29,8 @@ echo'<ul class="bars">';
 	$count = 0;
 	foreach ($voters as $voter)
 	{
-		$count = $voting->count_answered_right($code, $voter);
+		$right = $voting->count_answered_right($code, $voter);
+		$count = $voting->count_answered($code, $voter);
 		if ($count != 0)
 		{
 			$percent = ($count * 100) / $right;
@@ -39,7 +40,7 @@ echo'<ul class="bars">';
 			$percent = 0;
 		}
 
-		echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 7)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
+		echo '<li class="bar' . $p . '" style="height: ' . round(($percent * 2)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
 		$p = $p + 1;	
 }
 echo'</ul>';

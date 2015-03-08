@@ -102,6 +102,11 @@ if (isset($_POST["new_email"]))
 	$user->re_email($_GET["user_edit"], $_POST["new_email"]);
 }
 
+if (isset($_POST["new_password"]))
+{
+	$user->re_password($_GET["user_edit"], $_POST["new_password"]);
+}
+
 if (isset($_GET["remove_question"]))
 {
 	$voting->remove_question($_GET["voting_edit"], $_GET["remove_question"]);
@@ -118,6 +123,12 @@ if (isset($_POST["possibility_new"]))
 {
 	$voting->add_possibility($_GET["voting_edit"], $_GET["edit_question"], $_POST["possibility_new"]);
 }
+
+if (isset($_POST["edit_possibility_1"]))
+{
+	$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], 1, $_POST["edit_possibility_1"]);
+}
+
 
 if (isset($_GET["remove_possibility"]))
 {

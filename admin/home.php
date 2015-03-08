@@ -37,7 +37,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			<td>' . $b . '</td>
 			<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
 			<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
-			<td><a href="#" data-toggle="modal" data-target="#myModal' . $qid . '"><img src="../img/erase.png" class="icons"></a></td>
+			<td><a href="#" data-toggle="modal" data-target="#delete' . $qid . '"><img src="../img/erase.png" class="icons"></a></td>
 			<td><a href="index.php?voting_'; if ($more[3] == 0) {echo "un";} echo 'lock=' . $b . '"><img src="../img/'; if ($more[3] == 0) {echo "un";} echo 'locked.png" class="icons"></a></td>
 		</tr>';
 		
@@ -51,7 +51,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	{
 	$qid = $qid + 1;
 echo	'	<!-- Modal -->
-	<div class="modal fade" id="myModal' . $qid . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="delete' . $qid . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">

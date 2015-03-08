@@ -422,6 +422,37 @@ function answered_right($voting, $question, $voter)
 	return false;
 }
 
+function answered($voting, $question, $voter)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($question)) OR (!is_numeric($voter)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $voting . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $voting . "/" . $question;
+	}
+	$file_contents = file($filename);
+	$i = 0;
+	foreach ($file_contents as $line)
+	{
+		if ($i != 0)
+		{
+			$explode = explode("+++", $line);
+			if (in_array($voter, $explode))
+			{
+				return true;
+			}
+		}
+		$i = $i + 1;
+	}
+	return false;
+}
+
 function count_answered_right($voting, $voter)
 {
 	if ((!is_numeric($voting)) OR (!is_numeric($voter)))
@@ -438,6 +469,24 @@ function count_answered_right($voting, $voter)
 		}
 	}
 	return $right;
+}
+
+function count_answered($voting, $voter)
+{
+	if ((!is_numeric($voting)) OR (!is_numeric($voter)))
+	{
+		return false;
+	}
+	$questions = $this->get_questions($voting);
+	$answered = 0;
+	foreach ($questions as $question)
+	{
+		if ($this->answered($voting, $question, $voter))
+		{
+			$answered = $answered + 1;
+		}
+	}
+	return $answered;
 }
 
 function voters($voting)
@@ -701,11 +750,14 @@ function possibility_edit($code, $question, $possibility, $new_title)
 	{
 		$file_name = "voting/" . $code . "/" . $question;
 	}
+
 	$file_contents = file($file_name);
-	$exploded = explode("+++", $file_contents);
-	$file = str_replace($exploded[0], $new_title, $file_contents);
-	$to_replace = $file_contents[$possibility];
-	if(file_put_contents($file_name, $file))
+	$exploded = explode("+++", $file_contents[$possibility]);
+	$exploder = implode("", $exploded);
+	$file = str_replace($exploded[0], $new_title, $file_contents[$possibility]);
+	$file_final = str_replace($file_contents[$possibility], $file, $file_contents);
+
+	if(file_put_contents($file_name, $file_final))
 	{
 		return true;
 	}
@@ -918,6 +970,25 @@ function re_email($username, $new_email)
 	$to_replace = $this->get_email($username);
 	$replacer = $new_email;
 	$file = str_replace($to_replace, $replacer, $file_contents);
+	file_put_contents($file_name, $file);
+}
+
+function re_password($username, $new_password)
+{
+	if ((!is_safe($username)) OR (!is_safe($new_password)))
+	{
+		return false;
+	}
+	$file_name = "../users/" . $username . ".txt";
+	if (!file_exists($file_name))
+	{
+		return false;
+	}
+	$file_contents = file($file_name);
+	$explode = explode("+++", $file_contents[0]);
+	$to_replace = $explode[0];
+	$new_password = password_hash($new_password, PASSWORD_BCRYPT);
+	$file = str_replace($to_replace, $new_password, $file_contents);
 	file_put_contents($file_name, $file);
 }
 

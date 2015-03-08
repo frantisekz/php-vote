@@ -66,6 +66,11 @@ echo '<h2>Upravit uživatele</h2>
 		<input class="kod" type="textfield" name="new_email" size="20" placeholder="Nový e-mail" value="' . $user->get_email($_GET["user_edit"]) . '">
     <input class="registrovat" type="submit" value="Změnit email" name="JPW">
 </form>
+<br>
+<form method="POST">
+		<input class="kod" type="textfield" name="new_password" size="20" placeholder="Nové heslo">
+    <input class="registrovat" type="submit" value="Změnit heslo" name="JPW">
+</form>
 <a class="btn btn-default btn-lg" href="index.php?sub=users" role="button">Zpět</a>
 ';
 }

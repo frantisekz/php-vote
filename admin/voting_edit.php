@@ -14,13 +14,17 @@ if (isset($_GET["edit_question"]))
 	<strong>Možnost 1: </strong><input class="moznost" type="textfield" name="possibility_new" size="20" placeholder="Možnost 1">
 	<input id="new_poll" type="submit" value="Přidat možnost" name="JPW">
 	</form>
+
+	<form method="POST">
 	';
 	$i = 1;
 	foreach ($voting->get_possibilities($_GET["voting_edit"], $_GET["edit_question"]) as $possibility)
 	{
-		echo $possibility . ' - <a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '">Odstranit</a><br/>';
+		echo '<strong>Možnost ' . $i . '</strong><input class="moznost" type="textfield" name="edit_possibility_' . $i . '" placeholder="' . $possibility . '" size="20"> <input class="submit_question" type="submit" value="Upravit">';
+		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '">Odstranit</a><br/>';
 		$i = $i + 1;
 	}
+	echo '</form>';
 }
 else
 {
