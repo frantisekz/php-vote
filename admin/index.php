@@ -4,16 +4,19 @@
 <link rel="shortcut icon" href="../img/favicon.ico" />
 <title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" type="text/css" href="styles.css"/>
-<link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
+
 <?php
 // Work around missing functions in old php
 if (phpversion() < 5.5)
 {
 	require_once ('../passwordLib.php');
 }
-
 include('../functions.php');
+?>
+
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
+<?php
 jquery(1);
 bootstrap(2);
 ?>
@@ -124,9 +127,19 @@ if (isset($_POST["possibility_new"]))
 	$voting->add_possibility($_GET["voting_edit"], $_GET["edit_question"], $_POST["possibility_new"]);
 }
 
-if (isset($_POST["edit_possibility_1"]))
+// Determine existing edit_possibility
+if (isset($_GET["edit_question"])) // Dont go through if $_GET["edit_question"] isn't defined
 {
-	$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], 1, $_POST["edit_possibility_1"]);
+	$count = $voting->possibility_count($_GET["voting_edit"], $_GET["edit_question"]);
+	$i = 0;
+	while ($i <= $count)
+	{
+		if (isset($_POST["edit_possibility_" . $i]))
+		{
+			$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], $i, $_POST["edit_possibility_1"]);
+		}
+		$i = $i + 1;
+	}
 }
 
 

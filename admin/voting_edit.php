@@ -11,7 +11,7 @@ if (isset($_GET["edit_question"]))
 	</form>
 
 	<form method="POST">
-	<strong>Možnost 1: </strong><input class="moznost" type="textfield" name="possibility_new" size="20" placeholder="Možnost 1">
+	<input class="moznost" type="textfield" name="possibility_new" size="20" placeholder="Možnost">
 	<input id="new_poll" type="submit" value="Přidat možnost" name="JPW">
 	</form>
 
@@ -77,9 +77,18 @@ else
 			<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $i . '">Upravit otázku</a><br/>
 			';
 			echo "Možnosti: ";
+			$p = 0;
 			foreach ($voting->get_possibilities($_GET["voting_edit"], $i) as $possibility)
 			{
-				echo $possibility . "; ";
+				$p = $p + 1;
+				if ($p == $voting->question_right($_GET["voting_edit"], $qid))
+				{
+					echo '<strong>' . $possibility . "</strong>; ";
+				}
+				else
+				{
+					echo $possibility . "; ";
+				}
 			}
 		}
 		}

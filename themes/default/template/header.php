@@ -53,7 +53,7 @@ else
 	</li>
   
   	</li>
-   <li <?php if ($actual == "results"){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=results';">
+   <li <?php if (($actual == "results") OR ($actual == "graph")){?>id="aktivni" <?php } else { ?> id="neaktivni" <?php } ?> class="odkazy" onclick="location.href = 'index.php?page=results';">
 		   	<img src="img/results.png" style="height:17px;width:17px" alt="vysledky">
 	<a class="odkaz1" href="index.php?page=results">Výsledky</a>
 	</li>

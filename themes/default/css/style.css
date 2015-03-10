@@ -332,7 +332,7 @@ position:relative;
 
     .bargraph ul.bars li {  
         position: absolute; 
-        width: 20px; 
+        width: 30px; 
         height: 200px; 
         bottom: 29px; 
         padding: 0; 
