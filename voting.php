@@ -101,10 +101,9 @@ echo '<div>
                 	$p = 0;
 	foreach ($voters as $voter)
                 {
-                	$count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
+					$count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
 					$right = $right + $count;
-                	$palette[] = random_color();
-                	$p = $p + 1;
+					$palette[] = random_color();
                 }
 	echo  '
 <div class="bargraph" style= "width: 700px;">';
@@ -112,16 +111,17 @@ echo'<ul class="bars">';
                 $p = 0;
                 foreach ($voters as $voter)
                 {
-                	$count = $voting->count_answered_right($_SESSION["voting_code"], $voter);
+					$count = $voting->count_answered($_SESSION["voting_code"], $voter);
+                	$right = $voting->count_answered_right($_SESSION["voting_code"], $voter);
        				if ($count != 0)
 					{
-						$percent = ($count * 100) / $right;
+						$percent = ($right * 100) / $count;
 					}
 					else
 					{
 						$percent = 0;
 					}
-echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 7.8)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
+echo '<li class="bar'.$p.'" style="height: ' . round(($percent * 2)) . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
 		$p = $p + 1;	
 }
 echo'</ul>';
