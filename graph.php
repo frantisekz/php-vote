@@ -4,9 +4,19 @@ if (!isset($_POST["voting_code"]))
 {
 	$code = $_GET["voting_result"];
 }
-else
+elseif(isset($_POST["voting_code"]))
 {
 	$code = $_POST["voting_code"];
+}
+else
+{
+	die();
+}
+
+if ($voting->voting_exists($code)!= 1)
+{
+	echo "<strong>Chybný kód!!!</strong>";
+	die();
 }
 $voters = $voting->voters($code);
 ?>
@@ -15,7 +25,6 @@ $voters = $voting->voters($code);
 <fieldset class="graph">
 
   	<?php
-	$p = 0;
 	foreach ($voters as $voter)
 	{
 		$count = $voting->count_answered_right($code, $voter);
@@ -33,15 +42,19 @@ echo'<ul class="bars">';
 		$count = $voting->count_answered($code, $voter);
 		if ($count != 0)
 		{
-			$percent = ($count * 100) / $right;
+			$percent = ($right * 100) / $count;
 		}
 		else
 		{
 			$percent = 0;
 		}
-
-		echo '<li class="bar' . $p . '" style="height: ' . round(($percent * 2)) . 'px;background-color:' . $palette[$p] . '">' . $count . '</li>';
-		$p = $p + 1;	
+		$height = round(($percent * 2));
+		if ($height == 0)
+		{
+			$height = 10;
+		}
+		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
+		$p = $p + 1;
 }
 echo'</ul>';
 
@@ -62,7 +75,7 @@ echo'<ul class="label">';
 
 
 echo'</ul>';
-echo'<ul class="y-axis"><li>20</li><li>15</li><li>10</li><li>5</li><li>0</li></ul>
+echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
 <p class="centered">Číslo počítače</p>';
 	?>
 	</div>
