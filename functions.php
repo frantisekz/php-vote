@@ -3,8 +3,25 @@
 // Add support for themes
 $theme = "default";
 
-function random_color() {
+/*function random_color() {
 	return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+}
+*/
+function random_color($array)
+{
+	$array[] = 1;
+    $indexColor = round( 255 / sizeof( $array ) );
+    $iterator = 1;
+
+    $arrayOfRGB = array();
+
+    foreach( $array as $item)
+    {   
+        $arrayOfRGB[] = "rgb(" . round(( $indexColor * $iterator * 0.25 )) . "," . round(( $indexColor * $iterator * 0.5 )) . ", " . round(( $indexColor * $iterator )) . " )";
+        $iterator++;
+    }  
+
+    return $arrayOfRGB;
 }
 
 function jquery($line)

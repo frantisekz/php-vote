@@ -25,11 +25,11 @@ $voters = $voting->voters($code);
 <fieldset class="graph">
 
   	<?php
+  	$palette = random_color($voters);
 	foreach ($voters as $voter)
 	{
 		$count = $voting->count_answered_right($code, $voter);
 		$right = $right + $count;
-		$palette[] = random_color();
 	}
 	echo  '
 <div class="bargraph" style= "width: 700px;">';
@@ -66,7 +66,6 @@ echo'<ul class="label">';
 	{
 		$count = $voting->count_answered_right($code, $voter);
 		$right = $right + $count;
-		$palette[] = random_color();
 		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
 		$p = $p + 1;
 }
