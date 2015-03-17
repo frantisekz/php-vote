@@ -103,8 +103,7 @@ echo'</ul>
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal' . $qid . '">
 	Zobrazit graf
 	</button>
-	';
-	echo "<hr>";
+	<hr>';
 	}
 }
 ?>
