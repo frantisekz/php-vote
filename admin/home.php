@@ -1,6 +1,5 @@
 <hr/>
 <?php
-
 if (!isset($_SESSION["welcome"]))
 {
 	echo '<h1>Vítejte v administraci systému php-vote!</h1>';
@@ -19,8 +18,9 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	<th class="long">Identifikační kód</th>
 	<th class="short">Upravit otázku</th>
 	<th class="short">Výsledky</th>
-	<th class="short">Odstranit</th>
+	<th class="short">Duplikovat</th>
 	<th class="short">Uzamčení</th>
+	<th class="short">Odstranit</th>
 	</tr>';
 	if ($voting->view_votings($user->get_cur_username(), 0)!=0)
 	{
@@ -37,8 +37,9 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 			<td>' . $b . '</td>
 			<td><a href="index.php?voting_edit=' . $b . '"><img src="../img/edit.png" class="icons"></a></td>
 			<td><a href="index.php?voting_result=' . $b . '"><img src="../img/result.png" class="icons"></a></td>
-			<td><a href="#" data-toggle="modal" data-target="#delete' . $qid . '"><img src="../img/erase.png" class="icons"></a></td>
+			<td><a href="index.php?voting_duplicate=' . $b . '"><img src="../img/copy.png" class="icons"></a></td>
 			<td><a href="index.php?voting_'; if ($more[3] == 0) {echo "un";} echo 'lock=' . $b . '"><img src="../img/'; if ($more[3] == 0) {echo "un";} echo 'locked.png" class="icons"></a></td>
+			<td><a href="#" data-toggle="modal" data-target="#delete' . $qid . '"><img src="../img/erase.png" class="icons"></a></td>
 		</tr>';
 		
 	}

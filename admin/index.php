@@ -17,13 +17,14 @@ include('../functions.php');
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 <link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
+error_reporting(3);
 jquery(1);
 bootstrap(2);
 ?>
 </head>
 <body>
 <?php
-error_reporting(3);
+//error_reporting(3);
 session_start();
 
 $user = new user($_SESSION["user_username"], 1);
@@ -165,10 +166,14 @@ if (isset($_GET["remove_possibility"]))
 
 if (isset($_POST["username_register"]))
 {
-	register($_POST["username_register"], $_POST["username_password"], $_POST
-
-["username_mail"], $_POST["username_level"], 1);
+	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"], 1);
 	echo '<META HTTP-EQUIV="Refresh" Content="0">';
+}
+
+if (isset($_GET["voting_duplicate"]))
+{
+	$voting->duplicate_voting($_GET["voting_duplicate"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
 if (isset($_GET["voting_lock"]))
