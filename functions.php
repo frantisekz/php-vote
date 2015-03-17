@@ -654,7 +654,7 @@ function duplicate_voting($code)
 	{
 		return false;
 	}
-	$rand = 00 . date("y") . rand(1000, 9999);
+	$rand = date("y") . rand(1000, 9999);
 	if ($this->in_admin == 1)
 	{
 		$source = "../voting/" . $code;
