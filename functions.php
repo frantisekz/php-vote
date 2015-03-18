@@ -864,7 +864,6 @@ function possibility_right($code, $question, $possibility)
 	$first = str_replace($exploded[1], $possibility . "\n", $file_contents[0]);
 	$to_write = str_replace($file_contents[0], $first, $file_contents);
 	unlink($file_name);
-	trigger_error("First line is... : " . $first, E_USER_WARNING);
 	if(file_put_contents($file_name, $to_write))
 	{
 		return true;
