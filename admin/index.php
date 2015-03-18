@@ -1,11 +1,8 @@
-<?php
-session_start();
-?>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="../img/favicon.ico" />
-<title>Správa - Testovací systém</title>
+<title>php-vote - Administrace</title>
 <meta name="robots" content="noindex,nofollow">
 
 <?php
@@ -20,13 +17,15 @@ include('../functions.php');
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 <link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
-error_reporting(-1);
 jquery(1);
 bootstrap(2);
 ?>
 </head>
 <body>
 <?php
+error_reporting(3);
+session_start();
+
 $user = new user($_SESSION["user_username"], 1);
 $voting = new voting($_SESSION["user_username"], 1);
 
@@ -73,7 +72,6 @@ if (isset($_POST["question_name"]))
 {
 	// Determine number of possibilities
 	$j = 1;
-	$i = 0;
 	while($i != 1)
 	{
 		$name = "possibility_" . $j;
@@ -129,11 +127,6 @@ if (isset($_POST["possibility_new"]))
 	$voting->add_possibility($_GET["voting_edit"], $_GET["edit_question"], $_POST["possibility_new"]);
 }
 
-if (isset($_GET["right_possibility"]))
-{
-	$voting->possibility_right($_GET["voting_edit"], $_GET["edit_question"], $_GET["right_possibility"]);
-}
-
 // Determine existing edit_possibility
 if (isset($_GET["edit_question"])) // Dont go through if $_GET["edit_question"] isn't defined
 {
@@ -141,9 +134,9 @@ if (isset($_GET["edit_question"])) // Dont go through if $_GET["edit_question"] 
 	$i = 0;
 	while ($i <= $count)
 	{
-		if ((isset($_POST["edit_possibility_" . $i])) AND ($_POST["edit_possibility_" . $i] != ""))
+		if (isset($_POST["edit_possibility_" . $i]))
 		{
-			$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], $i, $_POST["edit_possibility_" . $i]);
+			$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], $i, $_POST["edit_possibility_1"]);
 		}
 		$i = $i + 1;
 	}
@@ -152,24 +145,14 @@ if (isset($_GET["edit_question"])) // Dont go through if $_GET["edit_question"] 
 
 if (isset($_GET["remove_possibility"]))
 {
-	$voting->remove_possibility($_GET["voting_edit"], $_GET["edit_question"], $_GET
-
-["remove_possibility"]);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?voting_edit='. $_GET
-
-["voting_edit"] . '&edit_question=' . $_GET["edit_question"] .'">';
+	$voting->remove_possibility($_GET["voting_edit"], $_GET["edit_question"], $_GET["remove_possibility"]);
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?voting_edit='. $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] .'">';
 }
 
 if (isset($_POST["username_register"]))
 {
 	register($_POST["username_register"], $_POST["username_password"], $_POST["username_mail"], $_POST["username_level"], 1);
 	echo '<META HTTP-EQUIV="Refresh" Content="0">';
-}
-
-if (isset($_GET["voting_duplicate"]))
-{
-	$voting->duplicate_voting($_GET["voting_duplicate"]);
-	//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
 if (isset($_GET["voting_lock"]))
@@ -200,9 +183,7 @@ if (isset($_GET["user_remove"]))
 <br/>
 <hr>
 <h3<?php if ($_GET['sub'] == "home") echo " id=\"active\" "?>><a href="index.php">Úvod</a></h3>
-<h3<?php if ($user->get_level($user->get_cur_username()) == 3) {if ($_GET['sub'] == "users") 
-
-echo " id=\"active\" "?>><a href="index.php?sub=users">Uživatelé</a></h3>
+<h3<?php if ($user->get_level($user->get_cur_username()) == 3) {if ($_GET['sub'] == "users") echo " id=\"active\" "?>><a href="index.php?sub=users">Uživatelé</a></h3>
 <h3<?php if ($_GET['sub'] == "settings") echo " id=\"active\" "?>><a href="index.php?sub=settings">Nastavení</a><?php } ?></h3>
 </div>
 

@@ -2,7 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" type="img/ico" href="img/favicon.ico">
-	<title>Grafický testovací systém</title>
+	<title>Hlasovací systém</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" lang="cs" />
 	<meta name="author" content="" />
@@ -17,7 +17,7 @@
 	<?php if ($user->logged_in())
 	echo "<h30 id='username'>" . $user->get_cur_username() . "</h30>";
 	?>
-	<h20><a class="heads" href="index.php">Testovací<strong>systém</strong></a></h20>
+	<h20><a class="heads" href="index.php">Hlasovací<strong>systém</strong></a></h20>
 
 <fieldset class="prihlasovani" style="">
 <?php

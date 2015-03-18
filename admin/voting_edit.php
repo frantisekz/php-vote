@@ -21,18 +21,18 @@ if (isset($_GET["edit_question"]))
 	foreach ($voting->get_possibilities($_GET["voting_edit"], $_GET["edit_question"]) as $possibility)
 	{
 		echo '<strong>Možnost ' . $i . '</strong><input class="moznost" type="textfield" name="edit_possibility_' . $i . '" placeholder="' . $possibility . '" size="20"> <input class="submit_question" type="submit" value="Upravit">';
-		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&right_possibility=' . $i . '">Nastavit jako správnou</a> ';
-		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '"><img src="../img/erase.png" class="icons"> Smazat</a><br/>';
+		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '">Odstranit</a><br/>';
 		$i = $i + 1;
 	}
 	echo '</form>';
 }
 else
 {
-	echo '<h2>Úpravy hlasování č. ' . $_GET["voting_edit"] . '</h2>';
-	echo '<h3>Nová otázka</h3>
+	echo '<h3>Úpravy hlasování č. ' . $_GET["voting_edit"] . '</h3>';
+	echo '
 	<div class="alert alert-info" role="alert">
 		Nepotřebné možnosti ponechejte prázdné, později můžete další přidat přes tlačítko <strong>Upravit otázku</strong><br/>
+
 	</div>
 	<form method="POST">
 	<input class="kod" type="textfield" name="question_name" size="20" placeholder="Název otázky">
@@ -59,7 +59,7 @@ else
 	</select>
 	<div class="mezera"></div>
 	<br>
-	<input class="submit_question" type="submit" value="Přidat otázku">
+	<input class="submit_question" type="submit" value="Uložit otázku">
 	<a class="btn btn-default btn-lg" href="index.php" role="button">Zpět</a>
 	</form>
 	<hr>

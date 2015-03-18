@@ -78,4 +78,4 @@ echo '<h2>Upravit uživatele</h2>
 
 
 ?>
-
+<hr/>

@@ -77,7 +77,6 @@ margin: 0;
 }
 
 header h20 a, header h20 a:hover {
-  margin-top: -5px;
 	color: #999;
 	font-size: 1.2em;
 	padding-left: 10px;
@@ -255,9 +254,7 @@ float:right;
 	background: linear-gradient(#4374d5,#5883da);
 }
 
-#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, 
-
-#Poll_7:hover, #Poll_8:hover {
+#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, #Poll_7:hover, #Poll_8:hover {
 	opacity: 0.7;
 	border: 1px solid black;
 }
@@ -344,7 +341,7 @@ position:relative;
         font-weight: bold; 
         color: white; 
         font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-        font-size: 12px;
+        font-size: 13px;
         z-index: 99;
     }
 
@@ -395,13 +392,12 @@ position:relative;
 
     .label { list-style-type: none; 
              position: absolute; bottom: 3px; 
-             margin: 0; padding: 0;
-margin-left:4px; }
+             margin: 0; padding: 0; }
     .label li {  
 width:40px;
         text-transform: uppercase; 
         letter-spacing: 0.1em;
-        font-size: 14px;
+        font-size: 12px;
 font-weight:bold;
         float: left;
         text-align: center;
