@@ -131,7 +131,7 @@ if (isset($_POST["possibility_new"]))
 
 if (isset($_GET["right_possibility"]))
 {
-	possibility_right($_GET["voting_edit"], $_GET["edit_question"], $_GET["right_possibility"]);
+	$voting->possibility_right($_GET["voting_edit"], $_GET["edit_question"], $_GET["right_possibility"]);
 }
 
 // Determine existing edit_possibility
@@ -144,7 +144,6 @@ if (isset($_GET["edit_question"])) // Dont go through if $_GET["edit_question"] 
 		if ((isset($_POST["edit_possibility_" . $i])) AND ($_POST["edit_possibility_" . $i] != ""))
 		{
 			$voting->possibility_edit($_GET["voting_edit"], $_GET["edit_question"], $i, $_POST["edit_possibility_" . $i]);
-			trigger_error("Calling edit with title: " . $_POST["edit_possibility_" . $i], E_USER_WARNING);
 		}
 		$i = $i + 1;
 	}

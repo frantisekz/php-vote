@@ -231,7 +231,14 @@ function view_votings($username, $all)
 			}
 		}
 	}
-	return $votings;
+	if (isset($votings))
+	{
+		return $votings;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 function voting_exists($code)
@@ -736,14 +743,14 @@ function add_question($code, $header, $possibilities, $possibility_right)
 {
 	if ((!is_numeric($code)) OR ((!is_safe($header))) OR (!is_numeric($possibility_right)))
 	{
-		return false;
-		/*foreach ($possibilities as $possibility)
+		foreach ($possibilities as $possibility)
 		{
 			if (!is_safe($possibility))
 			{
 				return false;
 			}
-		}*/
+		}
+		return false;
 	}
 	if ($this->in_admin == 1)
 	{
@@ -854,9 +861,11 @@ function possibility_right($code, $question, $possibility)
 
 	$file_contents = file($file_name);
 	$exploded = explode("+++", $file_contents[0]);
-	$file = str_replace($exploded[1], $possibility, $file_contents[0]);
+	$first = str_replace($exploded[1], $possibility . "\n", $file_contents[0]);
+	$to_write = str_replace($file_contents[0], $first, $file_contents);
 	unlink($file_name);
-	if(file_put_contents($file_name, $file_contents))
+	trigger_error("First line is... : " . $first, E_USER_WARNING);
+	if(file_put_contents($file_name, $to_write))
 	{
 		return true;
 	}
@@ -883,9 +892,15 @@ function possibility_edit($code, $question, $possibility, $new_title)
 
 	$file_contents = file($file_name);
 	$exploded = explode("+++", $file_contents[$possibility]);
-	$exploder = implode("", $exploded);
-	$file = str_replace($exploded[0], $new_title, $file_contents[$possibility]);
-	$file_final = str_replace($file_contents[$possibility], $file . "\n", $file_contents);
+	if (isset($exploded[1]))
+	{
+		$file = str_replace($exploded[0], $new_title, $file_contents[$possibility]);
+	}
+	else
+	{
+		$file = str_replace($exploded[0], $new_title . "\n", $file_contents[$possibility]);
+	}
+	$file_final = str_replace($file_contents[$possibility], $file, $file_contents);
 	if(file_put_contents($file_name, $file_final))
 	{
 		return true;
