@@ -16,7 +16,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	<th class="long">Počet otázek</th>
 	<th class="long">Datum vytvoření</th>
 	<th class="long">Identifikační kód</th>
-	<th class="short">Upravit otázku</th>
+	<th class="short">Upravit hlasování</th>
 	<th class="short">Výsledky</th>
 	<th class="short">Duplikovat</th>
 	<th class="short">Uzamčení</th>
