@@ -4,8 +4,21 @@
 $theme = "default";
 date_default_timezone_set('Europe/Prague');
 
-function random_color() {
-	return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+function random_color($array)
+{
+	$array[] = 1;
+    $indexColor = round( 255 / sizeof( $array ) );
+    $iterator = 1;
+
+    $arrayOfRGB = array();
+
+    foreach( $array as $item)
+    {   
+        $arrayOfRGB[] = "rgb(" . round(( $indexColor * $iterator * 0.25 )) . "," . round(( $indexColor * $iterator * 0.5 )) . ", " . round(( $indexColor * $iterator )) . " )";
+        $iterator++;
+    }  
+
+    return $arrayOfRGB;
 }
 
 function jquery($line)
@@ -218,7 +231,14 @@ function view_votings($username, $all)
 			}
 		}
 	}
-	return $votings;
+	if (isset($votings))
+	{
+		return $votings;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 function voting_exists($code)
@@ -589,6 +609,24 @@ function voting_unlock($code)
 	}
 }
 
+function possibility_count($code, $question)
+{
+	if ((!is_numeric($code)) AND (!is_numeric($question)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$filename = "../voting/" . $code . "/" . $question;
+	}
+	else
+	{
+		$filename = "voting/" . $code . "/" . $question;
+	}	
+	$file = file($filename);
+	return sizeof($file);
+}
+
 function create_voting($name)
 {
 	if(!is_safe($name))
@@ -636,14 +674,14 @@ function add_question($code, $header, $possibilities, $possibility_right)
 {
 	if ((!is_numeric($code)) OR ((!is_safe($header))) OR (!is_numeric($possibility_right)))
 	{
-		return false;
-		/*foreach ($possibilities as $possibility)
+		foreach ($possibilities as $possibility)
 		{
 			if (!is_safe($possibility))
 			{
 				return false;
 			}
-		}*/
+		}
+		return false;
 	}
 	if ($this->in_admin == 1)
 	{
@@ -686,6 +724,87 @@ function add_question($code, $header, $possibilities, $possibility_right)
 		return false;
 	}
 }
+
+function duplicate_voting($code)
+{
+	if(!is_numeric($code))
+	{
+		return false;
+	}
+	$rand = date("y") . rand(1000, 9999);
+	if ($this->in_admin == 1)
+	{
+		$source = "../voting/" . $code;
+		$target = "../voting/" . $rand;
+	}
+	else
+	{
+		$source = "voting/" . $code;
+		$target = "voting/" . $rand;
+	}
+	while (file_exists($target))
+	{
+		$rand = rand(1000, 9999);
+		if ($this->in_admin == 1)
+		{
+			$target = "../voting/" . date("y") . $rand;
+		}
+		else
+		{
+			$target = "voting/" . date("y") . $rand;
+		}
+	}
+	mkdir($target);
+    $dir = opendir($source); 
+    while(false !== ( $file = readdir($dir)) ) { 
+        if (( $file != '.' ) && ( $file != '..' )) { 
+            if ( is_dir($source . '/' . $file) ) { 
+                recurse_copy($source . '/' . $file,$target . '/' . $file); 
+            } 
+            else { 
+                copy($source . '/' . $file,$target . '/' . $file); 
+            } 
+        } 
+    } 
+    closedir($dir);
+    // Duplicating done, clean up votings
+    $questions = array_diff(scandir($target), array('..', '.', '.htaccess'));
+    foreach ($questions as $question)
+    {
+    	$file = $target . "/" . $question;
+    	$file_contents = file($file);
+    	$content[] = $file_contents[0];
+    	$i = 0;
+    	foreach ($file_contents as $line)
+    	{
+    		if ($i != 0)
+    		{
+    			$explode = explode("+++", $line);
+    			$content[] = $explode[0];
+    		}
+    		$i = $i + 1;
+    	}
+    	unlink($file);
+	    file_put_contents($file, $content);
+	    unset($content);
+    }
+    $info = $target . "/info.txt";
+    $file = file($info);
+    $explode = explode("+++", $file[0]);
+    $to_replace = $explode[2];
+	$replacer = time();
+	$file = str_replace($to_replace, $replacer, $file);
+	if(file_put_contents($info, $file))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
 
 function add_possibility($code, $question, $possibility)
 {
@@ -737,6 +856,36 @@ function question_edit($code, $question, $new_title)
 	}
 }
 
+function possibility_right($code, $question, $possibility)
+{
+	if ((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_numeric($possibility)))
+	{
+		return false;
+	}
+	if ($this->in_admin == 1)
+	{
+		$file_name = "../voting/" . $code . "/" . $question;
+	}
+	else
+	{
+		$file_name = "voting/" . $code . "/" . $question;
+	}
+
+	$file_contents = file($file_name);
+	$exploded = explode("+++", $file_contents[0]);
+	$first = str_replace($exploded[1], $possibility . "\n", $file_contents[0]);
+	$to_write = str_replace($file_contents[0], $first, $file_contents);
+	unlink($file_name);
+	if(file_put_contents($file_name, $to_write))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function possibility_edit($code, $question, $possibility, $new_title)
 {
 	if ((!is_numeric($code)) OR (!is_numeric($question)) OR (!is_numeric($possibility)) OR (!is_safe($new_title)))
@@ -754,10 +903,15 @@ function possibility_edit($code, $question, $possibility, $new_title)
 
 	$file_contents = file($file_name);
 	$exploded = explode("+++", $file_contents[$possibility]);
-	$exploder = implode("", $exploded);
-	$file = str_replace($exploded[0], $new_title, $file_contents[$possibility]);
+	if (isset($exploded[1]))
+	{
+		$file = str_replace($exploded[0], $new_title, $file_contents[$possibility]);
+	}
+	else
+	{
+		$file = str_replace($exploded[0], $new_title . "\n", $file_contents[$possibility]);
+	}
 	$file_final = str_replace($file_contents[$possibility], $file, $file_contents);
-
 	if(file_put_contents($file_name, $file_final))
 	{
 		return true;

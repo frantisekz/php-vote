@@ -61,7 +61,7 @@ foreach ($questions as $qid)
 					<fieldset class="graph">';
 							foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 							{
-								$palette[] = random_color();
+								$palette[] = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
 							}
 							echo  '
 <div class="bargraph2" style= "width: 700px;">';
@@ -86,7 +86,7 @@ echo'<ul class="label2" style="left:-10px">';
 foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 	{
 		$p = $p + 1;
-		$palette[] = random_color();
+		$palette[] = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
 		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $pid . '</span>';
 }
 $p = 0;
