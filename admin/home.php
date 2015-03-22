@@ -21,15 +21,15 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	echo '
 	<table id="list">
 	<tr>
-	<th class="long">Název</th>
-	<th class="long">Počet otázek</th>
-	<th class="long">Datum vytvoření</th>
-	<th class="long">Identifikační kód</th>
-	<th class="short">Upravit hlasování</th>
-	<th class="short">Výsledky</th>
-	<th class="short">Duplikovat</th>
-	<th class="short">Uzamčení</th>
-	<th class="short">Odstranit</th>
+	<th class="head">Název</th>
+	<th class="head">Počet otázek</th>
+	<th class="head">Datum vytvoření</th>
+	<th class="head">Identifikační kód</th>
+	<th class="head">Upravit hlasování</th>
+	<th class="head">Výsledky</th>
+	<th class="head">Duplikovat</th>
+	<th class="head">Uzamčení</th>
+	<th class="head">Odstranit</th>
 	</tr>';
 	if ($voting->view_votings($user->get_cur_username(), $all)!=0)
 	{

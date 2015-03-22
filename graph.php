@@ -1,4 +1,4 @@
-﻿<div id="result">
+<div id="result">
 <?php
 if (!isset($_POST["voting_code"]))
 {
@@ -51,7 +51,7 @@ echo'<ul class="bars">';
 		$height = round(($percent * 2));
 		if ($height == 0)
 		{
-			$height = 10;
+			$height = 1;
 		}
 		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
 		$p = $p + 1;

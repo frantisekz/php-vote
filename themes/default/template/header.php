@@ -2,12 +2,12 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" type="img/ico" href="img/favicon.ico">
-	<title>Hlasovací systém</title>
+	<title>Grafický testovací systém</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" lang="cs" />
 	<meta name="author" content="" />
-	<link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style.css">
-	<link rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style_mobile.css">
+	<link rel="stylesheet" media="screen and (min-device-width: 901px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style.css">
+	<link rel="stylesheet" media="screen and (max-device-width: 900px)" type="text/css" href="themes/<?php echo $theme; ?>/css/style_mobile.css">
 <?php
 	jquery(1); 
 	?>
@@ -17,7 +17,7 @@
 	<?php if ($user->logged_in())
 	echo "<h30 id='username'>" . $user->get_cur_username() . "</h30>";
 	?>
-	<h20><a class="heads" href="index.php">Hlasovací<strong>systém</strong></a></h20>
+	<h20><a class="heads" href="index.php">Testovací<strong>systém</strong></a></h20>
 
 <fieldset class="prihlasovani" style="">
 <?php
