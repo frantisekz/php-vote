@@ -5,14 +5,14 @@ if (isset($_GET["edit_question"]))
 	<form method="POST">
 	<strong>Název otázky: </strong><input class="moznost" type="textfield" name="question_name_edit" size="20" value="' . $voting->question_header($_GET["voting_edit"], $_GET["edit_question"]) . '" placeholder="Nový název otázky">
 	<div class="mezera"></div>
-	<br>
-	<input id="new_poll" type="submit" value="Uložit otázku" name="JPW">
+
+	<input class="submit_question" type="submit" value="Uložit otázku" name="JPW">
 	<a class="btn btn-default btn-lg" href="index.php?voting_edit=' . $_GET["voting_edit"] . '" role="button">Zpět</a>
 	</form>
-
+ 	<br>
 	<form method="POST">
 	<input class="moznost" type="textfield" name="possibility_new" size="20" placeholder="Možnost">
-	<input id="new_poll" type="submit" value="Přidat možnost" name="JPW">
+	<input id="add_poss" type="submit" value="Přidat možnost" name="JPW">
 	</form>
 
 	<form method="POST">
@@ -20,8 +20,8 @@ if (isset($_GET["edit_question"]))
 	$i = 1;
 	foreach ($voting->get_possibilities($_GET["voting_edit"], $_GET["edit_question"]) as $possibility)
 	{
-		echo '<strong>Možnost ' . $i . '</strong><input class="moznost" type="textfield" name="edit_possibility_' . $i . '" value="' . $possibility . '" size="20"> <input class="submit_question" type="submit" value="Upravit">';
-		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&right_possibility=' . $i . '">Nastavit jako správnou</a> ';
+		echo '<strong>Možnost ' . $i . ':</strong><input class="moznost" type="textfield" name="edit_possibility_' . $i . '" value="' . $possibility . '" size="20"> <input id="pc_submit" type="submit" value="Upravit">';
+		echo ' <a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&right_possibility=' . $i . '">Nastavit jako správnou</a> |  ';
 		echo '<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '"><img src="../img/erase.png" class="icons"> Smazat</a><br/>';
 		$i = $i + 1;
 	}
@@ -73,8 +73,9 @@ else
 		if ($voting->question_exists($_GET["voting_edit"], $i))
 		{
 			echo '<h2>' . $voting->question_header($_GET["voting_edit"], $i) . '</h2>
-			<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&remove_question=' . $i . '">Odstranit otázku</a>
-			<a href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $i . '">Upravit otázku</a><br/>
+			<a id="edit" href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $i . '">Upravit otázku</a>
+      |
+      <a id="delete" href="index.php?voting_edit=' . $_GET["voting_edit"] . '&remove_question=' . $i . '">Odstranit otázku</a><br/>
 			';
 			echo "Možnosti: ";
 			$p = 0;

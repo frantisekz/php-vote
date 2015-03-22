@@ -2,13 +2,13 @@
 <h2>Existující uživatelé</h2>
 <table id="list">
 	<tr>
-		<th class="long">Uživatelské jméno</th>
-		<th class="long">E-mail</th>
-		<th class="long">Úroveň</th>
-		<th class="short">Počet hlasování</th>
-		<th class="short">Datum vytvoření</th>
-		<th class="short">Upravit</th>
-		<th class="short">Odstranit</th>
+		<th class="head">Uživatelské jméno</th>
+		<th class="head">E-mail</th>
+		<th class="head">Úroveň</th>
+		<th class="head">Počet hlasování</th>
+		<th class="head">Datum vytvoření</th>
+		<th class="head">Upravit</th>
+		<th class="head">Odstranit</th>
 	</tr>
 
 	<?php
@@ -78,4 +78,4 @@ echo '<h2>Upravit uživatele</h2>
 
 
 ?>
-<hr/>
+

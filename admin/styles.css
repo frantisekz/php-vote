@@ -100,15 +100,11 @@ th {
 	background: linear-gradient(#6dc06d,#449d44);
 }
 
-.long {
-	padding-left: 26px;
-	padding-right: 26px;
+.head{text-align:center;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
-.short {
-	padding-left: 14px;
-	padding-right: 14px;
-}
 
 tr:nth-child(even) {
 	background: #dedede
@@ -183,12 +179,28 @@ span{color:black;}
 	border: 0.5px solid green;
 	color: white;
 	height: 30px;
-	width: 150px;
+	width: 120px;
 	box-shadow: -1px -1px -2px #000;
 	font-size: 20px;
 }
 
 #pc_submit:hover{
+background:#225cc0;
+}
+
+#add_poss {
+	cursor: pointer;
+	background: linear-gradient(#4e84e0,#225cc0);
+	border-radius: 6px;
+	border: 0.5px solid green;
+	color: white;
+	height: 30px;
+	width: 150px;
+	box-shadow: -1px -1px -2px #000;
+	font-size: 20px;
+}
+
+#add_poss:hover{
 background:#225cc0;
 }
 
@@ -220,4 +232,13 @@ vertical-align:middle;
 
 .green {
 color: green;
+}
+
+#delete{
+color:red;
+text-decoration:underline
+}
+
+#edit{
+color:green
 }
