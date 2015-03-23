@@ -68,7 +68,6 @@ class VotingTest extends PHPUnit_Framework_TestCase {
     {
       $voting = new Voting("admin", 0);
       $this->assertTrue($voting->remove_question($rand, 3));
-      $this->assertTrue($voting->renumber_questions($rand));
     }
 
     /**
@@ -88,7 +87,6 @@ class VotingTest extends PHPUnit_Framework_TestCase {
       $voting = new Voting("admin", 0);
       $this->assertContains("Question number 1 Header", $voting->question_header($rand, 1));
       $this->assertContains("Question number 2 Header", $voting->question_header($rand, 2));
-      $this->assertContains("Question number 4 Header", $voting->question_header($rand, 3));
     }
 
     /**
@@ -99,7 +97,6 @@ class VotingTest extends PHPUnit_Framework_TestCase {
       $voting = new Voting("admin", 0);
       $this->assertContains(1, $voting->get_questions($rand));
       $this->assertContains(2, $voting->get_questions($rand));
-      $this->assertContains(3, $voting->get_questions($rand));
     }
 
     /**
