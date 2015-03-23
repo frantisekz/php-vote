@@ -21,5 +21,5 @@ else
 </div>
 <?php
 }
-$voting->clear_session();
+clear_session();
 ?>

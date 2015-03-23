@@ -1,6 +1,7 @@
 <div class="clear">
 <div class="body">
 <?php
+clear_session();
 $actual = "kod";
 ?>
 <h8>Máte špatný kód!</h8>

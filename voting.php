@@ -64,16 +64,18 @@ if ($more[3] == 0)
 }
 
 // Check just for the first question and only once in one SESSION if user voted already
-if (($voting->answered($_SESSION["voting_code"], 1, $_SESSION["voting_user"]) != true))
+if ($voting->answered($_SESSION["voting_code"], 1, $_SESSION["voting_user"]) != true)
 {
 	// So, user didn't voted here yet, let him go
 	$_SESSION["user_passed"] = 1;
 }
-
-elseif(!isset($_SESSION["user_passed"]))
+if($voting->answered($_SESSION["voting_code"], 1, $_SESSION["voting_user"]) == true)
 {
-	// User voted already here, kick him out
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=voted">';
+	if (!isset($_SESSION["user_passed"]))
+	{
+		// User voted already here, kick him out
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=voted">';
+	}
 }
 
 $header = $voting->view_voting($_SESSION["voting_code"]);
