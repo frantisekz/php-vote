@@ -89,7 +89,7 @@ if (isset($_POST["question_name"]))
 	}
 	// Include all posted possibilities into single array
 	$i = 1;
-	while($i<=$j)
+	while(($i<=$j) AND ($i < 9))
 	{
 		$name = "possibility_" . $i;
 		$possibilities[] = $_POST[$name];
