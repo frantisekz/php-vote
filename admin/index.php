@@ -120,7 +120,6 @@ if (isset($_POST["new_password"]))
 if (isset($_GET["remove_question"]))
 {
 	$voting->remove_question($_GET["voting_edit"], $_GET["remove_question"]);
-	$voting->renumber_questions($_GET["voting_edit"]);
 	$_SESSION["change_ok"] = 1;
 }
 

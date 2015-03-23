@@ -946,61 +946,6 @@ function remove_question($voting_id, $question_id)
 	}
 }
 
-function renumber_questions($voting_id) // Should not be used, will be removed soon!!!
-{
-	if (!is_numeric($voting_id))
-	{
-		return false;
-	}
-	// Must be called after remove_question to maintain consistency of data files
-	if ($this->in_admin == 1)
-	{
-		$dir = "../voting/" . $voting_id;
-	}
-	else
-	{
-		$dir = "voting/" . $voting_id;
-	}
-	$questions_real = array_diff(scandir($dir . "/"), array("..", ".", "info.txt"));
-	if ($this->question_count($voting_id) == 0)
-	{
-		// There is no need to renumber voting without questions
-		return true;
-	}
-	$question_last = max($questions_real);
-	if ($this->question_count($voting_id) != $question_last)
-	{
-		// Data files are not consistent, proceed with renumbering
-		$i = 1;
-		foreach ($questions_real as $qq)
-		{
-			// Align array so it starts from 0 key
-			$questions_real_aligned[] = $qq;
-		}
-		while ($i < $question_last)
-		{
-			if (!isset($questions_real_aligned[$i]))
-			{
-				rename($dir . "/" . $questions_real_aligned[$i - 1], $dir . "/" . $i);
-			}
-			$i = $i + 1;
-		}
-	}
-	// Update variables
-	$questions_real = array_diff(scandir($dir . "/"), array("..", ".", "info.txt"));
-	$question_last = max($questions_real);
-	if ($this->question_count($voting_id) == $question_last)
-	{
-		// After-run test OK
-		return true;
-	}
-	else
-	{
-		// Something went wrong, please fix data files by hand
-		return false;
-	}
-}
-
 function remove_possibility($voting_id, $question, $possibility_id)
 {
 	if ((!is_numeric($voting_id)) OR (!is_numeric($question)) OR (!is_numeric($possibility_id)))
