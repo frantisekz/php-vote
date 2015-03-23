@@ -1038,11 +1038,7 @@ function write_vote($user, $code, $question, $possibility)
 class user
 {
 	public $username;
-	private $password;
-	public $email;
-	public $level;
 	public $in_admin;
-	private $user_data;
 
 function __construct($username, $in_admin)
 {
