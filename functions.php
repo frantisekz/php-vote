@@ -147,6 +147,29 @@ function unset_cookie()
 	}
 }
 
+function clear_session()
+{
+	if (isset($_SESSION["voting_code"]))
+	{
+		unset($_SESSION["voting_code"]);
+	}
+	if (isset($_SESSION["voting_user"]))
+	{
+		unset($_SESSION["voting_user"]);
+	}
+	if (isset($_SESSION["question"]))
+	{
+		unset($_SESSION["question"]);
+	}
+	if (isset($_SESSION["decrease"]))
+	{
+		unset($_SESSION["decrease"]);
+	}
+	if (isset($_SESSION["user_passed"]))
+	{
+		unset($_SESSION["user_passed"]);
+	}
+}
 
 class voting
 {
@@ -158,14 +181,6 @@ function __construct($username, $in_admin)
 {
 	$this->username = $username;
 	$this->in_admin = $in_admin;
-}
-
-function clear_session()
-{
-	unset($_SESSION["voting_code"]);
-	unset($_SESSION["voting_user"]);
-	unset($_SESSION["question"]);
-	unset($_SESSION["decrease"]);
 }
 
 function get_result($id, $question, $possibility)
