@@ -1,5 +1,26 @@
 <?php
 session_start();
+
+// Work around missing functions in old php
+if (phpversion() < 5.5)
+{
+	require_once ('../passwordLib.php');
+}
+include('../functions.php');
+
+if (isset($_POST["computer_id"]))
+{
+	set_cookie($_POST["computer_id"]);
+	$_SESSION["change_ok"] = 2;
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
+}
+
+if (isset($_GET["unset_cookie"]))
+{
+	unset_cookie($_POST["computer_id"]);
+	$_SESSION["change_ok"] = 2;
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
+}
 ?>
 <html>
 <head>
@@ -7,16 +28,6 @@ session_start();
 <link rel="shortcut icon" href="../img/favicon.ico" />
 <title>Správa - Testovací systém</title>
 <meta name="robots" content="noindex,nofollow">
-
-<?php
-// Work around missing functions in old php
-if (phpversion() < 5.5)
-{
-	require_once ('../passwordLib.php');
-}
-include('../functions.php');
-?>
-
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 <link rel="stylesheet" type="text/css" href="../themes/<?php echo $theme; ?>/css/style.css"/>
 <?php
@@ -50,20 +61,6 @@ if (isset($_POST["voting_name"]))
 	$voting->create_voting($_POST["voting_name"]);
 	$_SESSION["change_ok"] = 2;
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
-}
-
-if (isset($_POST["computer_id"]))
-{
-	set_cookie($_POST["computer_id"]);
-	$_SESSION["change_ok"] = 2;
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
-}
-
-if (isset($_GET["unset_cookie"]))
-{
-	unset_cookie($_POST["computer_id"]);
-	$_SESSION["change_ok"] = 2;
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
 }
 
 if (isset($_POST["question_name_edit"]))
