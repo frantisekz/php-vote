@@ -103,6 +103,7 @@ if (isset($_POST["new_name"]))
 {
 	$user->edit_user($_GET["user_edit"], $_POST["new_name"]);
 	$_SESSION["change_ok"] = 1;
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=users">';
 }
 
 if (isset($_POST["new_email"]))
