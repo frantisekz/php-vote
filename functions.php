@@ -1141,8 +1141,7 @@ function re_email($username, $new_email)
 	}
 	$file_contents = file($file_name);
 	$to_replace = $this->get_email($username);
-	$replacer = $new_email;
-	$file = str_replace($to_replace, $replacer, $file_contents);
+	$file = str_replace($to_replace, $new_email, $file_contents);
 	file_put_contents($file_name, $file);
 }
 
@@ -1158,8 +1157,7 @@ function re_password($username, $new_password)
 		return false;
 	}
 	$file_contents = file($file_name);
-	$explode = explode("+++", $file_contents[0]);
-	$to_replace = $explode[0];
+	$to_replace = $this->get_password($username);
 	$new_password = password_hash($new_password, PASSWORD_BCRYPT);
 	$file = str_replace($to_replace, $new_password, $file_contents);
 	file_put_contents($file_name, $file);
