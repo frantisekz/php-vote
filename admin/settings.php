@@ -9,7 +9,7 @@
 if (isset($_COOKIE["computer_id"]))
 {
   echo '<strong>Identifikační číslo počítače je nastaveno: ' . $_COOKIE["computer_id"] . '</strong><br/>
-  <a href="index.php?sub=nastaveni&unset_cookie">Vymazat číslo PC</a>';
+  <a href="index.php?sub=settings&unset_cookie">Vymazat číslo PC</a>';
 }
 
 else
