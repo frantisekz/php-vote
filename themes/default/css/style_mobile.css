@@ -18,24 +18,20 @@ body {
 
 /* Hlavicka */ 
 
-h4{
-float:right;
-}
 
 a {
-	color: #2A5BBB;
-	text-decoration: none;
+	text-decoration: none!important;
 }
 
 .prihlasovani {
 	border: 0;
 	float: right;
-	padding-top: 15px;
+	padding-top: 12px;
 }
 
 .okno {
 	margin-right: 5px;
-	width: 90px;
+	width: 60px;
 	border-radius: 4px;
 	border: 0.5px solid gray;
 	height: 25px;
@@ -46,13 +42,13 @@ a {
 	font-family: "verdana";
 	display: inline;
 	cursor: pointer;
-	font-size: 10px;
+	font-size: 9px;
 	background: linear-gradient(#91cf91,#449d44);
 	border-radius: 2px;
 	border: 0.5px solid green;
 	color: white;
-	height: 25px;
-	width: 64px;
+	height: 20px;
+	width: 58px;
 	box-shadow: -1px -1px -2px #000;
 }
 
@@ -61,32 +57,32 @@ a {
 }
 
 .logged {
+padding-top:5px;
 	padding-right: 15px;
 	display: inline-block;
 }
 
-h4 {
-	margin-right: 30px;
-	padding-top: 18px;
-	color: whitesmoke;
-	text-align: right;
-	font-size: 20px;
+h30{
+font-size: 10px
 }
+
 
 header {
 	width: 100%;
 	background: linear-gradient(#565656, #222222);
 	text-align: left;
 	height: 50px;
-	min-width: 720px;
+	min-width: 500px;
 }
 
-header h1 {
+header h20 {
+font-family
 margin: 0;
 	float: left;
 }
 
-header h1 a, header h1 a:hover {
+header h20 a, header h20 a:hover {
+  margin-top: -5px;
 	color: #999;
 	font-size: 1.2em;
 	padding-left: 10px;
@@ -95,7 +91,7 @@ header h1 a, header h1 a:hover {
 	display: block;
 }
 
-header h1 a strong {
+header h20 a strong {
 	font-weight: normal;
 	color: #2A5BBB;
 }
@@ -103,14 +99,14 @@ header h1 a strong {
 .odkaz1 {
 	border-bottom: none;
 	text-shadow: 0.5px 0.5px 1px gray;
-	font-size: 16px;
+	font-size: 20px;
 	color: #dddddd;
 
 }
 
 #header {
-padding-right:70px;
-width:400px;
+padding-right:60px;
+width:350px;
 margin:0 auto;
 	padding-top: 15px;
 	text-align: center;
@@ -118,8 +114,8 @@ margin:0 auto;
 
 .odkazy{
 	cursor:pointer;
-	margin-left: 35px;
-	padding: 9px 7px 7px 5px;
+	margin-left: 15px;
+	padding: 7px 7px 7px 5px;
 		display: inline;
 }
 
@@ -141,7 +137,7 @@ background:#225cc0;
 	clear: both;
 }
 
-h1 {
+h20 {
 	color: #000;
 	font-size: 2.4em;
 }
@@ -153,11 +149,10 @@ h1 {
 	background-color: #dfdfdf;
 	font-size: 30px;
 	font-family: sans-serif;
-	padding-left: 100px;
-	padding-right: 100px;
+
 	padding-bottom: 1px;
 	width: auto;
-	max-width: 1720px;
+	max-width: 1920px;
 	text-align: center;
 	margin: 0 auto;
 	min-width: 520px;
@@ -166,14 +161,14 @@ h1 {
 h5{
 	text-shadow: 0.5px 0.5px 1px gray;
 	text-align: center;
-	font-size: 40px;
+	font-size: 30px;
 	letter-spacing: 2px;
 }
 
 h2 {
 	text-shadow: 0.5px 0.5px 1px gray;
 	text-align: center;
-	font-size: 75px;
+	font-size: 50px;
 	letter-spacing: 5px;
 
 }
@@ -235,34 +230,45 @@ footer {
 }
 
 /* Poll */ 
+#username {
+float:right;
+	margin-right: 50px;
+	padding-top: 13px;
+	color: whitesmoke;
+	text-align: right;
+	font-size: 25px;
+}
+
 
 #Poll_1, #Poll_2, #Poll_3, #Poll_4, #Poll_5, #Poll_6, #Poll_7, #Poll_8 {
 	text-align:center;
 	cursor: pointer;
 	font-size: 20px;
-	height: 80px;
-	width: 400px;
+	height: 40px;
+	width: 200px;
 	color: white;
 	box-shadow: 1px 1px 2px #000;
 	border: 1px solid #6a9cf2;
 }
 
 #Poll_1, #Poll_3, #Poll_5, #Poll_7{
-	margin-left:50px;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-left:25px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 	float: left;
 	background: linear-gradient(#4374d5,#5883da);
 }
 
-#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, #Poll_7:hover, #Poll_8:hover {
+#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, 
+
+#Poll_7:hover, #Poll_8:hover {
 	opacity: 0.7;
 	border: 1px solid black;
 }
 
 #Poll_2, #Poll_4, #Poll_6, #Poll_8 {
-	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 	float: left;
 	background: linear-gradient(#4374d5,#5883da);
 }
@@ -270,13 +276,13 @@ footer {
 .voting {
 	text-align:center;
 	height:auto;
-	min-height:350px;
+	min-height:500px;
 	color: #262626;
 	background-color: #dfdfdf;
-	font-size: 30px;
+	font-size: 25px;
 	font-family: sans-serif;
 	width: auto;
-	max-width: 1920px;
+	max-width: 970px;
 	margin: 0 auto;
 	min-width: 520px;
 }
@@ -288,9 +294,8 @@ h10{
 }
 
 .hlasovani{
-margin-left:auto;margin-right:auto;width:900px;
+margin-left:auto;margin-right:auto;width:450px;
 }
-
 /* Kod */
 h8{
 color:red;
@@ -305,3 +310,258 @@ text-align:center;
 font-size:100px;
 text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;	
 }
+
+/* Výsledky */
+
+#result{
+position:relative;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.bargraph {     
+          height: 229px; 
+          position: relative; 
+          background:  url(../../../img/papergrid.jpg) repeat-x; 
+          border-left: 1px solid #d4d4d4;
+          margin: 15px auto 50px;
+    }
+
+    .bargraph ul.bars {
+        margin: 0; 
+        padding: 0; 
+        list-style-type: none;
+    }
+
+
+
+
+    .bargraph ul.bars li {  
+        position: absolute; 
+        width: 30px; 
+        height: 200px; 
+        bottom: 29px; 
+        padding: 0; 
+        margin: 0; 
+        text-align: center; 
+        font-weight: bold; 
+        color: white; 
+        font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+        font-size: 12px;
+        z-index: 99;
+    }
+
+   
+    .bargraph ul.bars li span {
+        position: relative;
+        top: -25px;
+        color: #7c7c7c;
+     }
+    .bargraph ul.bars li img {        
+           margin: 0; padding: 0;
+           position: relative;
+           top: -71px;
+           left: 0;
+    }
+
+    .bargraph ul.bars li span.darkpen {
+        color: #515151;
+        position: static;
+    }
+    .bargraph ul.bars li span.whitepen {
+        color: red;
+    }
+
+    .bargraph ul.bars li.bar0 { left: 10px;  }
+    .bargraph ul.bars li.bar1 { left: 50px;  }
+    .bargraph ul.bars li.bar2 { left: 90px;  }
+    .bargraph ul.bars li.bar3 { left: 130px; }
+    .bargraph ul.bars li.bar4 { left: 170px; }
+    .bargraph ul.bars li.bar5 { left: 210px; }
+    .bargraph ul.bars li.bar6 { left: 250px; }
+    .bargraph ul.bars li.bar7 { left: 290px; }
+    .bargraph ul.bars li.bar8 { left: 330px; }
+    .bargraph ul.bars li.bar9 { left: 370px; }
+    .bargraph ul.bars li.bar10 { left: 410px; }
+    .bargraph ul.bars li.bar11 { left: 450px; }
+    .bargraph ul.bars li.bar12 { left: 490px; }
+    .bargraph ul.bars li.bar13 { left: 530px; }
+    .bargraph ul.bars li.bar14 { left: 570px; }
+    .bargraph ul.bars li.bar15 { left: 610px; }
+    .bargraph ul.bars li.bar16 { left: 650px; }
+    .bargraph ul.bars li.bar17 { left: 690px; }
+    .bargraph ul.bars li.bar18 { left: 730px; }
+    .bargraph ul.bars li.bar19 { left: 770px; }
+    .bargraph ul.bars li.bar20 { left: 810px; }
+
+
+
+    .label { list-style-type: none; 
+             position: absolute; bottom: 3px; 
+             margin: 0; padding: 0;
+margin-left:4px; }
+    .label li {  
+width:40px;
+        text-transform: uppercase; 
+        letter-spacing: 0.1em;
+        font-size: 14px;
+font-weight:bold;
+        float: left;
+        text-align: center;
+        overflow: hidden;
+        font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+        line-height: 1em;
+    }
+
+
+    ul.y-axis { list-style-type: none; position: absolute; 
+                  left: -45px; 
+                  width: 40px;
+                  text-align: right;
+                  bottom: 0;
+                  margin: 0; padding: 0; 
+    }
+
+    ul.y-axis li:first-child {
+         height: 40px;
+         line-height: 40px;
+    }
+
+    ul.y-axis li { 
+        color: #aba8a8;  
+        font-size: 15px;
+        height: 51px;
+        line-height: 51px;
+        text-align: right;
+    }
+
+    ul.y-axis li.units {
+        position: absolute;
+        bottom: 110px;
+        right: 20px;
+        line-height: 1.2em;
+        height: auto;
+    }
+  .bargraph  p { 
+                position: absolute; 
+                left: 0; 
+                top: 236px; 
+                
+                padding: 0; 
+                margin:0; 
+                text-align: left; 
+     
+                width: 100%;
+                font-family: Verdana, sans-serif;
+                font-size: 10px; color: black;
+                line-height: 1.3em;
+                
+              }
+.bargraph p.centered { text-align: center;color: #aba8a8;font-size: 15px; }
+
+/* Výsledky_2 */
+    .bargraph2 ul.bars li.bar0 { left: 10px;  }
+    .bargraph2 ul.bars li.bar1 { left: 100px;  }
+    .bargraph2 ul.bars li.bar2 { left: 190px;  }
+    .bargraph2 ul.bars li.bar3 { left: 280px; }
+    .bargraph2 ul.bars li.bar4 { left: 370px; }
+    .bargraph2 ul.bars li.bar5 { left: 460px; }
+    .bargraph2 ul.bars li.bar6 { left: 550px; }
+    .bargraph2 ul.bars li.bar7 { left: 640px; }
+    .bargraph2 ul.bars li.bar8 { left: 730px; }
+
+#result{
+position:relative;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.bargraph2 {     
+          height: 229px; 
+          position: relative; 
+          background:  url(../../../img/papergrid.jpg) repeat-x; 
+          border-left: 1px solid #d4d4d4;
+          margin: 15px auto 50px;
+    }
+
+    .bargraph2 ul.bars {
+        margin: 0; 
+        padding: 0; 
+        list-style-type: none;
+    }
+
+
+
+
+    .bargraph2 ul.bars li {  
+        position: absolute; 
+        width: 50px; 
+        height: 200px; 
+        bottom: 29px; 
+        padding: 0; 
+        margin: 0; 
+        text-align: center; 
+        font-weight: bold; 
+        color: white; 
+        font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+        font-size: 13px;
+        z-index: 99;
+    }
+
+   
+    .bargraph2 ul.bars li span {
+        position: relative;
+        top: -25px;
+        color: #7c7c7c;
+     }
+    .bargraph2 ul.bars li img {        
+           margin: 0; padding: 0;
+           position: relative;
+           top: -71px;
+           left: 0;
+    }
+
+    .bargraph2 ul.bars li span.darkpen {
+        color: #515151;
+        position: static;
+    }
+    .bargraph2 ul.bars li span.whitepen {
+        color: red;
+    }
+
+
+
+    .label2 { list-style-type: none; 
+             position: absolute; bottom: 3px; 
+             margin: 0; padding: 0; }
+    .label2 li {  
+color:white;
+height:25px;
+width:90px;
+        letter-spacing: 0.1em;
+        font-size: 12px;
+font-weight:bold;
+        float: left;
+        text-align: center;
+        overflow: hidden;
+        font-family: "Helvetica;
+        line-height: 1em;
+    }
+  .bargraph2  p { 
+                position: absolute; 
+                left: 0; 
+                top: 236px; 
+                
+                padding: 0; 
+                margin:0; 
+                text-align: left; 
+     
+                width: 100%;
+                font-family: Verdana, sans-serif;
+                font-size: 10px; color: black;
+                line-height: 1.3em;
+                
+              }
+.bargraph2 p.centered { text-align: center;color: #aba8a8;font-size: 15px; }

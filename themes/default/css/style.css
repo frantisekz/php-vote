@@ -67,7 +67,7 @@ header {
 	background: linear-gradient(#565656, #222222);
 	text-align: left;
 	height: 55px;
-	min-width: 1240px;
+	min-width: 1040px;
 }
 
 header h20 {
@@ -77,6 +77,7 @@ margin: 0;
 }
 
 header h20 a, header h20 a:hover {
+  margin-top: -5px;
 	color: #999;
 	font-size: 1.2em;
 	padding-left: 10px;
@@ -143,11 +144,10 @@ h20 {
 	background-color: #dfdfdf;
 	font-size: 30px;
 	font-family: sans-serif;
-	padding-left: 100px;
-	padding-right: 100px;
+
 	padding-bottom: 1px;
 	width: auto;
-	max-width: 1720px;
+	max-width: 1920px;
 	text-align: center;
 	margin: 0 auto;
 	min-width: 1040px;
@@ -201,8 +201,8 @@ h2 {
 }
 
 #logo {
-	padding-left:390px;
-	padding-right:390px;
+	padding-left:300px;
+	padding-right:300px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -254,7 +254,9 @@ float:right;
 	background: linear-gradient(#4374d5,#5883da);
 }
 
-#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, #Poll_7:hover, #Poll_8:hover {
+#Poll_1:hover, #Poll_2:hover, #Poll_3:hover, #Poll_4:hover, #Poll_5:hover, #Poll_6:hover, 
+
+#Poll_7:hover, #Poll_8:hover {
 	opacity: 0.7;
 	border: 1px solid black;
 }
@@ -341,7 +343,7 @@ position:relative;
         font-weight: bold; 
         color: white; 
         font-family: "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-        font-size: 13px;
+        font-size: 12px;
         z-index: 99;
     }
 
@@ -392,12 +394,13 @@ position:relative;
 
     .label { list-style-type: none; 
              position: absolute; bottom: 3px; 
-             margin: 0; padding: 0; }
+             margin: 0; padding: 0;
+margin-left:4px; }
     .label li {  
 width:40px;
         text-transform: uppercase; 
         letter-spacing: 0.1em;
-        font-size: 12px;
+        font-size: 14px;
 font-weight:bold;
         float: left;
         text-align: center;
@@ -541,7 +544,6 @@ font-weight:bold;
         font-family: "Helvetica;
         line-height: 1em;
     }
-
   .bargraph2  p { 
                 position: absolute; 
                 left: 0; 
@@ -558,5 +560,3 @@ font-weight:bold;
                 
               }
 .bargraph2 p.centered { text-align: center;color: #aba8a8;font-size: 15px; }
-
-
