@@ -1046,48 +1046,6 @@ function __construct($username, $in_admin)
 	$this->in_admin = $in_admin;
 }
 
-function edit_user($old_name, $new_name)
-{
-   rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt");
-}
-
-function re_email($username, $new_email)
-{
-	if ((!is_safe($username)) OR (!is_safe($new_email)))
-	{
-		return false;
-	}
-	$file_name = "../users/" . $username . ".txt";
-	if (!file_exists($file_name))
-	{
-		return false;
-	}
-	$file_contents = file($file_name);
-	$to_replace = $this->get_email($username);
-	$replacer = $new_email;
-	$file = str_replace($to_replace, $replacer, $file_contents);
-	file_put_contents($file_name, $file);
-}
-
-function re_password($username, $new_password)
-{
-	if ((!is_safe($username)) OR (!is_safe($new_password)))
-	{
-		return false;
-	}
-	$file_name = "../users/" . $username . ".txt";
-	if (!file_exists($file_name))
-	{
-		return false;
-	}
-	$file_contents = file($file_name);
-	$explode = explode("+++", $file_contents[0]);
-	$to_replace = $explode[0];
-	$new_password = password_hash($new_password, PASSWORD_BCRYPT);
-	$file = str_replace($to_replace, $new_password, $file_contents);
-	file_put_contents($file_name, $file);
-}
-
 function logged_in()
 {
 	if ((isset($this->username)) AND ($this->username != "guest"))
@@ -1163,6 +1121,48 @@ function get_level($username)
 		$this->load_file($username);
 		return $this->user_data[2];
 	}
+}
+
+function edit_user($old_name, $new_name)
+{
+   rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt");
+}
+
+function re_email($username, $new_email)
+{
+	if ((!is_safe($username)) OR (!is_safe($new_email)))
+	{
+		return false;
+	}
+	$file_name = "../users/" . $username . ".txt";
+	if (!file_exists($file_name))
+	{
+		return false;
+	}
+	$file_contents = file($file_name);
+	$to_replace = $this->get_email($username);
+	$replacer = $new_email;
+	$file = str_replace($to_replace, $replacer, $file_contents);
+	file_put_contents($file_name, $file);
+}
+
+function re_password($username, $new_password)
+{
+	if ((!is_safe($username)) OR (!is_safe($new_password)))
+	{
+		return false;
+	}
+	$file_name = "../users/" . $username . ".txt";
+	if (!file_exists($file_name))
+	{
+		return false;
+	}
+	$file_contents = file($file_name);
+	$explode = explode("+++", $file_contents[0]);
+	$to_replace = $explode[0];
+	$new_password = password_hash($new_password, PASSWORD_BCRYPT);
+	$file = str_replace($to_replace, $new_password, $file_contents);
+	file_put_contents($file_name, $file);
 }
 
 function delete_user($username)
