@@ -59,12 +59,8 @@ foreach ($questions as $qid)
 					$p = 0;
 					echo '<h1>Celkem hlasů: ' . $count . '</h1>
 					<fieldset class="graph">';
-							foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
-							{
-								$palette[] = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
-							}
-							echo  '
-<div class="bargraph2" style= "width: 700px;">';
+					$palette = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
+echo '<div class="bargraph2" style= "width: 700px;">';
 echo'<ul class="bars">';
 foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 {
@@ -83,10 +79,10 @@ foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 $p = 0;
 echo '</ul>';
 echo'<ul class="label2" style="left:-10px">';
+$palette = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
 foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 	{
 		$p = $p + 1;
-		$palette[] = random_color($voting->get_possibilities($_GET["voting_result"], $qid));
 		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $pid . '</span>';
 }
 $p = 0;
