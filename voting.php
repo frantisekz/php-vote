@@ -52,6 +52,7 @@ if (isset($_GET["vote"]))
 // Whoops, bad code
 if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["voting_code"]) != 1))
 {
+	$die = 1;
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=password">';
 	die();
 }
@@ -59,6 +60,7 @@ if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["vot
 // Whoops, too late
 if ($more[3] == 0)
 {
+	$die = 1;
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=timeout">';
 	die();
 }
@@ -69,6 +71,7 @@ if (!isset($_SESSION["user_passed"]))
 	$voters = $voting->voters($_SESSION["voting_code"]);
 	if (in_array($_SESSION["voting_user"], $voters))
 	{
+		$die = 1;
 		// User voted already here, kick him out
 		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=voted">';
 	}
@@ -91,6 +94,11 @@ while (!$voting->question_exists($_SESSION["voting_code"], $_SESSION["question"]
 	$_SESSION["decrease"] = $_SESSION["decrease"] + 1;
 }
 echo "	<div class='mezera'></div>";
+
+if (isset($die))
+{
+	die();
+}
 echo "<h10>" . $header . " - " . $voting->question_header($_SESSION["voting_code"], $_SESSION["question"]) . "</h10>";
 echo "<p>" . ($_SESSION["question"] - $_SESSION["decrease"]) . "/" . $voting->question_count($_SESSION["voting_code"]) . "</p>";
 echo "<br>";
@@ -105,5 +113,5 @@ $i = 1;
 	$i=$i+1;
 	}
 echo '</div>';
-echo '</div>';
 ?>
+</div>
