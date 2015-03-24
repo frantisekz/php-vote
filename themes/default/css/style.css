@@ -310,17 +310,18 @@ text-shadow: 1px 1px 0px #eee, 2px 2px 0px #707070;
 
 #result{
 position:relative;
-	width:800px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-.bargraph {     
+.bargraph {
+min-width:500px;
+width:auto;
           height: 229px; 
           position: relative; 
           background:  url(../../../img/papergrid.jpg) repeat-x; 
           border-left: 1px solid #d4d4d4;
-          margin: 15px auto 50px;
+          margin: 15px auto 50px auto;
     }
 
     .bargraph ul.bars {
@@ -348,25 +349,7 @@ position:relative;
     }
 
    
-    .bargraph ul.bars li span {
-        position: relative;
-        top: -25px;
-        color: #7c7c7c;
-     }
-    .bargraph ul.bars li img {        
-           margin: 0; padding: 0;
-           position: relative;
-           top: -71px;
-           left: 0;
-    }
 
-    .bargraph ul.bars li span.darkpen {
-        color: #515151;
-        position: static;
-    }
-    .bargraph ul.bars li span.whitepen {
-        color: red;
-    }
 
     .bargraph ul.bars li.bar0 { left: 10px;  }
     .bargraph ul.bars li.bar1 { left: 50px;  }
@@ -410,9 +393,8 @@ font-weight:bold;
     }
 
 
-    ul.y-axis { list-style-type: none; position: absolute; 
-                  left: -45px; 
-                  width: 40px;
+    ul.y-axis { list-style-type: none; position: relative; 
+                  width: 35px;
                   text-align: right;
                   bottom: 0;
                   margin: 0; padding: 0; 
@@ -511,21 +493,6 @@ position:relative;
         top: -25px;
         color: #7c7c7c;
      }
-    .bargraph2 ul.bars li img {        
-           margin: 0; padding: 0;
-           position: relative;
-           top: -71px;
-           left: 0;
-    }
-
-    .bargraph2 ul.bars li span.darkpen {
-        color: #515151;
-        position: static;
-    }
-    .bargraph2 ul.bars li span.whitepen {
-        color: red;
-    }
-
 
 
     .label2 { list-style-type: none; 
