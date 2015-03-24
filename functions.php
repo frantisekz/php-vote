@@ -1059,6 +1059,7 @@ class user
 {
 	public $username;
 	public $in_admin;
+	public $user_data;
 
 function __construct($username, $in_admin)
 {

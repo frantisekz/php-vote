@@ -8,6 +8,9 @@ if (phpversion() < 5.5)
 }
 include('../functions.php');
 
+$user = new user($_SESSION["user_username"], 1);
+$voting = new voting($_SESSION["user_username"], 1);
+
 if (isset($_POST["computer_id"]))
 {
 	set_cookie($_POST["computer_id"]);
@@ -20,6 +23,12 @@ if (isset($_GET["unset_cookie"]))
 	unset_cookie($_POST["computer_id"]);
 	$_SESSION["change_ok"] = 2;
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?sub=settings">';
+}
+
+if (isset($_POST['username_logout']))
+{
+	$user->logout();
+	header("Location: ../index.php");
 }
 ?>
 <html>
@@ -38,9 +47,6 @@ bootstrap(2);
 </head>
 <body>
 <?php
-$user = new user($_SESSION["user_username"], 1);
-$voting = new voting($_SESSION["user_username"], 1);
-
 if (!isset($_SESSION["user_username"]))
 {
 	die("<div class=\"alert alert-danger\" role=\"alert\">Neautorizovaný přístup</div>");
@@ -51,11 +57,6 @@ if (!isset($_GET['sub']))
 	$_GET['sub'] = "home";
 }
 
-if (isset($_POST['username_logout']))
-{
-	$user->logout();
-	header("Location: ../index.php");
-}
 if (isset($_POST["voting_name"]))
 {
 	$voting->create_voting($_POST["voting_name"]);
