@@ -542,21 +542,25 @@ function voters($voting)
 	$file_contents = file($filename);
 	foreach ($file_contents as $line)
 	{
-		$explode = explode("+++", $line);
-		$i = 0;
-		foreach ($explode as $exploded)
+		if ($ln != 0)
 		{
-			if ($i == 0)
+			$explode = explode("+++", $line);
+			$i = 0;
+			foreach ($explode as $exploded)
 			{
-				// Skip first
+				if ($i == 0)
+				{
+					// Skip first
+				}
+				else
+				{
+					settype($exploded, "integer");
+					$voters[] = $exploded;
+				}
+				$i = $i + 1;
 			}
-			else
-			{
-				settype($exploded, "integer");
-				$voters[] = $exploded;
-			}
-			$i = $i + 1;
 		}
+		$ln = $ln + 1;
 	}
 	$unique = array_unique($voters, SORT_NUMERIC);
 	return $unique;
