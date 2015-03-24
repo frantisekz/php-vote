@@ -21,7 +21,7 @@ if ($voting->voting_exists($code)!= 1)
 $voters = $voting->voters($code);
 ?>
 
-<h1>Graf počtu správných hlasů</h1> - <strong>Hlasování číslo <?php echo $code ?></strong>
+<h1>Graf počtu správných hlasů</h1> - <strong>Test číslo <?php echo $code ?></strong>
 <fieldset class="graph">
 
   	<?php
@@ -32,7 +32,7 @@ $voters = $voting->voters($code);
 		$right = $right + $count;
 	}
 	echo  '
-<div class="bargraph" style= "width: 700px;">';
+<div class="bargraph">';
 echo'<ul class="bars">';
 	$p = 0;
 	$count = 0;
@@ -53,7 +53,7 @@ echo'<ul class="bars">';
 		{
 			$height = 1;
 		}
-		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
+		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . round($percent) . '%</li>';
 		$p = $p + 1;
 }
 echo'</ul>
@@ -67,10 +67,9 @@ echo'</ul>
 		$p = $p + 1;
 }
 
-echo'</ul>';
-echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
-<p class="centered">Číslo počítače</p>';
+echo'</ul><p class="centered">Číslo počítače</p></div>';
+
 	?>
-	</div>
+	
   </fieldset>
 </div>

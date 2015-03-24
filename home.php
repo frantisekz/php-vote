@@ -18,7 +18,7 @@ if (!isset($_COOKIE["computer_id"]))
   <input class="kod" type="text" name="voting_user" size="20" placeholder="Číslo PC">';
 }
 ?>
-	    <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód k hlasování" autocomplete="off">
+	    <input class="kod" type="text" name="voting_code" size="20" placeholder="Kód testu" autocomplete="off">
 <div class="mezera"></div>
     <input class="vstoupit" type="submit" value="Vstoupit do hlasování" name="JPW">
 </form>

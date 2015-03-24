@@ -1,6 +1,6 @@
 <?php
 echo '<a class="btn btn-default btn-lg" href="index.php" role="button">Zpět</a>
-<h3>Výsledky hlasování č. ' . $_GET["voting_result"] . '</h3>
+<h3>Výsledky testu č. ' . $_GET["voting_result"] . '</h3>
 <div id="result">';
 $count = 0;
 $p = 0;

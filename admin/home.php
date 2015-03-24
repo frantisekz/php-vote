@@ -25,7 +25,7 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 	<th class="head">Počet otázek</th>
 	<th class="head">Datum vytvoření</th>
 	<th class="head">Identifikační kód</th>
-	<th class="head">Upravit hlasování</th>
+	<th class="head">Upravit test</th>
 	<th class="head">Výsledky</th>
 	<th class="head">Duplikovat</th>
 	<th class="head">Uzamčení</th>
@@ -102,11 +102,11 @@ include("voting_result.php");
 
 else
 {
-	echo '<h2>Vytvořit hlasování</h2>
+	echo '<h2>Vytvořit test</h2>
 <form method="POST">
-	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název hlasování">
+	<input class="kod" type="textfield" name="voting_name" size="20" placeholder="Název testu">
 	<div class="mezera"></div>
-	<input id="new_poll" type="submit" value="Vytvořit nové hlasování" name="JPW">
+	<input id="new_poll" type="submit" value="Vytvořit nový test" name="JPW">
 </form>';
 }
 ?>

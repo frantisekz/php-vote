@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET["edit_question"]))
 {
-	echo '<h3>Úpravy hlasování č. ' . $_GET["voting_edit"] . ', otázka: ' . $voting->question_header($_GET["voting_edit"], $_GET["edit_question"]) . '</h3>
+	echo '<h3>Úpravy testu č. ' . $_GET["voting_edit"] . ', otázka: ' . $voting->question_header($_GET["voting_edit"], $_GET["edit_question"]) . '</h3>
 	<form method="POST">
 	<strong>Název otázky: </strong><input class="moznost" type="textfield" name="question_name_edit" size="20" value="' . $voting->question_header($_GET["voting_edit"], $_GET["edit_question"]) . '" placeholder="Nový název otázky">
 	<div class="mezera"></div>
@@ -29,7 +29,7 @@ if (isset($_GET["edit_question"]))
 }
 else
 {
-	echo '<h2>Úpravy hlasování č. ' . $_GET["voting_edit"] . '</h2>';
+	echo '<h2>Úpravy testu č. ' . $_GET["voting_edit"] . '</h2>';
 	echo '<h3>Nová otázka</h3>
 	<div class="alert alert-info" role="alert">
 		Nepotřebné možnosti ponechejte prázdné, později můžete další přidat přes tlačítko <strong>Upravit otázku</strong><br/>
