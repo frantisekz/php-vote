@@ -92,7 +92,10 @@ if (isset($_POST["question_name"]))
 	while(($i<=$j) AND ($i < 9))
 	{
 		$name = "possibility_" . $i;
-		$possibilities[] = $_POST[$name];
+		if (isset($_POST[$name]))
+		{
+			$possibilities[] = $_POST[$name];
+		}
 		$i = $i + 1;
 	}
 	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]);
