@@ -540,6 +540,7 @@ function voters($voting)
 		$filename = "voting/" . $voting . "/1";
 	}
 	$file_contents = file($filename);
+	$ln = 0;
 	foreach ($file_contents as $line)
 	{
 		if ($ln != 0)

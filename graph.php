@@ -56,22 +56,16 @@ echo'<ul class="bars">';
 		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
 		$p = $p + 1;
 }
-echo'</ul>';
-
-
-
-echo'<ul class="label">';
+echo'</ul>
+<ul class="label">';
 	$p = 0;
 	foreach ($voters as $voter)
 	{
 		$count = $voting->count_answered_right($code, $voter);
 		$right = $right + $count;
-		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $voter . '</span>';
+		echo '<li class="user" style="color:white;"><span class="question">' . $voter . '</span>';
 		$p = $p + 1;
 }
-
-
-
 
 echo'</ul>';
 echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
