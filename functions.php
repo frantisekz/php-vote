@@ -725,12 +725,11 @@ function add_question($code, $header, $possibilities, $possibility_right)
 	$i = 1;
 	foreach ($possibilities as $possibility)
 	{
-		if ($possibility[0] != "")
+		if ((isset($possibility[0])) AND ($possibility[0] != ""))
 		{
 			$write = $possibility . "\n";
 			$bad = 0;
-			if(fwrite($file, $write)) {}
-			else
+			if(!fwrite($file, $write))
 			{
 				$bad = 1;
 			}
