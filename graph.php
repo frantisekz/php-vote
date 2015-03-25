@@ -53,7 +53,7 @@ echo'<ul class="bars">';
 		{
 			$height = 1;
 		}
-		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $percent . '%</li>';
+		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . round($percent) . '%</li>';
 		$p = $p + 1;
 }
 echo'</ul>
