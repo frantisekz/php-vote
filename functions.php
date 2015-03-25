@@ -562,7 +562,10 @@ function voters($voting)
 		}
 		$ln = $ln + 1;
 	}
-	$unique = array_unique($voters, SORT_NUMERIC);
+	if (!empty($voters))
+	{
+		$unique = array_unique($voters, SORT_NUMERIC);
+	}
 	return $unique;
 }
 

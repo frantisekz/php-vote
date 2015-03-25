@@ -182,7 +182,7 @@ if (isset($_GET["voting_duplicate"]))
 {
 	$voting->duplicate_voting($_GET["voting_duplicate"]);
 	$_SESSION["change_ok"] = 2;
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+	// echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
 }
 
 if (isset($_GET["voting_lock"]))

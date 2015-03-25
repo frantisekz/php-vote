@@ -69,6 +69,10 @@ if ($more[3] == 0)
 if (!isset($_SESSION["user_passed"]))
 {
 	$voters = $voting->voters($_SESSION["voting_code"]);
+	if (empty($voters))
+	{
+		$voters[] = -1; // Silence warning
+	}
 	if (in_array($_SESSION["voting_user"], $voters))
 	{
 		$die = 1;

@@ -6,8 +6,6 @@ $actual = "kod";
 ?>
 <h8>Máte špatný kód!</h8>
 <br/>
-
-<?php $voting->clear_session(); ?>
 	<div style="height: 30px;"></div>
 	</div>
 	<div class="mezera"></div>
