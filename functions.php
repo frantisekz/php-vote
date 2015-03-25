@@ -88,7 +88,6 @@ function is_safe($input)
 {
 	$i = 0;
 	$p = 0;
-	$over = 0;
 	$arr = str_split($input);
 	if (($arr[0] == "+") OR ($arr[sizeof($arr) - 1] == "+"))
 	{
@@ -113,7 +112,7 @@ function is_safe($input)
 		{
 			return false;
 		}
-	elseif ($over != 1)
+	else
 		{
 			return true;
 		}
@@ -794,17 +793,13 @@ function duplicate_voting($code)
     	$file = $target . "/" . $question;
     	$file_contents = file($file);
     	$content[] = $file_contents[0];
-    	$i = 0;
-    	foreach ($file_contents as $line)
+    	$possibilities = $this->get_possibilities($code, $question);
+    	foreach ($possibilities as $possibility)
     	{
-    		if ($i != 0)
-    		{
-    			$explode = explode("+++", $line);
-    			$content[] = $explode[0];
-    		}
-    		$i = $i + 1;
+    		$content[] = $possibility . "\n";
     	}
     	unlink($file);
+    	$content = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $content);
 	    file_put_contents($file, $content);
 	    unset($content);
     }
