@@ -26,14 +26,8 @@ $voters = $voting->voters($code);
 
   	<?php
   	$palette = random_color($voters);
-	foreach ($voters as $voter)
-	{
-		$count = $voting->count_answered_right($code, $voter);
-		$right = $right + $count;
-	}
-	echo  '
-<div class="bargraph" style= "width: 700px;">';
-echo'<ul class="bars">';
+	echo  '<div class="bargraph" style= "width: 700px;">
+	<ul class="bars">';
 	$p = 0;
 	$count = 0;
 	foreach ($voters as $voter)
@@ -66,11 +60,10 @@ echo'</ul>
 		echo '<li class="user" style="color:white;"><span class="question">' . $voter . '</span>';
 		$p = $p + 1;
 }
-
-echo'</ul>';
-echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
-<p class="centered">Číslo počítače</p>';
-	?>
+?>
+</ul>
+<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
+<p class="centered">Číslo počítače</p>
 	</div>
   </fieldset>
 </div>
