@@ -451,6 +451,7 @@ function answered_right($voting, $question, $voter)
 			{
 				return true;
 			}
+			$i = $i + 1;
 		}
 		$i = $i + 1;
 	}
