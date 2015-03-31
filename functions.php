@@ -567,7 +567,10 @@ function voters($voting)
 	{
 		$unique = array_unique($voters, SORT_NUMERIC);
 	}
-	return $unique;
+	if (isset($unique))
+	{
+		return $unique;
+	}
 }
 
 function voting_lock($code)

@@ -7,11 +7,16 @@ $p = 0;
 $right = 0;
 $questions = $voting->get_questions($_GET["voting_result"]);
 $voters = $voting->voters($_GET["voting_result"]);
-foreach ($voters as $voter)
+
+if (!empty($voters))
 {
-	$count = $voting->count_answered_right($_GET["voting_result"], $voter);
-	$right = $right + $count;
+	foreach ($voters as $voter)
+	{
+		$count = $voting->count_answered_right($_GET["voting_result"], $voter);
+		$right = $right + $count;
+	}
 }
+
 $q = 0;
 $p = 0;
 foreach ($questions as $qid)
