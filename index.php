@@ -71,4 +71,4 @@ else
 
 include("themes/" . $theme . "/template/footer.php");
 ?>
-</body>
+</div>
