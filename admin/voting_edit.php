@@ -21,7 +21,16 @@ if (isset($_GET["edit_question"]))
 	foreach ($voting->get_possibilities($_GET["voting_edit"], $_GET["edit_question"]) as $possibility)
 	{
 		echo '<strong>Možnost ' . $i . ':</strong><input class="moznost" type="textfield" name="edit_possibility_' . $i . '" value="' . $possibility . '" size="20"> <input id="pc_submit" type="submit" value="Upravit">';
-		echo '  <a id="edit" href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&right_possibility=' . $i . '">Nastavit správnou odpověď</a> |  ';
+		if ($voting->question_right($_GET["voting_edit"], $_GET["edit_question"]) != $i)
+		{
+			echo '  <a id="edit" href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&right_possibility=' . $i . '">Nastavit správnou odpověď</a> |  ';
+
+		}
+		else
+		{
+			echo '  Tato odpověď je správná |  ';
+
+		}
 		echo '<a id="delete" href="index.php?voting_edit=' . $_GET["voting_edit"] . '&edit_question=' . $_GET["edit_question"] . '&remove_possibility=' . $i . '"> Smazat</a><br/>';
 		$i = $i + 1;
 	}
