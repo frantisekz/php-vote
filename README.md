@@ -20,11 +20,10 @@ These features must be available before the deadline:
   * Voting -
     * Graphical output of results - DONE
     * Text output of results - DONE
-    * Editing of votings, questions and possibilities
+    * Editing of votings, questions and possibilities - DONE
     * Removing of votings, questions and possibilities - DONE
   * Users - Overview, deleting - DONE
   * Additional settings - Setting cookie on student PCs - DONE
-* Code documentation in Czech
 
 Additional features:
 -------
