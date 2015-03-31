@@ -12,6 +12,7 @@
 	jquery(1); 
 	?>
 </head>
+<body>
 <div class="main">
 	<header>
 	<?php if ($user->logged_in())
