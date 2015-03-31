@@ -13,6 +13,7 @@
 	?>
 </head>
 <body>
+<div class="main">
 	<header>
 	<?php if ($user->logged_in())
 	echo "<h30 id='username'>" . $user->get_cur_username() . "</h30>";
