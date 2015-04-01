@@ -46,7 +46,7 @@ $voters = $voting->voters($code);
 		settype($percent, "int");
 		$combined[$voter] = $percent;
 	}
-	// Sort array  from low to high
+	// Sort array  from high to low
 	arsort($combined);
 	echo '<div class="bargraph" style= "width: 700px;">';
 	echo'<ul class="bars">';
