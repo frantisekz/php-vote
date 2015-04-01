@@ -56,6 +56,7 @@ else
 		<strong>Možnost 8: </strong><input class="moznost" type="textfield" name="possibility_8" size="20" placeholder="Možnost 8"><br/>
 	</div>
 	<strong>Číslo správné odpovědi: </strong>
+	<div class="alert alert-warning" role="alert">Pokud zvolíte neexistující odpověď jako správnou, tak se nebudou správně zobrazovat grafy.</div>
 	<select name="possibility_right">
 		<option value="1">Možnost 1</option>
 		<option value="2">Možnost 2</option>
