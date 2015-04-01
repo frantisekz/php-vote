@@ -1160,7 +1160,14 @@ function get_level($username)
 
 function edit_user($old_name, $new_name)
 {
-   rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt");
+   if (rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt"))
+   {
+		return true;
+   }
+   else
+   {
+   		return false;
+   }
 }
 
 function re_email($username, $new_email)
@@ -1177,7 +1184,14 @@ function re_email($username, $new_email)
 	$file_contents = file($file_name);
 	$to_replace = $this->get_email($username);
 	$file = str_replace($to_replace, $new_email, $file_contents);
-	file_put_contents($file_name, $file);
+	if (file_put_contents($file_name, $file))
+	{
+		return true;
+	}
+	else
+	{
+   		return false;
+	}
 }
 
 function re_password($username, $new_password)
@@ -1195,7 +1209,14 @@ function re_password($username, $new_password)
 	$to_replace = $this->get_password($username);
 	$new_password = password_hash($new_password, PASSWORD_BCRYPT);
 	$file = str_replace($to_replace, $new_password, $file_contents);
-	file_put_contents($file_name, $file);
+	if (file_put_contents($file_name, $file))
+	{
+		return true;
+	}
+	else
+	{
+   		return false;
+	}
 }
 
 function delete_user($username)
