@@ -713,14 +713,14 @@ function add_question($code, $header, $possibilities, $possibility_right)
 {
 	if ((!is_numeric($code)) OR ((!is_safe($header))) OR (!is_numeric($possibility_right)))
 	{
-		foreach ($possibilities as $possibility)
-		{
-			if (!is_safe($possibility))
-			{
-				return false;
-			}
-		}
 		return false;
+	}
+	foreach ($possibilities as $possibility)
+	{
+		if (!is_safe($possibility))
+		{
+			return false;
+		}
 	}
 	if ($this->in_admin == 1)
 	{
