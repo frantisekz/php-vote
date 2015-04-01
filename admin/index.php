@@ -75,7 +75,7 @@ if (!isset($_GET['sub']))
 
 if (isset($_POST["voting_name"]))
 {
-	if ($voting->create_voting($_POST["voting_name"]))
+	if ($voting->create_voting($_POST["voting_name"]) != false)
 	{
 		$_SESSION["change_ok"] = 2;
 	}
