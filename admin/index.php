@@ -127,8 +127,14 @@ if (isset($_POST["question_name"]))
 		}
 		$i = $i + 1;
 	}
-	$voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]);
-	$_SESSION["change_ok"] = 1;
+	if ($voting->add_question($_GET["voting_edit"], $_POST["question_name"], $possibilities, $_POST["possibility_right"]))
+	{
+		$_SESSION["change_ok"] = 1;
+	}
+	else
+	{
+		$_SESSION["change_fail"] = 1;
+	}
 }
 
 if (isset($_POST["new_name"]))
@@ -172,12 +178,13 @@ if (isset($_GET["remove_question"]))
 {
 	if ($voting->remove_question($_GET["voting_edit"], $_GET["remove_question"]))
 	{
-		$_SESSION["change_ok"] = 1;
+		$_SESSION["change_ok"] = 2;
 	}
 	else
 	{
-		$_SESSION["change_fail"] = 1;
+		$_SESSION["change_fail"] = 2;
 	}
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?voting_edit=' . $_GET["voting_edit"] . '">';
 }
 
 if (isset($_GET["voting_remove"]))
@@ -359,7 +366,7 @@ if (isset($_SESSION["change_fail"]))
 	else
 	{
 		echo '<div class="alert alert-danger alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Zavřít"><span aria-hidden="true">&times;</span></button>Došlo k potížím! Zkontrolujte prosím, zda jste nepoužili nepovolené znaky (+) a kontaktujte správce.</div>';
+		<button type="button" class="close" data-dismiss="alert" aria-label="Zavřít"><span aria-hidden="true">&times;</span></button>Došlo k potížím! Zkontrolujte prosím, zda jste nepoužili nepovolené znaky (vstup nesmí začínat a končit znakem + a nesmí obsahovat 3 po sobě jdoucí znaky +). V případě, že byl Váš vstup v pořádku a stále vidíte tuto hlášku, tak kontaktujte správce.</div>';
 		unset($_SESSION["change_fail"]);		
 	}
 }
