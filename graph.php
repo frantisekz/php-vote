@@ -25,13 +25,13 @@ $voters = $voting->voters($code);
 <fieldset class="graph">
 
   	<?php
-  	$palette = random_color($voters);
-	echo  '<div class="bargraph" style= "width: 700px;">
-	<ul class="bars">';
-	$p = 0;
-	$count = 0;
+  	$count = 0;
 	foreach ($voters as $voter)
 	{
+		$count = $voting->count_answered_right($code, $voter);
+		$right = $right + $count;
+		$palette[] = random_color($voters);
+
 		$right = $voting->count_answered_right($code, $voter);
 		$count = $voting->count_answered($code, $voter);
 		if ($count != 0)
@@ -42,28 +42,53 @@ $voters = $voting->voters($code);
 		{
 			$percent = 0;
 		}
+		// Recreate array with voters as key and their percents
+		settype($percent, "int");
+		$combined[$voter] = $percent;
+	}
+	// Sort array  from low to high
+	arsort($combined);
+	echo '<div class="bargraph" style= "width: 700px;">';
+	echo'<ul class="bars">';
+
+	$p = 0;
+	foreach ($combined as $percent)
+	{
+		/*$right = $voting->count_answered_right($code, $voter);
+		$count = $voting->count_answered($code, $voter);
+		if ($count != 0)
+		{
+			$percent = ($right * 100) / $count;
+		}
+		else
+		{
+			$percent = 0;
+		}*/
+
 		$height = round(($percent * 2));
 		if ($height == 0)
 		{
-			$height = 1;
+			$height = 10;
 		}
-		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . round($percent) . '%</li>';
+		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[0][$p] . ';">' . round($percent) . '%</li>';
 		$p = $p + 1;
 }
-echo'</ul>
-<ul class="label">';
+echo'</ul>';
+
+
+
+echo'<ul class="label">';
 	$p = 0;
-	foreach ($voters as $voter)
+	foreach(array_keys($combined) as $key) 
 	{
-		$count = $voting->count_answered_right($code, $voter);
-		$right = $right + $count;
-		echo '<li class="user" style="color:white;"><span class="question">' . $voter . '</span>';
+		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $key . '</span>';
 		$p = $p + 1;
 }
-?>
-</ul>
-<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
-<p class="centered">Číslo počítače</p>
+
+echo'</ul>';
+echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
+<p class="centered">Číslo počítače</p>';
+	?>
 	</div>
   </fieldset>
 </div>
