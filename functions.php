@@ -451,7 +451,6 @@ function answered_right($voting, $question, $voter)
 			{
 				return true;
 			}
-			$i = $i + 1;
 		}
 		$i = $i + 1;
 	}
@@ -680,7 +679,14 @@ function create_voting($name)
 			$dirname = "voting/" . date("y") . $rand;
 		}
 	}
-	mkdir($dirname);
+	if (mkdir($dirname))
+	{
+		// Ok
+	}
+	else
+	{
+		return false;
+	}
 	if ($this->in_admin == 1)
 	{
 		$file_name = $dirname . "/info.txt";
@@ -691,7 +697,14 @@ function create_voting($name)
 	}
 	$file = fopen($file_name, "w+");
 	$write = $name . "+++" . $this->username . "+++" . time() . "+++1";
-	fwrite($file, $write);
+	if (fwrite($file, $write))
+	{
+		// Ok
+	}
+	else
+	{
+		return false;
+	}
 	fclose($file);
 	return $rand;
 }
