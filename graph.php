@@ -54,17 +54,6 @@ $voters = $voting->voters($code);
 	$p = 0;
 	foreach ($combined as $percent)
 	{
-		/*$right = $voting->count_answered_right($code, $voter);
-		$count = $voting->count_answered($code, $voter);
-		if ($count != 0)
-		{
-			$percent = ($right * 100) / $count;
-		}
-		else
-		{
-			$percent = 0;
-		}*/
-
 		$height = round(($percent * 2));
 		if ($height == 0)
 		{
