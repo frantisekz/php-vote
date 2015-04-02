@@ -1119,6 +1119,10 @@ function load_file($username)
 	{
 		$filename = "users/" . $username . ".txt";
 	}
+	if (!file_exists($filename))
+	{
+		return false;
+	}
 	$user_file = fopen($filename, "r");
 	$user_data = explode("+++", fgets($user_file));
 	fclose($user_file);
