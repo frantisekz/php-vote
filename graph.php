@@ -59,8 +59,13 @@ $voters = $voting->voters($code);
 		{
 			$height = 10;
 		}
-		echo '<li class="bar' . $p . '" style="height: ' . $height . 'px;background-color:' . $palette[0][$p] . ';">' . round($percent) . '%</li>';
-		$p = $p + 1;
+		echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';">' . round($percent) . '%</li>';
+		echo ' <script>
+		$(document).ready(function(){
+	$("#' . ($height + $p) . '").animate({height: "' . $height . 'px"}, 1500);
+	});
+</script>';
+$p = $p + 1;
 }
 echo'</ul>';
 
@@ -81,3 +86,9 @@ echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%<
 	</div>
   </fieldset>
 </div>
+
+<!--<script>
+$(document).ready(function(){
+    $("ul").find("#' . $height . '").animate({height: "' . $height . '"}, 1000);
+});
+</script> -->
