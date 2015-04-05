@@ -55,11 +55,13 @@ $voters = $voting->voters($code);
 	foreach ($combined as $percent)
 	{
 		$height = round(($percent * 2));
-		if ($height == 0)
-		{
-			$height = 10;
-		}
+if ($percent == 0)
+{
+echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';"><h4>' . round($percent) . '%</h4></li>';
+}	
+else{
 		echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';">' . round($percent) . '%</li>';
+}
 		echo ' <script>
 		$(document).ready(function(){
 	$("#' . ($height + $p) . '").animate({height: "' . $height . 'px"}, 1500);

@@ -3,6 +3,10 @@
 	margin: 0;
 }
 
+body{
+background-color:whitesmoke
+}
+
 .main {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -10,7 +14,6 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-o-user-select: none;
-	background-color: whitesmoke;
 	color: black;
 	font-family: sans-serif;
 	font-size: 17px;
@@ -392,11 +395,16 @@ position:relative;
 
 
 
-    .label { list-style-type: none; 
-             position: absolute; bottom: 3px; 
-             margin: 0; padding: 0;
-margin-left:4px; }
-    .label li {  
+    .label {
+list-style-type: none; 
+position: absolute; 
+bottom: 3px; 
+margin: 0; 
+padding: 0;
+margin-left:4px; 
+}
+  
+  .label li {  
 width:40px;
         text-transform: uppercase; 
         letter-spacing: 0.1em;
@@ -454,6 +462,15 @@ font-weight:bold;
                 
               }
 .bargraph p.centered { text-align: center;color: #aba8a8;font-size: 15px; }
+
+h4{
+color:black;
+position:absolute;
+top:-14px;
+left:5px;
+font-size: 12px;}
+
+
 
 /* Výsledky_2 */
     .bargraph2 ul.bars li.bar0 { left: 10px;  }
@@ -560,3 +577,10 @@ font-weight:bold;
                 
               }
 .bargraph2 p.centered { text-align: center;color: #aba8a8;font-size: 15px; }
+
+h15{
+color:black;
+position:absolute;
+top:-17px;
+left:21px;
+font-size: 15px;}
