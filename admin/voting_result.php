@@ -7,7 +7,6 @@ $p = 0;
 $right = 0;
 $questions = $voting->get_questions($_GET["voting_result"]);
 $voters = $voting->voters($_GET["voting_result"]);
-
 if (!empty($voters))
 {
 	foreach ($voters as $voter)
@@ -16,7 +15,6 @@ if (!empty($voters))
 		$right = $right + $count;
 	}
 }
-
 $q = 0;
 $p = 0;
 foreach ($questions as $qid)
@@ -73,13 +71,15 @@ foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 	$size = sizeof($voting->get_result($_GET["voting_result"], $q, $p));
 	if ($size == 0)
 	{
-		$height = 10;
+		$height = 0;
+	echo '<li class="bar' . ($p - 1) . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '"><h15>' . $size . '</h15></li>';
 	}
 	else
 	{
 		$height = $size * 14;
-	}
 	echo '<li class="bar' . ($p - 1) . '" style="height: ' . $height . 'px;background-color:' . $palette[$p] . '">' . $size . '</li>';
+	}
+
 }
 $p = 0;
 echo '</ul>';
@@ -93,7 +93,6 @@ foreach ($voting->get_possibilities($_GET["voting_result"], $qid) as $pid)
 $p = 0;
 echo'</ul>
 <p class="centered">Odpovědi</p>
-
                 </div>
               </fieldset>
 					</div>
