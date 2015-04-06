@@ -34,6 +34,14 @@ if (!isset($_SESSION["voting_code"]))
 	$_SESSION["voting_code"] = $_POST["voting_code"];
 }
 
+// Whoops, bad code
+if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["voting_code"]) != 1))
+{
+	$die = 1;
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=password">';
+	die();
+}
+
 // Load voting info file, just in case something gonna need this
 $more = $voting->get_more($_SESSION["voting_code"]);
 
@@ -47,14 +55,6 @@ if (isset($_GET["vote"]))
 		die();
 	}
 	$_SESSION["question"] = $_SESSION["question"] + 1;
-}
-
-// Whoops, bad code
-if ((isset($_SESSION["voting_code"])) AND ($voting->voting_exists($_SESSION["voting_code"]) != 1))
-{
-	$die = 1;
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?page=password">';
-	die();
 }
 
 // Whoops, too late
