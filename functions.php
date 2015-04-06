@@ -59,6 +59,10 @@ function register($username, $password, $email, $level, $in_admin)
 	{
 		return false;
 	}
+	if (!ctype_alnum($username))
+	{
+		return false;
+	}
 	// We specify BCRYPT directly to avoid potential
 	// incompatibilities in the future
 	$password = password_hash($password, PASSWORD_BCRYPT);
@@ -1111,6 +1115,10 @@ function load_file($username)
 	{
 		return false;
 	}
+	if (!ctype_alnum($username))
+	{
+		return false;
+	}
 	if ($this->in_admin == 1)
 	{
 		$filename = "../users/" . $username . ".txt";
@@ -1164,14 +1172,22 @@ function get_level($username)
 
 function edit_user($old_name, $new_name)
 {
-   if (rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt"))
-   {
+	if ((!is_safe($old_name)) OR (!is_safe($new_name)))
+	{
+		return false;
+	}
+	if ((!ctype_alnum($old_name)) OR (!ctype_alnum($new_name)))
+	{
+		return false;
+	}
+	if (rename ("../users/" . $old_name . ".txt" ,"../users/" . $new_name . ".txt"))
+	{
 		return true;
-   }
-   else
-   {
-   		return false;
-   }
+	}
+	else
+	{
+		return false;
+	}
 }
 
 function re_email($username, $new_email)
@@ -1226,6 +1242,10 @@ function re_password($username, $new_password)
 function delete_user($username)
 {
 	if (!is_safe($username))
+	{
+		return false;
+	}
+	if (!ctype_alnum($username))
 	{
 		return false;
 	}
