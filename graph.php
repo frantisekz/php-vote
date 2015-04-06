@@ -13,6 +13,11 @@ else
 	die();
 }
 
+if (!isset($code))
+{
+	echo "<strong>Chybný kód!!!</strong>";
+	die();
+}
 if ($voting->voting_exists($code)!= 1)
 {
 	echo "<strong>Chybný kód!!!</strong>";

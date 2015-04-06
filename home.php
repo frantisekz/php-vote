@@ -10,7 +10,10 @@ Pro vstup do hlasovací místnosti zadejte prosím kód, který Vám sdělil Vá
 <?php
 
 // Ensure SESSION is clear before entering voting, otherwise bad things may happen
-clear_session();
+if (function_exists('clear_session'))
+{
+	clear_session();
+}
 if (!isset($_COOKIE["computer_id"]))
 {
   echo '<strong>Identifikační číslo počítače není nastaveno, kontaktujte správce a nebo jej vyplňte ručně!</strong>

@@ -61,7 +61,10 @@ if (isset($_GET["page"]))
 	if (ctype_alpha($_GET["page"]))
 	{
 		$inc = $_GET["page"] . ".php";
-		include($inc);
+		if (file_exists($inc))
+		{
+			include($inc);
+		}
 	}
 }
 else

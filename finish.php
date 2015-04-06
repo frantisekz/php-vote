@@ -21,5 +21,8 @@ else
 </div>
 <?php
 }
-clear_session();
+if (function_exists('clear_session'))
+{
+	clear_session();
+}
 ?>

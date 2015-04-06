@@ -1,7 +1,6 @@
 <script src="js/jquery.textfill.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <?php
-bootstrap(1);
 echo '<div class="voting">';
 if ((!isset($_POST["voting_code"])) AND (!isset($_SESSION["voting_code"])))
 {
