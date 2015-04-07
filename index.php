@@ -1,9 +1,11 @@
 <?php
-error_reporting(3);
 if (session_status() == PHP_SESSION_NONE) 
 {
     session_start();
 }
+
+// Release
+error_reporting(0);
 
 // Work around missing functions in old php
 if (phpversion() < 5.5)
