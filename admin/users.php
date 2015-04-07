@@ -107,7 +107,7 @@ foreach ($user->view_users() as $b)
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Přejete si opravdu odstranit tohoto uživatele?</h4>
+						<h4 class="modal-title admin" id="myModalLabel">Přejete si opravdu odstranit tohoto uživatele?</h4>
 					</div>
 					<div class="modal-body">
 					' . $b . '

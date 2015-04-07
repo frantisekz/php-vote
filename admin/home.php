@@ -69,9 +69,10 @@ if ((!isset($_GET["voting_edit"])) AND (!isset($_GET["voting_result"])) AND (!is
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Přejete si opravdu odstranit toto hlasování?</h4>
+						<h4 class="modal-title admin" id="myModalLabel">Přejete si opravdu odstranit toto hlasování?</h4>
 					</div>
 					<div class="modal-body">
+					' . $b . '
 					</div>
 					<div class="modal-footer">
 					  <a href="index.php?voting_remove=' . $b . '"><button type="button" class="btn btn-danger" >Ano</button></a>
