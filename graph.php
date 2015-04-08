@@ -49,53 +49,66 @@ $voters = $voting->voters($code);
 		}
 		// Recreate array with voters as key and their percents
 		settype($percent, "int");
+		$percent = round($percent);
 		$combined[$voter] = $percent;
 	}
 	// Sort array  from high to low
 	arsort($combined);
+	
 	echo '<div class="bargraph" style= "width: 700px;">';
 	echo'<ul class="bars">';
 
 	$p = 0;
-	foreach ($combined as $percent)
+	$j = 0;
+	for ($i = 100; $i >= 0; $i--)
 	{
-		$height = round(($percent * 2));
-if ($percent == 0)
-{
-echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';"><h4>' . round($percent) . '%</h4></li>';
-}	
-else{
-		echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';">' . round($percent) . '%</li>';
-}
-		echo ' <script>
-		$(document).ready(function(){
-	$("#' . ($height + $p) . '").animate({height: "' . $height . 'px"}, 1500);
-	});
-</script>';
-$p = $p + 1;
-}
-echo'</ul>';
-
-
-
-echo'<ul class="label">';
+		$keys = array_keys($combined, $i);
+		if (!empty($keys))
+		{
+			sort($keys);
+			$height = $i * 2;
+			while ($j < sizeof($keys))
+			{
+				if ($i == O)
+				{
+					echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';"><h4>' . $i . '%</h4></li>';
+				}
+				else
+				{
+					echo ' <li class="bar' . $p . '" id= "' . ($height + $p) . '" style="height: 0px;background-color:' . $palette[0][$p] . ';">' . $i . '%</li>';
+				}
+				echo ' <script>
+				$(document).ready(function(){
+				$("#' . ($height + $p) . '").animate({height: "' . $height . 'px"}, 1500);
+				});
+				</script>';
+				$j = $j + 1;
+				$p = $p + 1;
+			}
+			$j = 0;
+		}
+	}
+echo'</ul>
+<ul class="label">';
 	$p = 0;
-	foreach(array_keys($combined) as $key) 
+	for ($i = 100; $i >= 0; $i--)
 	{
-		echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $key . '</span>';
-		$p = $p + 1;
-}
-
-echo'</ul>';
-echo'<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
+		$keys = array_keys($combined, $i);
+		if (!empty($keys))
+		{
+			sort($keys);
+			while ($p < sizeof($keys))
+			{
+				echo '<li class="user" style="color:' . $palette[$p] . ';"><span class="question">' . $keys[$p] . '</span>';
+				$p = $p + 1;
+			}
+			$p = 0;
+		}
+	}
+echo'</ul>
+<ul class="y-axis"><li>100%</li><li>75%</li><li>50%</li><li>25%</li><li>0%</li></ul>
 <p class="centered">Číslo počítače</p>';
 	?>
 	</div>
   </fieldset>
 </div>
-
-<!--<script>
-$(document).ready(function(){
-    $("ul").find("#' . $height . '").animate({height: "' . $height . '"}, 1000);
-});
-</script> -->
